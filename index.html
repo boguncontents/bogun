@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>응급구조대 119 미션</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+ --blue-900:#0a3f75; --blue-700:#0f5fb0; --blue-600:#1571d6; --blue-100:#e6f2fd; --blue-050:#f2f8fe;
+ --coral:#ff6b45; --coral-dark:#e2502a; --coral-light:#ffe4d9;
+ --amber:#ffb703; --amber-dark:#8a5700; --amber-light:#fff2d1;
+ --green:#2f9e6e; --green-dark:#186b45; --green-light:#e4f8ee;
+ --red:#e2544a; --red-dark:#a3271f; --red-light:#ffe9e7;
+ --purple:#9b59b6; --purple-light:#f6ecfb;
+ --ink:#152a42; --sub:#5c7893; --line:#d9e6f2;
+ --card-radius:26px; --tap:52px;
+}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:"Noto Sans KR",Arial,sans-serif;background:
+  radial-gradient(1200px 500px at 100% -10%,#fff2e0 0%,rgba(255,242,224,0) 60%),
+  radial-gradient(900px 500px at -10% 110%,#dbeeff 0%,rgba(219,238,255,0) 55%),
+  #f4f9ff;
+ color:var(--ink);-webkit-font-smoothing:antialiased;overscroll-behavior-y:none}
+button,select,input{font:inherit}
+button{cursor:pointer;border:0;-webkit-user-select:none;user-select:none}
+.app{min-height:100vh;min-height:100dvh}
+h1,h2,h3{font-family:"Jua","Noto Sans KR",sans-serif;letter-spacing:.2px}
+
+header{
+ background:linear-gradient(115deg,var(--blue-900) 0%,var(--blue-700) 45%,#1e9bd7 100%);
+ background-size:180% 180%;
+ color:#fff;padding:calc(14px + env(safe-area-inset-top)) 22px 14px;
+ display:flex;justify-content:space-between;align-items:center;gap:12px;
+ position:sticky;top:0;z-index:40;box-shadow:0 6px 18px rgba(10,40,80,.18)
+}
+header h1{margin:0;font-size:24px;display:flex;align-items:center;gap:8px}
+header .small{font-size:13px;font-weight:700;opacity:.95;background:rgba(255,255,255,.16);padding:6px 12px;border-radius:999px;white-space:nowrap}
+
+main{max-width:1040px;margin:auto;padding:18px 20px 40px}
+
+.card{background:#fff;border-radius:var(--card-radius);padding:26px;
+ box-shadow:0 10px 28px rgba(20,60,100,.10),0 2px 6px rgba(20,60,100,.05);
+ margin-bottom:16px;border:1px solid rgba(20,60,100,.05)}
+.center{text-align:center}
+
+.hero{padding:38px 26px}
+.hero .emoji{font-size:68px;line-height:1;display:inline-block;animation:bob 2.6s ease-in-out infinite}
+.hero h2{font-size:32px;margin:12px 0 8px;color:var(--blue-900)}
+.hero p{margin:0 0 26px;color:var(--sub);font-size:16px;line-height:1.6;max-width:560px;margin-left:auto;margin-right:auto}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-6px) rotate(2deg)}}
+
+.fieldrow{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.field{min-width:220px;flex:1 1 220px;max-width:300px;text-align:left}
+.field label{display:block;font-weight:800;margin-bottom:8px;color:var(--blue-900);font-size:15px}
+select{width:100%;min-height:var(--tap);padding:12px 16px;border:2px solid var(--line);border-radius:16px;
+ background:#fff url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20'%3E%3Cpath fill='%231571d6' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E") no-repeat right 14px center;
+ appearance:none;-webkit-appearance:none;font-weight:700;font-size:16px;color:var(--ink);transition:border-color .15s}
+select:focus{outline:none;border-color:var(--blue-600)}
+
+button.primary,button.secondary{min-height:var(--tap);touch-action:manipulation;transition:transform .12s ease,box-shadow .12s ease,filter .12s ease}
+.primary{background:linear-gradient(135deg,var(--coral),var(--coral-dark));color:#fff;padding:14px 28px;
+ border-radius:18px;font-weight:900;font-size:17px;font-family:"Jua","Noto Sans KR",sans-serif;letter-spacing:.3px;
+ box-shadow:0 8px 18px rgba(226,80,42,.32),inset 0 -3px 0 rgba(0,0,0,.08)}
+.primary:hover{filter:brightness(1.04)}
+.primary:active{transform:scale(.96);box-shadow:0 4px 10px rgba(226,80,42,.28),inset 0 -2px 0 rgba(0,0,0,.08)}
+.secondary{background:var(--blue-100);color:var(--blue-700);padding:12px 22px;border-radius:16px;font-weight:800;font-size:15px}
+.secondary:active{transform:scale(.96);background:#d9ecfc}
+.primary:disabled,.secondary:disabled{opacity:.4;cursor:not-allowed;transform:none;filter:none}
+
+.guide{background:var(--blue-050);border:2px dashed #a9d2ef;border-radius:18px;padding:18px 20px;text-align:left;margin-top:22px;line-height:1.9;font-size:15px}
+.guide b{color:var(--blue-700)}
+
+.route{display:flex;gap:8px;overflow-x:auto;padding:6px 2px 12px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.route span{white-space:nowrap;padding:9px 14px;min-height:40px;display:inline-flex;align-items:center;
+ border-radius:999px;background:#eaf1f8;color:var(--sub);font-size:13px;font-weight:800;border:1px solid transparent;transition:.15s}
+.route .current{background:var(--blue-600);color:#fff;box-shadow:0 4px 10px rgba(21,113,214,.3)}
+.route .done{background:var(--green-light);color:var(--green-dark);border-color:#bfe8d3}
+
+.station-title{display:flex;align-items:center;gap:14px}
+.station-icon{font-size:46px;background:var(--blue-100);width:72px;height:72px;border-radius:22px;
+ display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:inset 0 0 0 2px #ffffff}
+.station-title h2{margin:2px 0 0;font-size:27px;color:var(--ink)}
+.badge{display:inline-block;background:var(--amber-light);color:var(--amber-dark);padding:6px 13px;
+ border-radius:999px;font-weight:900;font-size:12.5px;font-family:"Jua","Noto Sans KR",sans-serif}
+
+.video-wrap{background:#102a3c;border-radius:20px;overflow:hidden;margin-top:18px;box-shadow:0 8px 20px rgba(10,30,50,.25)}
+.video-wrap video{display:block;width:100%;max-height:430px;background:#102a3c}
+.video-placeholder{padding:44px 20px;color:#dcebf4;text-align:center}
+.video-placeholder .big{font-size:46px}
+.video-actions{display:flex;justify-content:center;padding:12px;gap:8px;background:#17394f}
+.video-actions button{background:#fff;color:#174b6d;padding:11px 18px;min-height:44px;border-radius:12px;font-weight:800;transition:transform .12s}
+.video-actions button:active{transform:scale(.95)}
+
+.notice{padding:15px 17px;border-radius:16px;margin-top:14px;background:var(--amber-light);line-height:1.6;font-size:15px}
+.trap-question{font-size:19px;font-weight:900;margin:20px 0 14px;color:var(--ink);line-height:1.5}
+
+.options{display:grid;gap:12px;grid-template-columns:1fr}
+.option{min-height:var(--tap);padding:16px 18px;text-align:left;background:#f7fafd;border:2px solid var(--line);
+ border-radius:16px;font-weight:800;font-size:15.5px;color:var(--ink);transition:transform .12s,border-color .12s,background .12s;display:flex;align-items:center}
+.option:hover{border-color:#8fc0e4;background:#fff}
+.option:active:not(:disabled){transform:scale(.98)}
+.option.correct{background:var(--green-light);border-color:var(--green);color:var(--green-dark)}
+.option.wrong{background:var(--red-light);border-color:var(--red);color:var(--red-dark)}
+.option:disabled{cursor:not-allowed}
+
+.feedback{margin-top:14px;padding:15px 17px;border-radius:16px;font-weight:800;line-height:1.6;font-size:15px}
+.feedback.good{background:var(--green-light);color:var(--green-dark)}
+.feedback.bad{background:var(--amber-light);color:var(--amber-dark)}
+
+.practice-head{background:linear-gradient(135deg,var(--blue-050),#eef7ff);border-radius:20px;padding:18px 20px;margin-top:18px;border:1px solid #dceaf7}
+.practice-head b{font-size:16px;color:var(--blue-900)}
+.roleline{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.role{padding:11px 15px;min-height:44px;display:inline-flex;align-items:center;border-radius:14px;background:#fff;
+ border:2px solid var(--line);font-weight:900;font-size:14.5px;box-shadow:0 2px 6px rgba(20,60,100,.06)}
+.role.current{border-color:var(--blue-600);background:var(--blue-050);color:var(--blue-700)}
+.role.checker{border-color:var(--amber);background:var(--amber-light);color:var(--amber-dark)}
+.role.patient{border-color:var(--purple);background:var(--purple-light);color:#6c3483}
+
+.student-progress{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0}
+.student{padding:10px 15px;min-height:44px;display:inline-flex;align-items:center;border-radius:14px;
+ background:#eef2f6;font-weight:900;font-size:14.5px;color:var(--sub);transition:.15s}
+.student.done{background:var(--green-light);color:var(--green-dark)}
+.student.now{background:var(--blue-100);color:var(--blue-700);outline:3px solid var(--blue-600);outline-offset:1px}
+
+.checklist{display:grid;gap:12px;margin:16px 0;grid-template-columns:1fr}
+.checkitem{display:flex;align-items:center;gap:12px;background:#fafcfe;border:2px solid var(--line);
+ border-radius:16px;padding:14px 16px;min-height:var(--tap);transition:border-color .12s,background .12s}
+.checkitem:has(input:checked){background:var(--green-light);border-color:var(--green)}
+.checkitem input{width:26px;height:26px;flex-shrink:0;accent-color:var(--blue-600)}
+.checkitem span{font-size:15.5px;font-weight:700;line-height:1.5}
+
+.practice-complete{background:var(--green-light);border-radius:18px;padding:16px 18px;font-weight:900;color:var(--green-dark);font-size:16px}
+.nextbar{display:flex;justify-content:center;margin-top:20px}
+.finish{font-size:24px;color:var(--green-dark);font-weight:900}
+
+.success-screen{min-height:56vh;min-height:56dvh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.success-mark{font-size:76px;animation:pop .5s ease}
+.success-title{font-size:40px;color:var(--blue-900);font-weight:900;margin:10px 0;font-family:"Jua","Noto Sans KR",sans-serif}
+.success-move{font-size:26px;font-weight:900;line-height:1.5;margin:6px 0 18px;font-family:"Jua","Noto Sans KR",sans-serif}
+.success-sub{font-size:16px;color:var(--sub);line-height:1.7}
+@keyframes pop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.12)}100%{transform:scale(1);opacity:1}}
+
+.hidden{display:none!important}
+.mini{font-size:13.5px;color:var(--sub);line-height:1.6}
+
+.stepbar{display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap;margin:2px 0 16px;font-weight:900}
+.stepbar span{padding:8px 12px;min-height:36px;display:inline-flex;align-items:center;border-radius:999px;
+ background:#eaf1f8;color:var(--sub);font-size:13px;transition:.15s}
+.stepbar span.active{background:var(--blue-600);color:#fff;box-shadow:0 4px 10px rgba(21,113,214,.3)}
+
+.start-flow{margin-top:20px;padding:18px 20px;border-radius:20px;background:linear-gradient(135deg,#f8fbfe,#eef6fc);border:1px solid #dceaf7}
+.start-flow h3{margin:0 0 12px;color:var(--blue-700);font-size:19px}
+.flow-items{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
+.flow-items div{padding:10px 15px;min-height:40px;display:inline-flex;align-items:center;border-radius:999px;
+ background:#fff;border:2px solid var(--line);font-weight:800;font-size:14px;color:var(--ink)}
+
+/* 큰 화면(가로모드/태블릿) 최적화: 2열 그리드로 공간 활용 */
+@media(min-width:720px){
+ .options{grid-template-columns:1fr 1fr}
+ .checklist{grid-template-columns:1fr 1fr}
+}
+@media(min-width:900px) and (orientation:landscape){
+ main{padding:16px 26px 32px}
+ .card{padding:24px 28px}
+ .hero{padding:26px 26px}
+ .success-screen{min-height:46vh;min-height:46dvh}
+}
+
+/* 좁은 화면(세로모드 폰/작은 패드) */
+@media(max-width:650px){
+ main{padding:12px}
+ .card{padding:18px;border-radius:20px}
+ .hero h2{font-size:26px}
+ .hero .emoji{font-size:52px}
+ header h1{font-size:18px}
+ header .small{font-size:11.5px;padding:5px 10px}
+ .station-title h2{font-size:22px}
+ .station-icon{width:56px;height:56px;font-size:34px;border-radius:16px}
+ .trap-question{font-size:17px}
+ .success-title{font-size:32px}
+ .success-move{font-size:21px}
+}
+
+/* 접근성: 큰 폰트/모션 최소화 선호 시 */
+@media(prefers-reduced-motion:reduce){
+ *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <h1>🚨 응급구조대 119 미션</h1>
+  <div id="headerInfo" class="small">6학년 응급처치 실습</div>
+</header>
+<main id="app"></main>
+</div>
+
+<script>
+/*
+========================================================
+[선생님 영상 링크 넣는 곳]
+각 상황의 situationUrl에는 상황영상, trapVideoUrl에는 함정영상 링크를 넣어주세요.
+예) situationUrl: "https://...."
+유튜브 '일반 영상 링크'는 아래의 [영상 열기] 버튼으로 열 수 있습니다.
+브라우저에서 직접 재생 가능한 mp4 링크라면 화면 안에서 재생됩니다.
+========================================================
+*/
+
+const stations = {
+ "01":{
+  name:"찰과상", patientRequired:false, icon:"🩹",
+  story:"넘어져 피부가 까진 상황입니다. 실습자마다 다른 상처 상황을 랜덤으로 뽑아 알맞게 처치해 봅니다.",
+  situationUrl:"videos/01_situation.mp4", trapVideoUrl:"videos/01_trap.mp4",
+  trap:"영상 속에서 잘못된 행동은 무엇일까요?",
+  options:[
+   {t:"상처의 상태와 출혈 정도를 확인한다.",ok:false},
+   {t:"깨끗한 물로 상처를 씻는다.",ok:false},
+   {t:"상처를 씻지 않고 바로 덮는다.",ok:true},
+   {t:"상처를 깨끗한 거즈로 보호한다.",ok:false}
+  ],
+  explain:"찰과상은 상처의 상태와 출혈 정도를 확인한 뒤 깨끗한 물로 씻고, 적절한 방법으로 보호합니다.",
+  checklist:["상처의 상태와 출혈 정도를 확인한다.","깨끗한 물로 상처를 씻는다.","소독약과 연고를 바르고 깨끗한 거즈로 상처를 보호한다."]
+ },
+ "02":{
+  name:"화상", patientRequired:false, icon:"🔥",
+  story:"뜨거운 물이나 물건에 피부가 닿아 화상을 입은 상황입니다.",
+  situationUrl:"videos/02_situation.mp4", trapVideoUrl:"videos/02_trap.mp4",
+  trap:"영상 속에서 잘못된 행동은 무엇일까요?",
+  options:[
+   {t:"화상 부위의 상태를 확인한다.",ok:false},
+   {t:"흐르는 물로 화상 부위를 식힌다.",ok:false},
+   {t:"얼음을 직접 대거나 문지르지 않는다.",ok:false},
+   {t:"화상으로 생긴 물집을 터뜨린다.",ok:true}
+  ],
+  explain:"화상으로 생긴 물집은 터뜨리지 않습니다. 화상 부위를 적절하게 식히고, 상처를 보호하여 필요한 경우 병원으로 이송합니다.",
+  checklist:["화상 부위의 상태를 확인한다.","흐르는 물로 20분간 화상 부위를 식힌다.","얼음을 직접 대거나 문지르지 않는다.","젖은 거즈로 상처 부위를 덮고 병원으로 이송한다."]
+ },
+ "03":{
+  name:"코피", patientRequired:false, icon:"🩸",
+  story:"나에게 갑자기 코피가 나서 당황하고 있는 상황입니다.",
+  situationUrl:"videos/03_situation.mp4", trapVideoUrl:"videos/03_trap.mp4",
+  trap:"영상 속에서 코피가 난 사람이 한 행동 중 잘못된 행동은 무엇일까요?",
+  options:[
+   {t:"고개를 약간 앞으로 숙인다.",ok:false},
+   {t:"코의 부드러운 부분을 압박한다.",ok:false},
+   {t:"고개를 뒤로 젖혀 피가 목으로 넘어가게 한다.",ok:true},
+   {t:"필요한 경우 주변 어른에게 도움을 요청한다.",ok:false}
+  ],
+  explain:"코피가 날 때는 고개를 약간 앞으로 숙이고 코의 부드러운 부분을 압박합니다. 필요한 경우 주변 어른에게 도움을 요청합니다.",
+  checklist:["고개를 앞으로 숙이는 자세를 취한다.","코의 부드러운 부분을 압박한다.","실습박스에 제시된 재료 중 1번 재료(지혈용 솜)를 이용하여 코피를 막는다.","필요한 경우 도움을 요청한다."]
+ },
+ "04":{
+  name:"하임리히법", patientRequired:true, icon:"🚨",
+  story:"음식물을 먹다가 갑자기 숨쉬기 힘들어진 상황입니다. 실습조끼를 사용해 선생님에게 배운 방법을 연습합니다.",
+  situationUrl:"videos/04_situation.mp4", trapVideoUrl:"videos/04_trap.mp4",
+  trap:"영상 속에서 음식물이 기도를 막힌 상황에서 잘못된 행동은 무엇일까요?",
+  options:[
+   {t:"환자가 숨을 쉴 수 있는지 확인한다.",ok:false},
+   {t:"119에 신고한다.",ok:false},
+   {t:"기침할 수 있는 사람에게 기침을 하도록 유도한다.",ok:false},
+   {t:"환자가 기침할 수 있는데도 바로 강한 복부압박을 실시한다.",ok:true}
+  ],
+  explain:"먼저 환자의 상태를 확인하고, 숨을 쉴 수 있는지와 기침할 수 있는지를 살핍니다. 필요한 도움을 요청하고 선생님에게 배운 방법에 따라 안전하게 실습합니다. 실제 친구에게 강한 힘을 가하지 말고 반드시 실습조끼를 사용합니다.",
+  checklist:["환자 상태를 (숨 쉴 수 있는지) 확인한다.","119에 신고한다.","기침을 하도록 유도한다.","환자의 뒤에서 다리를 받치고 선 채 복부압박을 실시한다."]
+ },
+ "05":{
+  name:"벌에 쏘였어요", patientRequired:false, icon:"🐝",
+  story:"친구가 벌에 쏘여 아파하고 있는 상황입니다.",
+  situationUrl:"videos/05_situation.mp4", trapVideoUrl:"videos/05_trap.mp4",
+  trap:"영상 속에서 잘못된 행동은 무엇일까요?",
+  options:[
+   {t:"안전한 장소로 이동한다.",ok:false},
+   {t:"쏘인 부위의 상태를 확인한다.",ok:false},
+   {t:"쏘인 부위를 계속 긁고 만진다.",ok:true},
+   {t:"상태가 심하면 주변 어른에게 도움을 요청한다.",ok:false}
+  ],
+  explain:"쏘인 부위를 계속 긁거나 만지지 말고 상태를 살펴 적절히 처치합니다.",
+  checklist:["안전한 장소로 이동한다.","쏘인 부위의 상태를 확인한다.","벌침이 남아 있다면 배운 방법으로 제거하는 연습을 한다.","쏘인 부위를 씻고 냉찜질하는 방법을 연습한다."]
+ }
+};
+
+const routeMap={
+ 1:["01","02","03","04","05"],
+ 2:["02","03","04","05","01"],
+ 3:["03","04","05","01","02"],
+ 4:["04","05","01","02","03"],
+ 5:["05","01","02","03","04"]
+};
+
+// 모둠원 수에 따라 섹션별 첫 실습자를 다르게 배치합니다.
+// 같은 학생이 모든 섹션에서 첫 실습자가 되지 않도록 합니다.
+const firstPractitionerBySize={
+  3:{"01":0,"02":1,"03":2,"04":0,"05":1},
+  4:{"01":0,"02":1,"03":2,"04":3,"05":0},
+  5:{"01":0,"02":1,"03":2,"04":3,"05":4}
+};
+
+const nums=["①","②","③","④","⑤","⑥"];
+
+let state={
+ group:1,
+ size:3,
+ route:[],
+ currentStationId:null,
+ phase:"start",
+ currentStudent:0,
+ checks:[],
+ completed:{},
+ nextStationId:null,
+ abrasionScenariosByStudent:Array(3).fill(null)
+};
+const appEl=document.getElementById("app");
+const headerInfo=document.getElementById("headerInfo");
+
+function renderStart(){
+ headerInfo.textContent="6학년 응급처치 실습";
+ appEl.innerHTML=`
+ <section class="card hero center">
+  <div class="emoji">🚑</div>
+  <h2>응급구조대 119 미션</h2>
+  <p>상황영상을 보고 바로 실습한 뒤, 함정영상을 보고 잘못된 행동을 찾아보세요!</p>
+  <div class="fieldrow">
+   <div class="field"><label>우리 모둠</label>
+    <select id="groupSel">${[1,2,3,4,5].map(n=>`<option value="${n}">${n}모둠</option>`).join("")}</select>
+   </div>
+   <div class="field"><label>모둠 인원 (3~5명)</label>
+    <select id="sizeSel">${[3,4,5].map(n=>`<option value="${n}">${n}명</option>`).join("")}</select>
+   </div>
+  </div>
+  <button class="primary" style="margin-top:20px" onclick="startGame()">🚨 응급구조대 출동!</button>
+  <div class="guide">
+   <b>🧑‍🚑 실습 방법</b><br><br>
+   ① 🎬 <b>상황영상을 보고</b> 어떤 응급상황인지 확인해요.<br>
+   ② 🧑‍🚑 <b>바로 실제 실습</b>을 시작해요.<br>
+   ③ 🔄 실습자를 한 명씩 바꾸어 <b>모든 모둠원이 실습</b>해요.<br>
+   ④ 🔍 실습이 끝나면 <b>함정영상</b>을 보고 잘못된 행동을 찾아요.<br>
+   ⑤ 🚶 기본 순서를 따르되, <b>다음 미션이 사용 중이면 다른 미션을 먼저 할 수 있어요.</b>
+  </div>
+  <div class="start-flow">
+   <h3>🚑 미션 진행 순서</h3>
+   <div class="flow-items">
+    <div>① 🎬 상황영상</div><div>② 🧑‍🚑 바로 실습</div><div>③ 🔍 함정영상</div><div>④ ❓ 함정문제</div><div>⑤ 🚶 빈 미션으로 우회 가능</div>
+   </div>
+  </div>
+ </section>`;
+}
+
+function startGame(){
+ const g=document.getElementById("groupSel");
+ const z=document.getElementById("sizeSel");
+ if(!g||!z){ alert("모둠 선택 화면을 다시 열어 주세요."); return; }
+ state.group=Number(g.value);
+ state.size=Number(z.value);
+ state.route=routeMap[state.group].slice();
+ state.currentStationId=state.route[0];
+ state.currentStudent=0;
+ state.checks=Array(state.size).fill(null).map(()=>[]);
+ state.abrasionScenariosByStudent=Array(state.size).fill(null);
+ state.completed={};
+ state.phase="moving";
+ state.nextStationId=null;
+ renderStation();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function routePosition(id){ return state.route.indexOf(id); }
+function completedCount(){ return Object.keys(state.completed).filter(id=>state.completed[id]).length; }
+function firstIncomplete(){ return state.route.find(id=>!state.completed[id]) || null; }
+
+// ── 효과음 (외부 파일 없이 코드로 직접 합성) ──────────────────────
+let audioCtx=null;
+function getAudioCtx(){
+ try{
+  if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+  if(audioCtx.state==="suspended") audioCtx.resume();
+  return audioCtx;
+ }catch(e){ return null; }
+}
+function tone(freq,start,dur,type,peak){
+ const ctx=getAudioCtx();
+ if(!ctx) return;
+ const osc=ctx.createOscillator();
+ const gain=ctx.createGain();
+ osc.type=type||"sine";
+ osc.frequency.setValueAtTime(freq, ctx.currentTime+start);
+ gain.gain.setValueAtTime(0, ctx.currentTime+start);
+ gain.gain.linearRampToValueAtTime(peak||0.22, ctx.currentTime+start+0.02);
+ gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime+start+dur);
+ osc.connect(gain); gain.connect(ctx.destination);
+ osc.start(ctx.currentTime+start);
+ osc.stop(ctx.currentTime+start+dur+0.05);
+}
+function playSelectSound(){ tone(660,0,0.12,"triangle",0.2); tone(880,0.09,0.14,"triangle",0.2); }
+function playCorrectSound(){ tone(523.25,0,0.13,"sine",0.22); tone(659.25,0.11,0.13,"sine",0.22); tone(783.99,0.22,0.2,"sine",0.24); }
+function playWrongSound(){ tone(220,0,0.18,"sawtooth",0.18); tone(174.6,0.15,0.24,"sawtooth",0.18); }
+function playSuccessSound(){ tone(523.25,0,0.13,"sine",0.22); tone(659.25,0.12,0.13,"sine",0.22); tone(783.99,0.24,0.13,"sine",0.22); tone(1046.5,0.36,0.32,"sine",0.26); }
+function stationStatus(id){ return state.completed[id] ? "done" : (id===state.currentStationId ? "current" : "todo"); }
+
+function routeHtml(){
+ return `<div class="route">${state.route.map((id,i)=>{
+   const s=stations[id];
+   const cls=state.completed[id]?'done':(id===state.currentStationId?'current':'');
+   const mark=state.completed[id]?'✅ ':'';
+   return `<span class="${cls}">${mark}${s.icon} ${s.name}</span>`;
+ }).join("")}</div>`;
+}
+
+function progressHtml(){
+ return `<div class="mini" style="margin-bottom:8px">${state.group}모둠 · 완료 ${completedCount()}/5</div>`;
+}
+
+function videoHtml(s,type){
+ const url=type==="situation" ? (s.situationUrl||"") : (s.trapVideoUrl||"");
+ const label=type==="situation" ? "🎬 상황제시 영상" : "🔍 함정 영상";
+ if(!url){
+  return `<div class="video-wrap"><div class="video-placeholder"><div class="big">🎬</div><b>${label}</b><br><span class="mini">선생님이 만든 영상을 연결하면 이곳에서 재생됩니다.</span></div></div>`;
+ }
+ const direct=/\.(mp4|webm|ogg)(\?.*)?$/i.test(url);
+ if(direct){
+  return `<div class="video-wrap"><video id="${type}Video" playsinline webkit-playsinline disablepictureinpicture><source src="${url}"></video><div class="video-actions"><button onclick="openVideo('${type}')">↗ 새 창에서 영상 보기</button></div></div>`;
+ }
+ return `<div class="video-wrap"><div class="video-placeholder"><div class="big">▶️</div><b>${label}</b><br><span class="mini">외부 영상은 아래 버튼으로 열어주세요.</span></div><div class="video-actions"><button onclick="openVideo('${type}')">▶ 영상 보기</button></div></div>`;
+}
+
+function movingHtml(s){
+ return `<section class="card center hero">
+  <div class="emoji">🚶‍♂️🚶‍♀️</div>
+  <h2>${s.icon} ${state.currentStationId}. ${s.name} 구역으로 이동!</h2>
+  <p>교실에서 <b>${s.icon} ${state.currentStationId}. ${s.name}</b> 미션 자리를 찾아 모둠원과 함께 이동해 주세요.</p>
+  <div class="guide"><b>⚠️ 도착 전에는 아래 버튼을 누르지 마세요!</b><br>모둠 전체가 자리에 도착하면 버튼을 눌러 영상을 시작합니다.</div>
+  <div class="nextbar"><button class="primary" onclick="arriveAtStation()">✅ 도착했어요! 영상 시작하기</button></div>
+ </section>`;
+}
+
+function openVideo(type){
+ const s=stations[state.currentStationId];
+ const url=type==="situation"?s.situationUrl:s.trapVideoUrl;
+ if(url) window.open(url,"_blank","noopener");
+}
+
+function renderStation(){
+ const id=state.currentStationId;
+ const s=stations[id];
+ if(!s){ renderFinish(); return; }
+ const pos=routePosition(id);
+ headerInfo.textContent=`${state.group}모둠 · ${completedCount()}/5 완료`;
+ let content="";
+ if(state.phase==="moving"){
+  content=movingHtml(s);
+ }else if(state.phase==="video"){
+  content=`
+   <div class="stepbar"><span class="active">① 상황영상</span><span>→</span><span>② 바로 실습</span><span>→</span><span>③ 함정영상</span><span>→</span><span>④ 함정문제</span></div>
+   <section class="card">
+    <div class="station-title"><div class="station-icon">${s.icon}</div><div><span class="badge">${pos+1}번째 기본 미션</span><h2>${s.name}</h2></div></div>
+    <p>${s.story}</p>
+    ${videoHtml(s,"situation")}
+    <div class="nextbar"><button class="primary" onclick="beginPractice()">🧑‍🚑 상황영상 확인! 바로 실습하기</button></div>
+   </section>`;
+ }else if(state.phase==="practice"){
+  content=practiceHtml(s);
+ }else if(state.phase==="trapVideo"){
+  content=`
+   <div class="stepbar"><span>① 상황영상</span><span>→</span><span>② 실습</span><span class="active">→ ③ 함정영상</span><span>→</span><span>④ 함정문제</span></div>
+   <section class="card">
+    <div class="station-title"><div class="station-icon">🔍</div><div><span class="badge">실습 완료</span><h2>함정 행동을 찾아라!</h2></div></div>
+    <p>실습이 끝났습니다. 함정영상을 보고 잘못된 행동을 찾아보세요.</p>
+    ${videoHtml(s,"trap")}
+    <div class="nextbar"><button class="primary" onclick="renderTrap()">🔍 함정문제 풀기</button></div>
+   </section>`;
+ }else if(state.phase==="trap"){
+  content=`<div class="stepbar"><span>① 상황영상</span><span>→</span><span>② 실습</span><span>→</span><span>③ 함정영상</span><span class="active">→ ④ 함정문제</span></div><section class="card">${trapHtml(s)}</section>`;
+ }else if(state.phase==="transition"){
+  renderMissionSuccess(state.nextStationId); return;
+ }else if(state.phase==="choice"){
+  renderMissionChoice(); return;
+ }
+ appEl.innerHTML=`${routeHtml()}${progressHtml()}${content}`;
+ if(state.phase==="video"){
+  playWithSound("situationVideo");
+ }
+ if(state.phase==="trapVideo"){
+  playWithSound("trapVideo");
+ }
+}
+
+function playWithSound(elId){
+ const v=document.getElementById(elId);
+ if(!v) return;
+ v.muted=false;
+ v.play().catch(()=>{
+  // 소리 포함 자동재생이 막힌 경우, 최소한 영상은 재생되도록 음소거로 재시도
+  v.muted=true;
+  v.play().catch(()=>{});
+ });
+}
+
+function trapHtml(s){
+ return `<div id="trapContent"><div class="nextbar" style="margin-top:0;margin-bottom:14px"><button class="secondary" onclick="rewatchTrapVideo()">🔁 함정영상 다시보기</button></div><div class="trap-question">🔍 ${s.trap}</div><div class="options">${s.options.map((o,i)=>`<button class="option" onclick="answerTrap(${i})">${o.t}</button>`).join("")}</div><div id="trapFeedback"></div></div>`;
+}
+function renderTrap(){ state.phase="trap"; renderStation(); }
+function rewatchTrapVideo(){ state.phase="trapVideo"; renderStation(); window.scrollTo({top:0,behavior:"smooth"}); }
+
+function answerTrap(i){
+ const s=stations[state.currentStationId];
+ const buttons=[...document.querySelectorAll(".option")];
+ buttons.forEach(b=>b.disabled=true);
+ if(s.options[i].ok){
+  buttons[i].classList.add("correct");
+  playCorrectSound();
+  document.getElementById("trapFeedback").innerHTML=`<div class="feedback good">🎉 정답! 함정 행동을 찾아냈어요!<br><span class="mini">${s.explain}</span></div><div class="nextbar"><button class="primary" onclick="completeStation()">🎉 미션 성공!</button></div>`;
+ }else{
+  buttons[i].classList.add("wrong");
+  playWrongSound();
+  document.getElementById("trapFeedback").innerHTML=`<div class="feedback bad">🤔 다시 생각해 보세요. 함정영상에서 잘못된 행동을 찾아보세요.</div><div class="nextbar"><button class="secondary" onclick="renderTrap()">다시 선택하기</button></div>`;
+ }
+}
+
+function beginPractice(){
+ state.phase="practice";
+ state.currentStudent=firstPractitionerBySize[state.size]?.[state.currentStationId] ?? 0;
+ state.checks=Array(state.size).fill(null).map(()=>[]);
+ if(state.currentStationId==="01") state.abrasionScenariosByStudent=Array(state.size).fill(null);
+ renderStation();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function roleFor(s,cur){
+  const n=state.size;
+  const practitioner=cur;
+  const patient=s.patientRequired ? (cur+1)%n : null;
+  const checker=s.patientRequired ? (cur+2)%n : (cur+1)%n;
+  return {practitioner,checker,patient,role:"실습자"};
+}
+
+function practiceGuidance(s){
+  const id=state.currentStationId;
+  if(id==="02") return "화상을 입은 손그림에 실습박스에 있는 도구를 이용하여 처치하세요.";
+  if(id==="03") return "본인에게 코피가 나는 상황입니다. 실습박스에 있는 재료를 이용하여 본인에게 실습을 하세요.";
+  if(id==="05") return "벌에 쏘인 팔 그림에 실습박스 안 도구를 이용하여 실습을 하세요.";
+  return "";
+}
+
+const abrasionScenarios={
+  light:{title:"1번 상황: 가벼운 찰과상",desc:"작은 범위의 피부가 살짝 까지고 출혈이 많지 않은 상황",
+   checklist:["상처의 상태와 출혈 정도를 확인한다.","깨끗한 물 등으로 상처를 깨끗하게 하는 방법을 연습한다.","깨끗한 거즈나 적절한 재료로 상처를 보호한다."]},
+  wide:{title:"2번 상황: 넓은 찰과상",desc:"무릎이나 팔 등 비교적 넓은 범위의 피부가 까진 상황",
+   checklist:["상처의 넓이와 출혈 정도를 확인한다.","깨끗하게 씻는 방법을 연습한다.","넓은 상처를 깨끗한 거즈 등으로 넓게 보호한다.","상처가 넓으면 주변 어른에게 도움을 요청한다."]},
+  heavy:{title:"3번 상황: 출혈이 심한 상처",desc:"상처에서 피가 많이 나서 출혈을 우선적으로 살펴야 하는 상황",
+   checklist:["출혈이 많은지 먼저 확인한다.","깨끗한 거즈 등을 이용해 상처를 직접 압박하는 방법을 연습한다.","출혈이 계속되면 주변 어른에게 즉시 도움을 요청한다.","필요하면 119에 도움을 요청하는 상황을 역할극으로 연습한다."]}
+};
+
+function drawAbrasionScenario(){
+ playSelectSound();
+ const keys=Object.keys(abrasionScenarios);
+ const cur=state.currentStudent;
+ state.abrasionScenariosByStudent[cur]=keys[Math.floor(Math.random()*keys.length)];
+ state.checks[cur]=[];
+ renderPractice();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function currentChecklist(s){
+ if(state.currentStationId==="01"){
+   const scenarioKey=state.abrasionScenariosByStudent[state.currentStudent];
+   return scenarioKey ? abrasionScenarios[scenarioKey].checklist : [];
+ }
+ return s.checklist;
+}
+
+function practiceHtml(s){
+  const cur=state.currentStudent;
+  const r=roleFor(s,cur);
+  const checks=state.checks[cur]||[];
+  const checklist=currentChecklist(s);
+  const scenarioRequired=(state.currentStationId==="01");
+  const scenarioKey=scenarioRequired ? state.abrasionScenariosByStudent[cur] : null;
+  const hasScenario=!scenarioRequired || !!scenarioKey;
+  const all=hasScenario && checklist.length>0 && checklist.every((_,i)=>checks.includes(i));
+
+  let roleLine="";
+  if(s.patientRequired){
+   roleLine=`<div class="roleline"><div class="role current">🧑‍🚑 실습자: ${nums[r.practitioner]}번 학생</div><div class="role patient">🧑 환자: ${nums[r.patient]}번 학생</div><div class="role checker">☑️ 체크 담당: ${nums[r.checker]}번 학생</div></div><p><b>💡 ${nums[r.practitioner]}번 학생이 실습하고, ${nums[r.patient]}번 학생은 실습조끼 환자 역할, ${nums[r.checker]}번 학생은 체크해주세요.</b></p>`;
+  }else{
+   roleLine=`<div class="roleline"><div class="role current">🧑‍🚑 실습자: ${nums[r.practitioner]}번 학생</div><div class="role checker">☑️ 체크 담당: ${nums[r.checker]}번 학생</div></div><p><b>💡 ${nums[r.practitioner]}번 학생이 실습하고, ${nums[r.checker]}번 학생은 체크해주세요.</b></p>`;
+  }
+
+  const guidance=practiceGuidance(s);
+  const guidanceBox=guidance ? `<div class="notice" style="font-size:19px;font-weight:900;background:#eef8ff;color:#15558a">📌 ${guidance}</div>` : "";
+  const heimlichSafetyBox=state.currentStationId==="04" ? `<div class="notice" style="font-size:17px;font-weight:900;background:#fff7df;color:#875400">⚠️ 하임리히 실습은 안전을 위해 <b>실습자와 환자 역할을 같은 성별끼리</b> 짝을 지어 진행하세요. 서로 불편하거나 어려운 경우에는 실습조끼를 사용하고 선생님의 안내에 따라 실습합니다.</div>` : "";
+
+  let scenarioBox="";
+  if(scenarioRequired){
+    if(!scenarioKey){
+      scenarioBox=`<div class="notice"><b>🎲 ${nums[cur]}번 실습자 전용 상황 뽑기</b><br>${nums[cur]}번 학생이 이번에 실습할 상처 상황을 랜덤으로 뽑아 주세요.<div class="nextbar"><button class="primary" onclick="drawAbrasionScenario()">🎲 내 실습 상황 뽑기</button></div></div>`;
+    }else{
+      const sc=abrasionScenarios[scenarioKey];
+      scenarioBox=`<div class="notice"><b>🎯 ${nums[cur]}번 실습자의 실습 상황</b><br><span style="font-size:24px;font-weight:1000">${sc.title}</span><br><span style="font-size:20px;font-weight:900;color:#1565c0">${sc.title} 사진에 실습도구를 이용하여 처치하세요!</span><br><span class="mini">${sc.desc}</span></div>`;
+    }
+  }
+
+  const checklistHtml=hasScenario ? `<div class="checklist">${checklist.map((x,i)=>`<label class="checkitem"><input type="checkbox" ${checks.includes(i)?'checked':''} onchange="toggleCheck(${i},this.checked)"> <span>${x}</span></label>`).join("")}</div>` : "";
+  const actionHtml=all
+    ? `<div class="practice-complete">🎉 ${nums[cur]}번 학생의 실습 완료!</div><div class="nextbar"><button class="primary" onclick="nextStudent()">${cur===state.size-1?'🏆 전원 실습 완료':'🔄 다음 실습자'}</button></div>`
+    : `<div class="mini">${!hasScenario?'먼저 내 실습 상황을 뽑아 주세요.':'체크 담당 친구가 실습을 확인한 뒤 모든 항목을 체크해 주세요.'}</div>`;
+
+  const order=practiceOrder();
+  const orderPos=order.indexOf(cur);
+  const finishedSet=new Set(order.slice(0,orderPos));
+  return `<section id="practice" class="card"><div class="stepbar"><span>① 상황영상</span><span>→</span><span class="active">② 바로 실습</span><span>→</span><span>③ 함정영상</span><span>→</span><span>④ 함정문제</span></div><h3>🧑‍🚑 직접 실습하기</h3>${guidanceBox}${heimlichSafetyBox}<div class="practice-head"><b>현재 ${nums[cur]}번 학생 차례 · ${orderPos+1}/${state.size}</b>${roleLine}<div class="mini">※ 이 섹션의 첫 실습자부터 순서대로 돌아가며 실습합니다.</div></div><div class="student-progress">${Array.from({length:state.size},(_,i)=>`<span class="student ${finishedSet.has(i)?'done':''} ${i===cur?'now':''}">${nums[i]} ${finishedSet.has(i)?'✅':'⬜'}</span>`).join("")}</div>${scenarioBox}${checklistHtml}${actionHtml}</section>`;
+}
+
+function renderPractice(){renderStation();}
+function toggleCheck(i,on){
+ const arr=state.checks[state.currentStudent]||[];
+ if(on && !arr.includes(i)) arr.push(i);
+ if(!on) state.checks[state.currentStudent]=arr.filter(x=>x!==i);
+ renderPractice();
+}
+function practiceOrder(){
+ const start=firstPractitionerBySize[state.size]?.[state.currentStationId] ?? 0;
+ return Array.from({length:state.size},(_,k)=>(start+k)%state.size);
+}
+
+function nextStudent(){
+ const s=stations[state.currentStationId];
+ const checklist=currentChecklist(s);
+ const cur=state.currentStudent;
+ if(state.currentStationId==="01" && !state.abrasionScenariosByStudent[cur]) return;
+ if(!checklist.length || !checklist.every((_,i)=>(state.checks[cur]||[]).includes(i))) return;
+ const order=practiceOrder();
+ const idx=order.indexOf(cur);
+ if(idx<order.length-1){
+  const next=order[idx+1];
+  state.currentStudent=next;
+  state.checks[next]=[];
+  // 다음 실습자는 찰과상일 경우 반드시 새 랜덤 상황부터 시작
+  if(state.currentStationId==="01") state.abrasionScenariosByStudent[next]=null;
+  renderPractice();
+  window.scrollTo({top:0,behavior:"smooth"});
+ }else{
+  state.phase="trapVideo";
+  renderStation();
+  window.scrollTo({top:0,behavior:"smooth"});
+ }
+}
+
+function completeStation(){
+ playSuccessSound();
+ state.completed[state.currentStationId]=true;
+ if(completedCount()===5){ renderFinish(); return; }
+ state.nextStationId=firstIncomplete();
+ state.phase="transition";
+ renderStation();
+}
+
+function renderMissionSuccess(nextId){
+ const s=stations[nextId];
+ headerInfo.textContent=`${state.group}모둠 · ${completedCount()}/5 완료`;
+ appEl.innerHTML=`<section class="card success-screen"><div class="success-mark">🎉</div><div class="success-title">미션 성공!!</div><div class="success-move"><span style="font-size:48px;color:#1565c0">다음 추천 미션</span><br>${s.icon} ${nextId}. ${s.name}</div><div class="success-sub">교실에서 <b>${nextId}. ${s.name}</b> 미션 위치를 찾아보세요.<br>다른 모둠이 실습 중이라면 기다리지 말고 다른 미션을 먼저 할 수 있습니다.</div><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:20px"><button class="primary" onclick="selectStation('${nextId}')">▶ ${nextId} 미션으로 이동</button><button class="secondary" onclick="renderMissionChoice()">🔄 다른 미션 선택</button></div></section>`;
+}
+
+function renderMissionChoice(){
+ headerInfo.textContent=`${state.group}모둠 · 미션 선택`;
+ const rec=firstIncomplete();
+ const cards=state.route.map((id)=>{
+  const s=stations[id];
+  const done=!!state.completed[id];
+  const isRec=id===rec;
+  const multiNote=id==="04" && !done ? '<br><span style="color:#1565c0;font-weight:900">👥 두 모둠이 실습할 수 있어요!</span>' : '';
+  return `<button class="option" ${done?'disabled':''} onclick="selectStation('${id}')" style="display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left"><span><b>${s.icon} ${id} ${s.name}</b><br><span class="mini">${done?'이미 완료했어요':(isRec?'⭐ 기본 순서상 다음 추천':'⬜ 아직 하지 않은 미션')}</span>${multiNote}</span><span style="font-size:24px">${done?'🔒':'➡️'}</span></button>`;
+ }).join("");
+ appEl.innerHTML=`<div class="route">${state.route.map(id=>`<span class="${state.completed[id]?'done':''}">${state.completed[id]?'✅ ':''}${stations[id].icon} ${stations[id].name}</span>`).join("")}</div><section class="card"><h2>🧭 다른 미션 선택</h2><p><b>교실을 보고 비어 있는 미션을 선택하세요.</b></p><div class="notice">⭐ <b>${rec?`${stations[rec].icon} ${rec} ${stations[rec].name}`:'남은 미션'}</b>이 기본 순서상 가장 먼저 할 미션입니다.<br>하지만 그곳에서 다른 모둠이 실습 중이면 아래의 다른 미션을 먼저 선택할 수 있어요.</div><div class="options" style="margin-top:16px">${cards}</div></section>`;
+}
+
+function selectStation(id){
+ if(state.completed[id]) return;
+ state.currentStationId=id;
+ state.currentStudent=0;
+ state.checks=Array(state.size).fill(null).map(()=>[]);
+ state.abrasionScenariosByStudent=Array(state.size).fill(null);
+ state.nextStationId=null;
+ state.phase="moving";
+ renderStation();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function arriveAtStation(){
+ state.phase="video";
+ renderStation();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function renderFinish(){
+ headerInfo.textContent="미션 완료";
+ appEl.innerHTML=`<section class="card hero center"><div class="emoji">🏆</div><h2>응급구조대 미션 완료!</h2><p class="finish">${state.group}모둠, 모든 응급상황 실습을 완료했습니다!</p><p>순서가 바뀌어도 5개 미션을 모두 해결했어요!</p><button class="primary" onclick="renderStart()">처음으로</button></section>`;
+}
+
+renderStart();
+</script>
+</body>
+</html>

@@ -1,1 +1,955 @@
-임시파일
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>올바른 이성교제 생각모으기 💖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<style>
+  :root {
+    --bg: #fff0f5;
+    --card: #ffffff;
+    --text: #4a2b33;
+    --text-soft: #8c6b74;
+    --border: #ffcad4;
+    --accent: #ff6b8b;
+    --accent-hover: #ff477e;
+    --accent-soft: #ffe5ec;
+    --accent2: #4ecdc4;
+    --accent2-soft: #e6f9f7;
+    --warn: #ff9f1c;
+    --warn-soft: #fff3e0;
+    --shadow: 0 10px 30px rgba(255, 107, 139, 0.15);
+    --radius: 20px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #2a1b24; --card: #382430; --text: #ffeef2; --text-soft: #d4b2bc;
+      --border: #5e3445; --accent: #ff6b8b; --accent-soft: #522030;
+      --accent2: #4ecdc4; --accent2-soft: #1e3d3a; --warn: #ff9f1c; --warn-soft: #422d17;
+      --shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #2a1b24; --card: #382430; --text: #ffeef2; --text-soft: #d4b2bc;
+    --border: #5e3445; --accent: #ff6b8b; --accent-soft: #522030;
+    --accent2: #4ecdc4; --accent2-soft: #1e3d3a; --warn: #ff9f1c; --warn-soft: #422d17;
+    --shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    min-height: 100vh; padding-bottom: 40px;
+    background-image: radial-gradient(#ffb3c1 0.8px, transparent 0.8px), radial-gradient(#ffb3c1 0.8px, var(--bg) 0.8px);
+    background-size: 32px 32px;
+    background-position: 0 0, 16px 16px;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Decorative Heart SVGs in background */
+  body::before, body::after {
+    content: "";
+    position: fixed;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.25;
+  }
+  body::before {
+    top: -40px; left: -40px; width: 200px; height: 200px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff6b8b'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+    background-size: contain; background-repeat: no-repeat;
+    transform: rotate(-15deg);
+  }
+  body::after {
+    bottom: -30px; right: -30px; width: 220px; height: 220px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff8fa3'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+    background-size: contain; background-repeat: no-repeat;
+    transform: rotate(20deg);
+  }
+
+  .screen { display: none; position: relative; z-index: 1; }
+  .screen.active { display: block; animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+  @keyframes popIn { from { opacity: 0; transform: scale(0.96) translateY(10px);} to { opacity:1; transform:none;} }
+
+  header { padding: 30px 20px 16px; text-align: center; position: relative; }
+  header h1 { margin: 0 0 6px; font-size: 1.55rem; font-weight: 800; color: var(--text); }
+  header p { margin: 0; color: var(--text-soft); font-size: 0.92rem; font-weight: 500; }
+  .home-btn {
+    position: absolute; left: 16px; top: 24px;
+    background: var(--card); border: 2px solid var(--border); border-radius: 12px;
+    padding: 8px 14px; font-size: 0.85rem; color: var(--text); font-weight: 700; cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: all 0.2s ease;
+  }
+  .home-btn:hover { transform: translateY(-2px); border-color: var(--accent); }
+
+  main { max-width: 680px; margin: 0 auto; padding: 0 16px; }
+  .center-wrap { max-width: 480px; margin: 24px auto; padding: 0 16px; text-align: center; }
+
+  .card { background: var(--card); border: 2px solid var(--border); border-radius: var(--radius);
+    padding: 22px; box-shadow: var(--shadow); margin-bottom: 20px; position: relative; }
+
+  .big-btn { display: flex; flex-direction: column; align-items: center; justify-content: center;
+    width: 100%; padding: 24px 20px; margin-bottom: 16px;
+    border-radius: var(--radius); border: 2.5px solid var(--border); background: var(--card);
+    font-size: 1.25rem; font-weight: 800; cursor: pointer; color: var(--text);
+    box-shadow: var(--shadow); transition: all 0.2s ease; }
+  .big-btn:hover { transform: translateY(-3px); }
+  .big-btn:active { transform: scale(0.98); }
+  .big-btn.student { border-color: var(--accent); background: linear-gradient(135deg, #ffffff 0%, #fff5f7 100%); }
+  .big-btn.teacher { border-color: var(--accent2); background: linear-gradient(135deg, #ffffff 0%, #f0faf9 100%); }
+  .big-btn .sub { display:block; font-size: 0.88rem; font-weight: 500; color: var(--text-soft); margin-top: 6px; }
+
+  .class-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+  .class-btn { padding: 28px 10px; border-radius: 18px; border: 2.5px solid var(--border);
+    background: var(--card); font-size: 1.25rem; font-weight: 800; cursor: pointer; color: var(--text);
+    box-shadow: 0 6px 15px rgba(255,107,139,0.08); transition: all 0.2s ease; }
+  .class-btn:hover { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-hover); transform: translateY(-2px); }
+
+  .nickname-bar { display: flex; gap: 8px; align-items: center; justify-content: center; flex-wrap: wrap; margin: 20px 0; }
+  .nickname-bar input { padding: 14px 18px; border-radius: 14px; border: 2px solid var(--border);
+    background: var(--card); color: var(--text); font-size: 1.05rem; width: 220px; text-align:center; font-weight: 700; }
+  .enter-btn { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%); color:#fff; border:none; padding: 14px 28px;
+    border-radius: 14px; font-weight:800; cursor:pointer; font-size: 1.05rem; width: 100%; max-width: 220px;
+    box-shadow: 0 6px 18px rgba(255, 107, 139, 0.35); transition: all 0.2s ease; }
+  .enter-btn:hover { transform: translateY(-2px); }
+
+  .stage-badge { display:inline-flex; align-items: center; gap: 6px; padding: 8px 18px; border-radius: 999px;
+    background: var(--accent-soft); color: var(--accent-hover); font-size: 0.95rem; font-weight:700; margin-bottom: 14px; border: 1.5px solid var(--border); }
+
+  /* Enlarged Student Question Typography */
+  .stage-question-box { background: linear-gradient(135deg, #fff0f5 0%, #ffe5ec 100%); padding: 22px; border-radius: 18px; border: 2px solid var(--border); margin-bottom: 20px; text-align: center; }
+  .stage-question-title { font-size: 1.45rem; font-weight: 800; line-height: 1.4; color: var(--text); margin-bottom: 8px; }
+  .stage-question-sub { font-size: 0.98rem; color: var(--text-soft); font-weight: 600; margin: 0; }
+
+  .pause-wrap { text-align:center; padding: 40px 20px; }
+  .pause-wrap .emoji { font-size: 3.5rem; display:block; margin-bottom: 16px; animation: heartBeat 1.5s infinite; }
+  @keyframes heartBeat { 0% { transform: scale(1); } 14% { transform: scale(1.15); } 28% { transform: scale(1); } 42% { transform: scale(1.15); } 70% { transform: scale(1); } }
+  .pause-wrap h2 { font-size: 1.35rem; margin: 0 0 10px; font-weight: 800; }
+  .pause-wrap p { color: var(--text-soft); font-size: 0.98rem; line-height: 1.6; font-weight: 500; }
+
+  .vote-row { display: flex; gap: 14px; margin-top: 14px; }
+  .vote-btn { flex: 1; padding: 24px 12px; border-radius: 18px; border: 2.5px solid var(--border);
+    background: var(--card); cursor: pointer; text-align: center; transition: all 0.2s ease; }
+  .vote-btn .emoji { font-size: 2.4rem; display: block; margin-bottom: 8px; }
+  .vote-btn .label { font-weight: 800; font-size: 1.2rem; }
+  .vote-btn.agree:hover { border-color: var(--accent2); background: var(--accent2-soft); transform: translateY(-3px); }
+  .vote-btn.disagree:hover { border-color: var(--accent); background: var(--accent-soft); transform: translateY(-3px); }
+
+  .bar-track { display: flex; height: 24px; border-radius: 12px; overflow: hidden; background: var(--border); box-shadow: inset 0 2px 4px rgba(0,0,0,0.08); }
+  .bar-agree { background: var(--accent2); transition: width 0.4s ease; } 
+  .bar-disagree { background: var(--accent); transition: width 0.4s ease; }
+  .bar-labels { display: flex; justify-content: space-between; font-size: 0.95rem; color: var(--text-soft); margin-top: 8px; font-weight: 700; }
+
+  textarea, select { width: 100%; border: 2px solid var(--border); border-radius: 14px;
+    background: var(--card); color: var(--text); padding: 14px 16px; font-size: 1rem;
+    font-family: inherit; resize: vertical; min-height: 90px; font-weight: 500; }
+  textarea:focus, input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255, 107, 139, 0.2); }
+
+  .crush-block { border-radius: 16px; padding: 16px; margin-bottom: 16px; border: 2px solid var(--border); }
+  .crush-block.like-block { background: var(--accent2-soft); border-color: var(--accent2); }
+  .crush-block.dislike-block { background: var(--accent-soft); border-color: var(--accent); }
+  .crush-block-label { font-weight: 800; font-size: 1.1rem; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .crush-block textarea { background: var(--card); min-height: 70px; }
+
+  .type-toggle { display: flex; gap: 10px; margin-bottom: 14px; }
+  .type-toggle button { flex: 1; padding: 14px; border-radius: 14px; border: 2px solid var(--border);
+    background: var(--card); color: var(--text-soft); cursor: pointer; font-size: 1rem; font-weight: 700; }
+  .type-toggle button.selected { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-hover); font-weight: 800; }
+
+  .submit-btn { margin-top: 14px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%); color: #fff; border: none;
+    padding: 16px 20px; border-radius: 14px; font-weight: 800; cursor: pointer; font-size: 1.05rem; width: 100%;
+    box-shadow: 0 6px 18px rgba(255, 107, 139, 0.3); transition: all 0.2s ease; }
+  .submit-btn:hover { transform: translateY(-2px); }
+  .submit-btn:disabled { opacity: 0.5; }
+
+  .post-list { margin-top: 16px; display: flex; flex-direction: column; gap: 12px; max-height: 520px; overflow-y:auto; }
+  .post { border: 2px solid var(--border); border-radius: 16px; padding: 14px 16px; background: var(--card); position: relative; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+  .post .meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .post .nick { font-weight: 800; font-size: 0.95rem; }
+  .post .tag { font-size: 0.78rem; padding: 4px 10px; border-radius: 999px; font-weight: 700; }
+  .tag.agree, .tag.like { background: var(--accent2-soft); color: var(--accent2); border: 1.5px solid var(--accent2); }
+  .tag.disagree, .tag.dislike { background: var(--accent-soft); color: var(--accent-hover); border: 1.5px solid var(--accent); }
+  .post .content { font-size: 1rem; line-height: 1.5; white-space: pre-wrap; color: var(--text); }
+  .post .del-btn { background: none; border: none; color: var(--text-soft); font-size: 0.8rem; cursor: pointer; padding: 3px 8px; border-radius: 6px; }
+  .post .del-btn:hover { color: #e03131; background: #ffe3e3; }
+  .empty { text-align: center; color: var(--text-soft); font-size: 0.95rem; padding: 28px 0; font-weight: 600; }
+
+  /* Teacher UI */
+  .teacher-toolbar { display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 16px; }
+  .teacher-toolbar button { flex: 1 1 40%; padding: 14px 10px; border-radius: 14px;
+    border: 2px solid var(--border); background: var(--card); font-size: 0.95rem; cursor:pointer; color: var(--text); font-weight: 700; }
+  .teacher-toolbar button.active-stage { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%); border-color: var(--accent); color:#fff; font-weight:800; box-shadow: 0 4px 14px rgba(255, 107, 139, 0.3); }
+  .teacher-secondary { display:flex; gap:10px; margin-bottom: 18px; }
+  .teacher-secondary button { flex:1; padding: 12px; border-radius: 12px; font-size: 0.92rem; cursor:pointer; font-weight: 700; }
+  .btn-overview { background: var(--accent2-soft); border: 2px solid var(--accent2); color: var(--accent2); }
+  .btn-reset { background: var(--warn-soft); border: 2px solid var(--warn); color: var(--warn); }
+  .crush-toggle-btn { flex:1; padding: 14px; border-radius: 12px; font-size: 0.95rem; font-weight:700; cursor:pointer; border: 2px solid var(--border); background: var(--card); color: var(--text-soft); }
+  .crush-toggle-btn.like.selected { background: var(--accent2-soft); border-color: var(--accent2); color: var(--accent2); font-weight: 800; }
+  .crush-toggle-btn.dislike.selected { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-hover); font-weight: 800; }
+  .board-title { font-size: 1.4rem; font-weight: 800; text-align:center; margin: 6px 0 20px; color: var(--text); }
+  .board-section { margin-bottom: 24px; }
+  .board-section h3 { font-size: 1.1rem; margin-bottom: 10px; font-weight: 800; }
+  .idle-note { text-align:center; color: var(--text-soft); padding: 50px 0; font-size: 1rem; line-height: 1.6; font-weight: 600; }
+
+  .conn-badge { display: inline-block; font-size: 0.8rem; padding: 4px 10px; border-radius: 8px; margin-bottom: 10px; font-weight: 700; }
+  .conn-badge.online { background: var(--accent2-soft); color: var(--accent2); border: 1.5px solid var(--accent2); }
+  .conn-badge.connecting { background: var(--warn-soft); color: var(--warn); border: 1.5px solid var(--warn); }
+
+  .toast-wrap { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%);
+    z-index: 9999; display: flex; flex-direction: column; gap: 8px; align-items: center; pointer-events: none; }
+  .toast { background: var(--text); color: var(--bg); padding: 12px 22px; border-radius: 999px;
+    font-size: 0.92rem; font-weight: 700; box-shadow: var(--shadow); opacity: 0; transform: translateY(8px);
+    transition: all 0.25 ease; max-width: 90vw; text-align: center; }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  .modal-overlay { position: fixed; inset: 0; background: rgba(50,20,30,0.45);
+    backdrop-filter: blur(3px); display: none; align-items: center; justify-content: center; z-index: 9998; padding: 20px; }
+  .modal-overlay.show { display: flex; }
+  .modal-box { background: var(--card); border-radius: 22px; padding: 26px; max-width: 360px;
+    width: 100%; box-shadow: var(--shadow); text-align: center; border: 2px solid var(--border); }
+  .modal-box p { font-size: 1.05rem; font-weight: 700; line-height: 1.5; margin: 0 0 20px; }
+  .modal-actions { display: flex; gap: 10px; }
+  .modal-actions button { flex: 1; padding: 12px; border-radius: 12px; font-size: 0.95rem; cursor: pointer; font-weight: 800; }
+  .modal-cancel { background: var(--bg); border: 2px solid var(--border); color: var(--text); }
+  .modal-confirm { background: var(--accent); border: none; color: #fff; }
+
+  .rule-field { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .rule-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--accent-soft);
+    color: var(--accent-hover); font-weight: 800; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--accent); }
+  .rule-field input { flex: 1; border: 2px solid var(--border); border-radius: 14px; background: var(--card);
+    color: var(--text); padding: 12px 14px; font-size: 0.98rem; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- ============ ROLE SELECT ============ -->
+<div class="screen active" id="screen-role">
+  <header>
+    <div id="connBadgeRole" class="conn-badge connecting">⏳ 서버 연결 준비 중...</div>
+    <h1>💕 올바른 이성교제, 우리 생각은? 💕</h1>
+    <p>초등 보건교육 · 우리 반 마음 모으기 🌸</p>
+  </header>
+  <div class="center-wrap">
+    <button class="big-btn student" id="goStudent">
+      🙋‍♀️ 학생용 화면
+      <span class="sub">내 솔직한 생각 참여하기 💌</span>
+    </button>
+    <button class="big-btn teacher" id="goTeacher">
+      🧑‍🏫 교사용 화면
+      <span class="sub">칠판에 실시간 결과 보기 / 진행 관리 📊</span>
+    </button>
+  </div>
+</div>
+
+<!-- ============ CLASS SELECT (student) ============ -->
+<div class="screen" id="screen-class-student">
+  <header>
+    <button class="home-btn" data-home>← 처음으로</button>
+    <h1>어느 반인가요? 🏫</h1>
+    <p>우리 반 버튼을 선택해주세요!</p>
+  </header>
+  <div class="center-wrap">
+    <div class="class-grid">
+      <button class="class-btn" data-class="1">1반 🌸</button>
+      <button class="class-btn" data-class="2">2반 🌼</button>
+      <button class="class-btn" data-class="3">3반 🌺</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NICKNAME (student) ============ -->
+<div class="screen" id="screen-nickname">
+  <header>
+    <button class="home-btn" data-home>← 처음으로</button>
+    <h1 id="nickHeader">이름(별명)을 적어줘! ✏️</h1>
+    <p>선생님과 친구들이 알아볼 수 있는 이름/별명</p>
+  </header>
+  <div class="center-wrap">
+    <div class="nickname-bar">
+      <input id="nicknameInput" type="text" placeholder="예: 미소천사" maxlength="12">
+    </div>
+    <button class="enter-btn" id="enterClass">입장하기 💖</button>
+  </div>
+</div>
+
+<!-- ============ STUDENT APP ============ -->
+<div class="screen" id="screen-student-app">
+  <header>
+    <button class="home-btn" data-home>← 처음으로</button>
+    <h1 id="studentClassLabel">1반</h1>
+    <p id="studentNickLabel"></p>
+  </header>
+  <main id="studentMain"></main>
+</div>
+
+<!-- ============ CLASS SELECT (teacher) ============ -->
+<div class="screen" id="screen-class-teacher">
+  <header>
+    <button class="home-btn" data-home>← 처음으로</button>
+    <h1>진행할 학급을 선택하세요 🧑‍🏫</h1>
+    <p>칠판에 띄울 반을 클릭해주세요</p>
+  </header>
+  <div class="center-wrap">
+    <div class="class-grid">
+      <button class="class-btn" data-tclass="1">1반 🌸</button>
+      <button class="class-btn" data-tclass="2">2반 🌼</button>
+      <button class="class-btn" data-tclass="3">3반 🌺</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TEACHER APP ============ -->
+<div class="screen" id="screen-teacher-app">
+  <header>
+    <button class="home-btn" data-home>← 처음으로</button>
+    <h1 id="teacherClassLabel">1반 진행 화면</h1>
+    <p>영역을 클릭해 오픈하면 학생들 화면이 전환됩니다</p>
+  </header>
+  <main>
+    <div class="card">
+      <div class="teacher-toolbar" id="teacherToolbar"></div>
+      <div class="teacher-secondary">
+        <button class="btn-overview" id="btnOverview">📊 전체 결과 한눈에 보기</button>
+        <button class="btn-reset" id="btnReset">🔄 우리 반 의견 초기화</button>
+      </div>
+      <div id="teacherBoard"></div>
+    </div>
+  </main>
+</div>
+
+<!-- Modals & Toasts -->
+<div class="toast-wrap" id="toastWrap"></div>
+<div class="modal-overlay" id="confirmOverlay">
+  <div class="modal-box">
+    <p id="confirmMessage"></p>
+    <div class="modal-actions">
+      <button class="modal-cancel" id="confirmCancelBtn">취소</button>
+      <button class="modal-confirm" id="confirmOkBtn">확인</button>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc, collection, onSnapshot, addDoc, deleteDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+// Global App Config
+const appId = typeof __app_id !== 'undefined' ? __app_id : 'dating-ed-board';
+
+const firebaseConfig = typeof __firebase_config !== 'undefined' 
+  ? JSON.parse(__firebase_config) 
+  : {
+      apiKey: "AIzaSyDemoKeyForPublicTestingOnly12345",
+      authDomain: "demo-project.firebaseapp.com",
+      projectId: "demo-project",
+      storageBucket: "demo-project.appspot.com",
+      messagingSenderId: "123456789",
+      appId: "1:123456789:web:abcdef123456"
+    };
+
+const appInstance = initializeApp(firebaseConfig);
+const auth = getAuth(appInstance);
+const db = getFirestore(appInstance);
+
+let userId = null;
+let dbReady = false;
+
+// Fixed room code simplified internally so room code input is no longer required
+const currentRoomCode = '기본수업';
+
+function getPublicCollection(collectionName) {
+  return collection(db, 'artifacts', appId, 'public', 'data', collectionName);
+}
+
+function getPublicDoc(collectionName, documentId) {
+  return doc(db, 'artifacts', appId, 'public', 'data', collectionName, documentId);
+}
+
+async function initAuth() {
+  try {
+    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+      await signInWithCustomToken(auth, __initial_auth_token);
+    } else {
+      await signInAnonymously(auth);
+    }
+  } catch (e) {
+    console.warn("Custom token failed, falling back to anonymous auth:", e);
+    try {
+      await signInAnonymously(auth);
+    } catch(err) {
+      console.error("Auth failed:", err);
+    }
+  }
+}
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    userId = user.uid;
+    dbReady = true;
+    const badge = document.getElementById('connBadgeRole');
+    if (badge) {
+      badge.textContent = '🟢 온라인 연결됨';
+      badge.className = 'conn-badge online';
+    }
+  }
+});
+
+initAuth();
+
+const $ = (sel, root) => (root || document).querySelector(sel);
+const $$ = (sel, root) => Array.from((root || document).querySelectorAll(sel));
+
+const STAGES = [
+  { key: 'vote', label: '① 찬반 투표 💖', short: '찬반투표' },
+  { key: 'opinion', label: '② 의견 게시판 💬', short: '의견게시판' },
+  { key: 'crush', label: '③ 호불호 행동 💗💔', short: '호불호행동' },
+  { key: 'rules', label: '④ 지킬 약속 🤙', short: '지킬약속' }
+];
+
+function esc(s) {
+  return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function showToast(msg) {
+  const wrap = $('#toastWrap');
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.textContent = msg;
+  wrap.appendChild(el);
+  requestAnimationFrame(() => el.classList.add('show'));
+  setTimeout(() => {
+    el.classList.remove('show');
+    setTimeout(() => el.remove(), 250);
+  }, 2600);
+}
+
+function showConfirm(message) {
+  return new Promise(resolve => {
+    const overlay = $('#confirmOverlay');
+    $('#confirmMessage').textContent = message;
+    overlay.classList.add('show');
+    function cleanup(result) {
+      overlay.classList.remove('show');
+      okBtn.removeEventListener('click', onOk);
+      cancelBtn.removeEventListener('click', onCancel);
+      resolve(result);
+    }
+    const okBtn = $('#confirmOkBtn'), cancelBtn = $('#confirmCancelBtn');
+    function onOk() { cleanup(true); }
+    function onCancel() { cleanup(false); }
+    okBtn.addEventListener('click', onOk);
+    cancelBtn.addEventListener('click', onCancel);
+  });
+}
+
+function showScreen(id) {
+  $$('.screen').forEach(s => s.classList.remove('active'));
+  $('#' + id).classList.add('active');
+}
+
+let currentClass = null;
+let currentRole = null; // 'student' | 'teacher'
+let studentUnsubs = [];
+let teacherUnsubs = [];
+
+function clearUnsubs(arr) { arr.forEach(u => { try { u(); } catch(e){} }); arr.length = 0; }
+
+function goHome() {
+  clearUnsubs(studentUnsubs);
+  clearUnsubs(teacherUnsubs);
+  currentClass = null; currentRole = null;
+  showScreen('screen-role');
+}
+
+function bindNav() {
+  $$('[data-home]').forEach(b => b.addEventListener('click', goHome));
+
+  $('#goStudent').addEventListener('click', () => { currentRole = 'student'; showScreen('screen-class-student'); });
+  $('#goTeacher').addEventListener('click', () => { currentRole = 'teacher'; showScreen('screen-class-teacher'); });
+
+  $$('.class-btn[data-class]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentClass = btn.dataset.class;
+      $('#nickHeader').textContent = `${currentClass}반 · 이름을 작성해줘! ✏️`;
+      try {
+        const saved = localStorage.getItem('deb_nickname');
+        if (saved) $('#nicknameInput').value = saved;
+      } catch(e){}
+      showScreen('screen-nickname');
+    });
+  });
+
+  $('#enterClass').addEventListener('click', () => {
+    const v = $('#nicknameInput').value.trim();
+    if (!v) { showToast('이름(별명)을 입력해주세요!'); return; }
+    try { localStorage.setItem('deb_nickname', v); } catch(e){}
+    $('#studentClassLabel').textContent = `${currentClass}반 💖`;
+    $('#studentNickLabel').textContent = `${v} 학생, 환영해요! 💕`;
+    showScreen('screen-student-app');
+    startStudentApp(currentClass, v);
+  });
+
+  $$('.class-btn[data-tclass]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentClass = btn.dataset.tclass;
+      $('#teacherClassLabel').textContent = `${currentClass}반 진행 칠판 🧑‍🏫`;
+      showScreen('screen-teacher-app');
+      startTeacherApp(currentClass);
+    });
+  });
+}
+
+bindNav();
+
+function renderStageForm(stageKey) {
+  if (stageKey === 'vote') {
+    return `
+      <div class="card">
+        <div class="stage-badge">① 찬반 투표</div>
+        <div class="stage-question-box">
+          <div class="stage-question-title">초등학생의 이성교제,<br>필요하거나 좋다고 생각하나요? 🤔</div>
+          <p class="stage-question-sub">찬성하시나요, 반대하시나요? 너의 솔직한 생각은?</p>
+        </div>
+        <div class="vote-row">
+          <button class="vote-btn agree" id="fAgree">
+            <span class="emoji">🙆‍♂️</span>
+            <span class="label" style="color:var(--accent2)">찬성해요!</span>
+          </button>
+          <button class="vote-btn disagree" id="fDisagree">
+            <span class="emoji">🙅‍♀️</span>
+            <span class="label" style="color:var(--accent-hover)">반대해요!</span>
+          </button>
+        </div>
+      </div>
+    `;
+  }
+  if (stageKey === 'opinion') {
+    return `
+      <div class="card">
+        <div class="stage-badge">② 의견 게시판</div>
+        <div class="stage-question-box">
+          <div class="stage-question-title">그렇게 생각한 이유를 솔직하게 적어주세요 💬</div>
+          <p class="stage-question-sub">찬성 또는 반대를 먼저 고르고 이유를 적어주세요.</p>
+        </div>
+        <div class="type-toggle">
+          <button type="button" class="opt-choice" data-val="찬성">🙆‍♂️ 찬성 입장</button>
+          <button type="button" class="opt-choice" data-val="반대">🙅‍♀️ 반대 입장</button>
+        </div>
+        <textarea id="fText" placeholder="내가 그렇게 생각한 이유나 경험담을 적어주세요! (예: 서로 의지되고 좋은 자극이 되어서...)"></textarea>
+        <button class="submit-btn" id="fSubmit">의견 제출하기 💌</button>
+      </div>
+    `;
+  }
+  if (stageKey === 'crush') {
+    return `
+      <div class="card">
+        <div class="stage-badge">③ 호불호 행동</div>
+        <div class="stage-question-box">
+          <div class="stage-question-title">이성 친구의 어떤 행동이 좋거나 싫은가요? 💗💔</div>
+          <p class="stage-question-sub">호감 가는 모습과 절대 싫은 행동을 각각 작성해보세요!</p>
+        </div>
+        <div class="crush-block like-block">
+          <div class="crush-block-label" style="color:var(--accent2)">💖 이런 행동이 호감이에요!</div>
+          <textarea id="fLike" placeholder="예: 친절하게 말해주고 배려해줄 때, 웃는 얼굴로 인사해줄 때..."></textarea>
+        </div>
+        <div class="crush-block dislike-block">
+          <div class="crush-block-label" style="color:var(--accent-hover)">💔 이런 행동은 정말 별로예요!</div>
+          <textarea id="fDislike" placeholder="예: 외모를 놀리거나 장난으로 신체 접촉을 할 때, 소문낼 때..."></textarea>
+        </div>
+        <button class="submit-btn" id="fSubmit">호불호 생각 제출 💌</button>
+      </div>
+    `;
+  }
+  if (stageKey === 'rules') {
+    return `
+      <div class="card">
+        <div class="stage-badge">④ 지킬 약속</div>
+        <div class="stage-question-box">
+          <div class="stage-question-title">건전하고 올바른 이성교제를 위해<br>우리가 꼭 지켜야 할 약속! 🤙</div>
+          <p class="stage-question-sub">서로를 존중하고 예의를 지키기 위한 약속 2가지를 적어주세요.</p>
+        </div>
+        <div class="rule-field">
+          <div class="rule-num">1</div>
+          <input type="text" id="fRule1" placeholder="첫 번째 약속 (예: 서로의 사생활과 개인 공간을 존중해요)">
+        </div>
+        <div class="rule-field">
+          <div class="rule-num">2</div>
+          <input type="text" id="fRule2" placeholder="두 번째 약속 (예: 비밀을 소문내지 않고 경청해요)">
+        </div>
+        <button class="submit-btn" id="fSubmit">우리들의 약속 제출 🤙</button>
+      </div>
+    `;
+  }
+  return '';
+}
+
+function startStudentApp(classId, nickname) {
+  clearUnsubs(studentUnsubs);
+  if (!dbReady || !userId) return;
+
+  let latestStage = 'idle';
+  let latestProgress = {};
+
+  function render() {
+    const main = $('#studentMain');
+    if (latestStage === 'idle' || !latestStage) {
+      main.innerHTML = '<div class="card pause-wrap"><span class="emoji">💖</span><h2>선생님이 수업을 시작할 때까지 기다려주세요</h2><p>선생님이 생각모으기 영역을 열면<br>화면에 질문이 보여집니다.</p></div>';
+      return;
+    }
+    const stageInfo = STAGES.find(s => s.key === latestStage);
+    if (!stageInfo) {
+      main.innerHTML = '<div class="card pause-wrap"><span class="emoji">🌸</span><h2>잠시만 기다려주세요...</h2></div>';
+      return;
+    }
+    if (latestProgress[latestStage]) {
+      main.innerHTML = '<div class="card pause-wrap"><span class="emoji">✅</span><h2>' + esc(stageInfo.label) + ' 제출 완료! 💕</h2><p>칠판(선생님 화면)을 보면서<br>친구들 생각과 함께 비교해봐요 👀<br><br>선생님이 다음 영역을 열어줄 때까지<br>잠시만 기다려주세요!</p></div>';
+      return;
+    }
+    main.innerHTML = renderStageForm(stageInfo.key);
+    bindStageForm(stageInfo.key, classId, nickname);
+  }
+
+  const stageDocKey = `${currentRoomCode}_${classId}`;
+  const unsub1 = onSnapshot(getPublicDoc('dating_stage', stageDocKey), snap => {
+    latestStage = (snap.exists() && snap.data().stage) ? snap.data().stage : 'idle';
+    render();
+  }, err => console.error(err));
+
+  const progDocId = `${currentRoomCode}_${classId}_${userId}`;
+  const unsub2 = onSnapshot(getPublicDoc('dating_progress', progDocId), snap => {
+    latestProgress = snap.exists() ? (snap.data() || {}) : {};
+    render();
+  }, err => console.error(err));
+
+  studentUnsubs.push(unsub1, unsub2);
+}
+
+async function markProgress(classId, stageKey, nickname) {
+  if (!dbReady || !userId) return;
+  const progDocId = `${currentRoomCode}_${classId}_${userId}`;
+  const ref = getPublicDoc('dating_progress', progDocId);
+  try {
+    const snap = await getDoc(ref);
+    const cur = snap.exists() ? (snap.data() || {}) : {};
+    cur[stageKey] = true;
+    cur.classId = classId;
+    cur.roomCode = currentRoomCode;
+    cur.userId = userId;
+    cur.nickname = nickname;
+    await setDoc(ref, cur);
+  } catch(e) {
+    console.error("Error marking progress:", e);
+  }
+}
+
+function bindStageForm(stageKey, classId, nickname) {
+  if (stageKey === 'vote') {
+    $('#fAgree').addEventListener('click', () => submitVote('찬성'));
+    $('#fDisagree').addEventListener('click', () => submitVote('반대'));
+    async function submitVote(choice) {
+      if (!dbReady || !userId) { showToast('서버 연결 중입니다. 잠시 후 시도해주세요.'); return; }
+      try {
+        const voteDocId = `${currentRoomCode}_${classId}_${userId}`;
+        await setDoc(getPublicDoc('dating_votes', voteDocId), { roomCode: currentRoomCode, classId, userId, choice, nickname, ts: Date.now() });
+        await markProgress(classId, 'vote', nickname);
+      } catch(e) { showToast('저장에 실패했어요. 다시 시도해주세요.'); }
+    }
+    return;
+  }
+  if (stageKey === 'opinion') {
+    let choice = null;
+    $$('.opt-choice').forEach(btn => btn.addEventListener('click', () => {
+      choice = btn.dataset.val;
+      $$('.opt-choice').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    }));
+    $('#fSubmit').addEventListener('click', async () => {
+      if (!choice) { showToast('찬성/반대 중 하나를 먼저 선택해주세요.'); return; }
+      const text = $('#fText').value.trim();
+      if (!text) { showToast('이유를 솔직하게 적어주세요.'); return; }
+      if (!dbReady || !userId) { showToast('서버 연결 중입니다. 잠시 후 시도해주세요.'); return; }
+      try {
+        await addDoc(getPublicCollection('dating_opinions'), { roomCode: currentRoomCode, classId, userId, nickname, choice, content: text, ts: Date.now() });
+        await markProgress(classId, 'opinion', nickname);
+      } catch(e) { showToast('등록에 실패했어요. 다시 시도해주세요.'); }
+    });
+    return;
+  }
+  if (stageKey === 'crush') {
+    $('#fSubmit').addEventListener('click', async () => {
+      const likeText = $('#fLike').value.trim();
+      const dislikeText = $('#fDislike').value.trim();
+      if (!likeText || !dislikeText) { showToast('호감 행동과 절대 싫은 행동을 둘 다 적어주세요.'); return; }
+      if (!dbReady || !userId) { showToast('서버 연결 중입니다. 잠시 후 시도해주세요.'); return; }
+      try {
+        await addDoc(getPublicCollection('dating_crush_like'), { roomCode: currentRoomCode, classId, userId, nickname, content: likeText, ts: Date.now() });
+        await addDoc(getPublicCollection('dating_crush_dislike'), { roomCode: currentRoomCode, classId, userId, nickname, content: dislikeText, ts: Date.now() });
+        await markProgress(classId, 'crush', nickname);
+      } catch(e) { showToast('등록에 실패했어요. 다시 시도해주세요.'); }
+    });
+    return;
+  }
+  if (stageKey === 'rules') {
+    $('#fSubmit').addEventListener('click', async () => {
+      const rule1 = $('#fRule1').value.trim();
+      const rule2 = $('#fRule2').value.trim();
+      if (!rule1 || !rule2) { showToast('약속 두 가지를 모두 적어주세요.'); return; }
+      if (!dbReady || !userId) { showToast('서버 연결 중입니다. 잠시 후 시도해주세요.'); return; }
+      try {
+        await addDoc(getPublicCollection('dating_rules'), { roomCode: currentRoomCode, classId, userId, nickname, rule1, rule2, ts: Date.now() });
+        await markProgress(classId, 'rules', nickname);
+      } catch(e) { showToast('등록에 실패했어요. 다시 시도해주세요.'); }
+    });
+    return;
+  }
+}
+
+function startTeacherApp(classId) {
+  clearUnsubs(teacherUnsubs);
+  if (!dbReady) return;
+
+  const toolbar = $('#teacherToolbar');
+  toolbar.innerHTML = STAGES.map(s => '<button data-stage="' + s.key + '">' + s.label + '</button>').join('') +
+    '<button data-stage="idle">⏸ 대기 화면</button>';
+
+  $$('button[data-stage]', toolbar).forEach(btn => {
+    btn.addEventListener('click', async () => {
+      if (!dbReady) return;
+      try {
+        const stageDocKey = `${currentRoomCode}_${classId}`;
+        await setDoc(getPublicDoc('dating_stage', stageDocKey), { stage: btn.dataset.stage, updatedAt: Date.now() });
+      } catch(e) { showToast('상태 변경에 실패했어요.'); }
+    });
+  });
+
+  $('#btnOverview').onclick = () => renderOverview(classId);
+  $('#btnReset').onclick = () => resetClass(classId);
+
+  let currentStage = 'idle';
+  const stageDocKey = `${currentRoomCode}_${classId}`;
+  const unsub = onSnapshot(getPublicDoc('dating_stage', stageDocKey), snap => {
+    currentStage = (snap.exists() && snap.data().stage) ? snap.data().stage : 'idle';
+    $$('button[data-stage]', toolbar).forEach(b => b.classList.toggle('active-stage', b.dataset.stage === currentStage));
+    renderLiveStage(classId, currentStage);
+  }, err => console.error(err));
+  
+  teacherUnsubs.push(unsub);
+}
+
+function renderPostItems(containerId, colName, list, mapFn) {
+  const container = $('#' + containerId);
+  if (!container) return;
+  if (!list || list.length === 0) {
+    container.innerHTML = '<div class="empty">아직 작성된 내용이 없어요 🌸</div>';
+    return;
+  }
+  container.innerHTML = list.map(item => {
+    const data = mapFn(item);
+    return `
+      <div class="post">
+        <div class="meta">
+          <span class="nick">${esc(item.nickname || '익명')}</span>
+          <div style="display:flex; align-items:center; gap:6px;">
+            <span class="tag ${esc(data.tagClass)}">${esc(data.tag)}</span>
+            <button class="del-btn" onclick="window.deleteItem('${colName}', '${item.id}')">삭제</button>
+          </div>
+        </div>
+        <div class="content">${esc(data.content)}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderRulesItems(containerId, list) {
+  const container = $('#' + containerId);
+  if (!container) return;
+  if (!list || list.length === 0) {
+    container.innerHTML = '<div class="empty">아직 작성된 약속이 없어요 🤙</div>';
+    return;
+  }
+  container.innerHTML = list.map(item => `
+    <div class="post">
+      <div class="meta">
+        <span class="nick">${esc(item.nickname || '익명')}</span>
+        <button class="del-btn" onclick="window.deleteItem('dating_rules', '${item.id}')">삭제</button>
+      </div>
+      <div class="content" style="display:flex; flex-direction:column; gap:6px;">
+        <div><strong>1.</strong> ${esc(item.rule1)}</div>
+        <div><strong>2.</strong> ${esc(item.rule2)}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+window.deleteItem = async function(colName, id) {
+  if (!dbReady) return;
+  try {
+    await deleteDoc(getPublicDoc(colName, id));
+    showToast('삭제되었습니다.');
+  } catch(e) {
+    showToast('삭제하지 못했습니다.');
+  }
+};
+
+function renderLiveStage(classId, stageKey) {
+  clearUnsubs(teacherUnsubs.splice(1));
+  const board = $('#teacherBoard');
+
+  if (stageKey === 'idle' || !stageKey) {
+    board.innerHTML = '<p class="idle-note">현재 대기 상태입니다.<br>상단 버턴을 눌러 학생들에게 공개할 활동 영역을 열어주세요 💕</p>';
+    return;
+  }
+  if (stageKey === 'vote') {
+    board.innerHTML = '<div class="board-title">💖 초등 이성교제 찬반 투표 현황 💖</div>' +
+      '<div class="bar-track"><div class="bar-agree" id="tBarAgree" style="width:50%"></div><div class="bar-disagree" id="tBarDisagree" style="width:50%"></div></div>' +
+      '<div class="bar-labels"><span id="tAgreeText">찬성 0명 (50%)</span><span id="tDisagreeText">반대 0명 (50%)</span></div>';
+    
+    const u = onSnapshot(getPublicCollection('dating_votes'), snap => {
+      const votes = snap.docs.map(d => d.data()).filter(v => (v.roomCode || '기본수업') === currentRoomCode && v.classId === classId);
+      let agree = 0, disagree = 0;
+      votes.forEach(c => { if (c.choice === '찬성') agree++; else if (c.choice === '반대') disagree++; });
+      const total = agree + disagree;
+      const ap = total ? Math.round(agree/total*100) : 50, dp = total ? 100-ap : 50;
+      $('#tBarAgree').style.width = ap + '%'; $('#tBarDisagree').style.width = dp + '%';
+      $('#tAgreeText').textContent = '🙆‍♂️ 찬성 ' + agree + '명 (' + ap + '%)';
+      $('#tDisagreeText').textContent = '🙅‍♀️ 반대 ' + disagree + '명 (' + dp + '%)';
+    }, err => console.error(err));
+    
+    teacherUnsubs.push(u);
+    return;
+  }
+  if (stageKey === 'opinion') {
+    board.innerHTML = '<div class="board-title">💬 우리 반 솔직 생각 게시판</div><div class="post-list" id="tList"></div>';
+    
+    const u = onSnapshot(getPublicCollection('dating_opinions'), snap => {
+      const list = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+        .filter(p => (p.roomCode || '기본수업') === currentRoomCode && p.classId === classId)
+        .sort((a,b) => (b.ts||0) - (a.ts||0));
+      renderPostItems('tList', 'dating_opinions', list, p => ({ tag: p.choice, tagClass: p.choice === '찬성' ? 'agree' : 'disagree', content: p.content }));
+    }, err => console.error(err));
+    
+    teacherUnsubs.push(u);
+    return;
+  }
+  if (stageKey === 'crush') {
+    board.innerHTML = '<div class="board-title">💗 호감 vs 💔 절대 싫은 행동 현황</div>' +
+      '<div class="teacher-secondary" style="margin-bottom:14px;">' +
+        '<button class="crush-toggle-btn like selected" id="toggleLike">💖 호감 가는 행동 보기</button>' +
+        '<button class="crush-toggle-btn dislike" id="toggleDislike">💔 절대 싫은 행동 보기</button>' +
+      '</div>' +
+      '<div id="tListLikeWrap"><h3>💖 이런 모습이 호감이에요!</h3><div class="post-list" id="tListLike"></div></div>' +
+      '<div id="tListDislikeWrap" style="display:none;"><h3>💔 이런 행동은 너무 싫어요!</h3><div class="post-list" id="tListDislike"></div></div>';
+    
+    const btnLike = $('#toggleLike'), btnDislike = $('#toggleDislike');
+    const wrapLike = $('#tListLikeWrap'), wrapDislike = $('#tListDislikeWrap');
+    btnLike.addEventListener('click', () => {
+      btnLike.classList.add('selected'); btnDislike.classList.remove('selected');
+      wrapLike.style.display = ''; wrapDislike.style.display = 'none';
+    });
+    btnDislike.addEventListener('click', () => {
+      btnDislike.classList.add('selected'); btnLike.classList.remove('selected');
+      wrapDislike.style.display = ''; wrapLike.style.display = 'none';
+    });
+
+    const u1 = onSnapshot(getPublicCollection('dating_crush_like'), snap => {
+      const list = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+        .filter(p => (p.roomCode || '기본수업') === currentRoomCode && p.classId === classId)
+        .sort((a,b) => (b.ts||0) - (a.ts||0));
+      renderPostItems('tListLike', 'dating_crush_like', list, p => ({ tag: '호감', tagClass: 'like', content: p.content }));
+    }, err => console.error(err));
+
+    const u2 = onSnapshot(getPublicCollection('dating_crush_dislike'), snap => {
+      const list = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+        .filter(p => (p.roomCode || '기본수업') === currentRoomCode && p.classId === classId)
+        .sort((a,b) => (b.ts||0) - (a.ts||0));
+      renderPostItems('tListDislike', 'dating_crush_dislike', list, p => ({ tag: '절대싫어', tagClass: 'dislike', content: p.content }));
+    }, err => console.error(err));
+
+    teacherUnsubs.push(u1, u2);
+    return;
+  }
+  if (stageKey === 'rules') {
+    board.innerHTML = '<div class="board-title">🤙 우리가 지키기로 약속한 법칙들</div><div class="post-list" id="tList"></div>';
+    const u = onSnapshot(getPublicCollection('dating_rules'), snap => {
+      const list = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+        .filter(p => (p.roomCode || '기본수업') === currentRoomCode && p.classId === classId)
+        .sort((a,b) => (b.ts||0) - (a.ts||0));
+      renderRulesItems('tList', list);
+    }, err => console.error(err));
+    teacherUnsubs.push(u);
+    return;
+  }
+}
+
+function renderOverview(classId) {
+  clearUnsubs(teacherUnsubs.splice(1));
+  const board = $('#teacherBoard');
+  board.innerHTML = '<div class="board-title">📊 우리 반 전체 결과 모아보기 💖</div>' +
+    '<div class="board-section"><h3>① 찬반 투표 결과</h3><div class="bar-track"><div class="bar-agree" id="oBarAgree" style="width:50%"></div><div class="bar-disagree" id="oBarDisagree" style="width:50%"></div></div>' +
+    '<div class="bar-labels"><span id="oAgreeText">찬성 0명</span><span id="oDisagreeText">반대 0명</span></div></div>' +
+    '<div class="board-section"><h3>② 생각 게시판</h3><div class="post-list" id="oOpinion"></div></div>' +
+    '<div class="board-section"><h3>③ 💖 호감 가는 행동</h3><div class="post-list" id="oLike"></div></div>' +
+    '<div class="board-section"><h3>③ 💔 절대 싫은 행동</h3><div class="post-list" id="oDislike"></div></div>' +
+    '<div class="board-section"><h3>④ 🤙 우리들의 약속</h3><div class="post-list" id="oRules"></div></div>';
+
+  teacherUnsubs.push(onSnapshot(getPublicCollection('dating_votes'), snap => {
+    const votes = snap.docs.map(d=>d.data()).filter(v => (v.roomCode || '기본수업') === currentRoomCode && v.classId === classId);
+    let agree=0, disagree=0;
+    votes.forEach(c => { if(c.choice==='찬성') agree++; else if(c.choice==='반대') disagree++; });
+    const total = agree+disagree; const ap = total?Math.round(agree/total*100):50; const dp = total?100-ap:50;
+    $('#oBarAgree').style.width=ap+'%'; $('#oBarDisagree').style.width=dp+'%';
+    $('#oAgreeText').textContent='찬성 '+agree+'명 ('+ap+'%)';
+    $('#oDisagreeText').textContent='반대 '+disagree+'명 ('+dp+'%)';
+  }, err=>console.error(err)));
+
+  teacherUnsubs.push(onSnapshot(getPublicCollection('dating_opinions'), snap => {
+    const list = snap.docs.map(d => ({ id: d.id, ...d.data() })).filter(p => (p.roomCode || '기본수업') === currentRoomCode && p.classId === classId);
+    renderPostItems('oOpinion', 'dating_opinions', list, p => ({ tag: p.choice, tagClass: p.choice==='찬성'?'agree':'disagree', content: p.content }));
+  }, err=>console.error(err)));
+
+  teacherUnsubs.push(onSnapshot(getPublicCollection('dating_crush_like'), snap => {
+    const list = snap.docs.map(d => ({ id: d.id, ...d.data() })).filter(p => (p.roomCode || '기본수업') === currentRoomCode && p.classId === classId);
+    renderPostItems('oLike', 'dating_crush_like', list, p => ({ tag:'호감', tagClass:'like', content: p.content }));
+  }, err=>console.error(err)));
+
+  teacherUnsubs.push(onSnapshot(getPublicCollection('dating_crush_dislike'), snap => {
+    const list = snap.docs.map(d => ({ id: d.id, ...d.data() })).filter(p => (p.roomCode || '기본수업') === currentRoomCode && p.classId === classId);
+    renderPostItems('oDislike', 'dating_crush_dislike', list, p => ({ tag:'절대싫어', tagClass:'dislike', content: p.content }));
+  }, err=>console.error(err)));
+
+  teacherUnsubs.push(onSnapshot(getPublicCollection('dating_rules'), snap => {
+    const list = snap.docs.map(d => ({ id: d.id, ...d.data() })).filter(p => (p.roomCode || '기본수업') === currentRoomCode && p.classId === classId);
+    renderRulesItems('oRules', list);
+  }, err=>console.error(err)));
+}
+
+async function resetClass(classId) {
+  const ok = await showConfirm(`${classId}반의 모든 제출 자료를 초기화할까요? 되돌릴 수 없습니다.`);
+  if (!ok) return;
+
+  const collections = ['dating_votes', 'dating_opinions', 'dating_crush_like', 'dating_crush_dislike', 'dating_rules', 'dating_progress'];
+  try {
+    for (const name of collections) {
+      const snap = await getDocs(getPublicCollection(name));
+      for (const d of snap.docs) {
+        const data = d.data();
+        if ((data.roomCode || '기본수업') === currentRoomCode && data.classId === classId) {
+          try { await deleteDoc(d.ref); } catch(e){}
+        }
+      }
+    }
+    const stageDocKey = `${currentRoomCode}_${classId}`;
+    await setDoc(getPublicDoc('dating_stage', stageDocKey), { stage: 'idle', updatedAt: Date.now() });
+    showToast('모든 기록이 초기화되었습니다.');
+  } catch (e) {
+    console.error(e);
+    showToast('초기화 중 오류가 발생했습니다.');
+  }
+}
+</script>
+</body>
+</html>

@@ -1,1 +1,806 @@
-임시파일
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>마음우체통 · 학생용 실제 그래픽 통합</title><style>:root{--ink:#29304a;--muted:#69728b;--purple:#7861cf;--line:#e6e2ed;--pink:#ed93a5;--card:#fffdfa}*{box-sizing:border-box}body{margin:0;font-family:system-ui,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:var(--ink);background:linear-gradient(120deg,#f6f1f1,#efedfa 60%,#f8f1e9);font-size:16px}button,input,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}.page{max-width:1550px;margin:auto;padding:20px 24px}.top{display:flex;gap:16px;justify-content:space-between;align-items:center;margin-bottom:16px}.brand{font-size:clamp(22px,2.6vw,35px);font-weight:900;letter-spacing:-1.4px}.brand small{display:block;font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0}.actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.panel{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:22px;box-shadow:0 7px 22px #77709213;padding:22px}.btn{border:1px solid var(--line);border-radius:13px;padding:11px 17px;background:white;color:var(--ink);font-weight:700;min-height:44px}.btn.primary{background:linear-gradient(110deg,#8272db,#7059c8);color:white;border-color:transparent}.btn.danger{background:#fff5f5;color:#bd4d64;border-color:#f6d8df}.btn.soft{background:#f5f0ff;color:#634ac2}.btn.tiny{padding:7px 11px;font-size:13px;min-height:36px}.btn.selected{background:#fae8f0;color:#a34f6b}.pill{display:inline-block;padding:5px 11px;border-radius:30px;background:#f3edff;color:#7562b7;font-size:12px;font-weight:700}.muted{color:var(--muted)}.input,.textarea{border:1px solid #dcd9e8;background:#fff;border-radius:12px;padding:12px;outline-color:#9581e4;max-width:100%;width:100%}.textarea{resize:vertical;min-height:155px;line-height:1.7}.landing{min-height:80vh;display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center}.landing .hero{min-height:440px;background:radial-gradient(circle at 30% 28%,#ffe1e5 0,transparent 40%),linear-gradient(140deg,#fffcf9,#eae3f5);display:grid;place-content:center;text-align:center}.mailbox{font-size:clamp(85px,13vw,200px);line-height:1.25;filter:drop-shadow(0 15px 12px #9c8a8b30)}.landing h1{font-size:clamp(32px,4vw,58px);margin:6px 0}.landing-menu{display:grid;gap:14px;max-width:450px}.landing-menu .btn{padding:20px;font-size:20px;text-align:left}.grid-two{display:grid;grid-template-columns:minmax(320px,44%) minmax(0,1fr);gap:17px;align-items:start}.story{background:linear-gradient(145deg,#fff9f3,#fffdfd);position:relative;overflow:hidden}.story .art{float:right;font-size:70px;opacity:.24;margin:0 0 6px 10px}.story h2{font-size:clamp(23px,2.3vw,34px);line-height:1.32}.story-body{white-space:pre-wrap;line-height:1.9;font-size:clamp(15px,1.35vw,19px);max-height:62vh;overflow:auto}.avatar{width:45px;height:45px;border-radius:50%;flex:none}.reply-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}.feed{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.feed-item{text-align:left;display:block;width:100%}.feed-item h3{font-size:18px}.feed-item p{color:var(--muted);line-height:1.6}.progress{height:10px;border-radius:20px;background:#e8e8f1;overflow:hidden}.progress>div{background:#9682d9;height:100%;border-radius:20px}.stats{display:grid;grid-template-columns:repeat(2,minmax(150px,1fr));gap:12px}.stat{text-align:center;padding:12px;background:#f9f6ff;border-radius:14px}.stat strong{display:block;font-size:26px;color:#7059c8}.five{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}.five button{text-align:left;padding:12px;line-height:1.5}.five .count{font-weight:800;color:#6a55bb}.admin-grid{display:grid;grid-template-columns:minmax(240px,29%) minmax(0,1fr);gap:14px}.admin-list{display:grid;gap:9px;align-content:start}.admin-list button{text-align:left}.comment{background:#fff;border:1px solid #ece9f0;border-radius:15px;padding:14px;margin:0 0 9px}.comment p{line-height:1.6;white-space:pre-wrap;margin:8px 0}.comment-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.comment-controls{display:flex;gap:6px}.board-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 20px}.board-replies{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;max-height:73vh;overflow:auto;align-content:start}.board-replies .comment{margin:0;padding:20px}.board-replies .comment p{font-size:clamp(16px,1.35vw,21px)}.board .story-body{max-height:74vh}.notice{border-radius:14px;padding:13px;background:#f7f1fb;color:#654fa3}.lock{min-height:75vh;display:grid;place-content:center;text-align:center;gap:12px}.lock h1{font-size:clamp(32px,5vw,56px)}.dialog{position:fixed;inset:0;background:#16182977;display:grid;place-items:center;z-index:100}.dialog .panel{max-width:410px;width:calc(100% - 24px)}.dialog input{margin:12px 0}.right{text-align:right}.bar-title{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}.stack{display:grid;gap:12px}.loading{padding:10vh;text-align:center}@media(max-width:850px){.page{padding:13px}.panel{padding:16px}.landing{grid-template-columns:1fr;min-height:auto}.landing .hero{min-height:230px}.mailbox{font-size:90px}.grid-two,.admin-grid{grid-template-columns:1fr}.five{grid-template-columns:repeat(2,minmax(0,1fr))}.board-replies{grid-template-columns:1fr;max-height:none}.story-body{max-height:none}}@media(min-width:851px) and (max-height:720px){.page{padding:10px 20px}.panel{padding:15px}.story-body{max-height:50vh}.board .story-body{max-height:60vh}}
+
+/* --------------------------------------------------------------
+   마음우체통 · 교사용 화면 전용 디자인 정돈 v1
+   Firebase / 입력 / 관리 이벤트 코드는 변경하지 않습니다.
+   -------------------------------------------------------------- */
+.page.admin {
+  --admin-violet:#6755c4;
+  --admin-deep:#28324c;
+  --admin-text:#414b68;
+  --admin-border:#e3e4f0;
+  color:var(--admin-deep);
+  max-width:1580px;
+  padding:clamp(12px,1.5vw,24px);
+  font-family:'Pretendard Variable','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+}
+.page.admin .top {
+  min-height:76px;
+  padding:12px 22px;
+  background:linear-gradient(110deg,rgba(255,255,255,.96),rgba(246,244,255,.96));
+  border:1px solid #e5e1f1;
+  border-radius:19px;
+  box-shadow:0 4px 20px rgba(73,52,123,.055);
+  margin-bottom:14px;
+}
+.page.admin .brand {
+  font-size:clamp(23px,2.15vw,31px);
+  letter-spacing:-.7px;
+  line-height:1.25;
+}
+.page.admin .brand small {
+  margin-top:5px;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:0;
+}
+.page.admin .actions {gap:10px;}
+.page.admin #admin-class {
+  min-height:44px;
+  border:1px solid #dfddf0;
+  background:#fff;
+  border-radius:12px;
+  font-size:14px;
+  font-weight:700;
+  box-shadow:0 2px 6px rgba(54,47,99,.025);
+}
+.page.admin .btn {
+  transition:background-color .15s ease,box-shadow .15s ease,border-color .15s ease;
+}
+.page.admin .btn:focus-visible,.page.admin .input:focus-visible {
+  outline:3px solid #b9a5fa;outline-offset:2px;
+}
+.page.admin [data-action="publish"] {
+  min-height:44px;
+  background:linear-gradient(108deg,#8071df,#6450d6);
+  padding:10px 21px;
+  border-radius:12px;
+  font-size:15px;
+  box-shadow:0 5px 14px rgba(99,76,205,.20);
+}
+.page.admin [data-action="publish"]:hover {box-shadow:0 7px 20px rgba(99,76,205,.29);}
+.page.admin .panel {
+  background:rgba(255,255,255,.96);
+  border:1px solid #e5e4ee;
+  border-radius:19px;
+  box-shadow:0 5px 22px rgba(65,52,107,.055);
+}
+.page.admin > .panel {
+  padding:19px 20px 16px;
+  margin-bottom:14px !important;
+}
+.page.admin > .panel > .bar-title {margin-bottom:12px;}
+.page.admin .bar-title h3 {
+  font-size:17px;
+  margin:0;
+  letter-spacing:-.45px;
+}
+.page.admin .bar-title h2 {
+  font-size:clamp(18px,1.65vw,23px);
+  margin:0 0 5px;
+  line-height:1.4;
+  letter-spacing:-.45px;
+}
+.page.admin .bar-title .muted {font-size:13px;margin:0;line-height:1.6;}
+.page.admin .pill {
+  font-weight:700;
+  font-size:12px;
+  background:#f0edff;
+  color:#725cc2;
+  border:1px solid #e8e1ff;
+}
+.page.admin > .panel > .bar-title .pill {
+  color:#188563;
+  background:#e6faf1;
+  border-color:#cff0de;
+}
+.page.admin .stats {
+  display:grid;
+  grid-template-columns:minmax(280px,360px) minmax(240px,300px);
+  gap:12px;
+  margin-bottom:14px;
+}
+.page.admin .stat {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  min-height:75px;
+  padding:13px 14px;
+  font-size:14px;
+  font-weight:700;
+  background:linear-gradient(115deg,#f9f6ff,#fcfaff);
+  border:1px solid #ece6f7;
+  border-radius:14px;
+  white-space:nowrap;
+}
+.page.admin .stat:nth-child(2) {
+  background:linear-gradient(115deg,#f4fcf7,#fcfffd);
+  border-color:#dcefe4;
+}
+.page.admin .stat strong {
+  display:inline;
+  font-size:clamp(24px,2.5vw,32px);
+  line-height:1;
+  font-weight:850;
+  color:#5a48c4;
+  font-variant-numeric:tabular-nums;
+}
+.page.admin .stat:nth-child(2) strong {color:#139368;}
+.page.admin #target {font-weight:800;text-align:center;border-radius:10px;padding:8px 6px;color:#45368c;}
+.page.admin [data-action="target"] {background:#fff;color:#5543af;border-color:#ded9f5;}
+.page.admin > .panel > h3 {
+  font-size:15px;
+  margin:9px 0 10px;
+  letter-spacing:-.25px;
+}
+.page.admin .five {gap:10px;}
+.page.admin .five button {
+  min-width:0;
+  min-height:107px;
+  background:#fff;
+  border:1px solid #e4e4ed;
+  border-radius:14px;
+  padding:11px 12px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  text-align:left;
+  box-shadow:0 1px 4px rgba(41,38,81,.025);
+}
+.page.admin .five button:hover,.page.admin .admin-list button:hover {
+  border-color:#b9a9ef;
+  background:#fcfaff;
+}
+.page.admin .five button strong {
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+  font-size:12px;
+  line-height:1.45;
+  font-weight:760;
+  letter-spacing:-.1px;
+}
+.page.admin .five .count {
+  text-align:right;
+  width:100%;
+  font-size:16px;
+  line-height:1.2;
+  margin-top:5px;
+  font-variant-numeric:tabular-nums;
+  color:#6153b9;
+}
+.page.admin .five button:nth-child(2) .count{color:#d56991;}
+.page.admin .five button:nth-child(3) .count{color:#bc852b;}
+.page.admin .five button:nth-child(4) .count{color:#249b78;}
+.page.admin .five button:nth-child(5) .count{color:#398bd4;}
+.page.admin .five .progress {width:100%;height:8px;background:#e9eaf1;}
+.page.admin .five button:nth-child(1) .progress > div {background:#9481df;}
+.page.admin .five button:nth-child(2) .progress > div {background:#f08faf;}
+.page.admin .five button:nth-child(3) .progress > div {background:#ecc56d;}
+.page.admin .five button:nth-child(4) .progress > div {background:#73cda8;}
+.page.admin .five button:nth-child(5) .progress > div {background:#88baf0;}
+.page.admin .admin-grid {
+  grid-template-columns:minmax(242px,27%) minmax(0,1fr);
+  gap:13px;
+}
+.page.admin .admin-grid > .panel {padding:18px;}
+.page.admin .admin-list {gap:7px;}
+.page.admin .admin-list h3 {
+  margin:0 0 6px;
+  color:#4f40a1;
+  font-size:18px;
+  letter-spacing:-.3px;
+}
+.page.admin .admin-list button {
+  padding:12px 13px;
+  min-height:57px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  line-height:1.45;
+  font-size:13px;
+  font-weight:650;
+  white-space:normal;
+  color:#414662;
+  border-radius:12px;
+  border:1px solid #e5e4ee;
+}
+.page.admin .admin-list button.selected {
+  background:#f4eeff;
+  color:#5842b7;
+  border-color:#b5a2ef;
+  box-shadow:inset 3px 0 0 #866ad9;
+}
+.page.admin .admin-list button .pill {white-space:nowrap;flex-shrink:0;}
+.page.admin .admin-grid > section.panel > .bar-title {
+  padding-bottom:14px;
+  margin-bottom:13px;
+  border-bottom:1px solid #eeedf4;
+}
+.page.admin .comment {
+  padding:14px 15px;
+  background:#fff;
+  border:1px solid #e6e6ef;
+  border-radius:13px;
+  margin-bottom:9px;
+  box-shadow:0 1px 4px rgba(43,41,87,.025);
+}
+.page.admin .comment:has([data-hide].selected) {
+  background:#fbfafc;
+  border-color:#e8e6eb;
+}
+.page.admin .comment .reply-head {margin-bottom:0;gap:10px;}
+.page.admin .comment .reply-head strong {font-size:14px;}
+.page.admin .comment .avatar {width:38px;height:38px;}
+.page.admin .comment p {
+  margin:9px 0 0;
+  font-size:15px;
+  line-height:1.55;
+  color:#3d4762;
+  overflow-wrap:anywhere;
+}
+.page.admin .comment-controls {flex-shrink:0;gap:6px;}
+.page.admin [data-hide] {
+  background:#f4f1fd;
+  color:#6751b8;
+  border:1px solid #e4dcf6;
+}
+.page.admin [data-hide].selected {
+  background:#eeeff2;
+  color:#586075;
+  border-color:#e0e3e8;
+}
+.page.admin [data-del] {
+  border:1px solid #f4d7db;
+  color:#bf465c;
+  background:#fff6f7;
+}
+@media (max-width:1100px) {
+  .page.admin .admin-grid {grid-template-columns:minmax(205px,27%) minmax(0,1fr);}
+  .page.admin .admin-grid > .panel {padding:14px;}
+  .page.admin .admin-list button {font-size:12.5px;}
+  .page.admin .five button {min-height:102px;padding:9px;}
+}
+@media (max-width:850px) {
+  /* iPad 가로 1024px 유지, 그보다 좁은 화면만 세로 적응 */
+  .page.admin .top {flex-wrap:wrap;padding:14px;}
+  .page.admin .stats {grid-template-columns:repeat(2,minmax(0,1fr));}
+  .page.admin .five {grid-template-columns:repeat(3,minmax(0,1fr));}
+  .page.admin .admin-grid {grid-template-columns:1fr;}
+  .page.admin .admin-list {grid-template-columns:repeat(2,minmax(0,1fr));}
+  .page.admin .admin-list h3 {grid-column:1/-1;}
+  .page.admin .admin-grid > section.panel > .bar-title {align-items:flex-start;}
+}
+@media (max-width:560px) {
+  .page.admin .top {align-items:flex-start;}
+  .page.admin .actions {width:100%;}
+  .page.admin .stats {grid-template-columns:1fr;}
+  .page.admin .five {grid-template-columns:repeat(2,minmax(0,1fr));}
+  .page.admin .admin-list {grid-template-columns:1fr;}
+  .page.admin .stat {min-height:62px;}
+  .page.admin .comment-controls .btn.tiny {font-size:12px;padding:7px 8px;}
+}
+
+
+/* ===========================================================
+   교사용 상황판 컴팩트 v2: 더 많은 댓글을 한눈에 보기
+   기존 Firebase/댓글관리 이벤트와 화면 구조는 유지합니다.
+   =========================================================== */
+.page.admin .top {
+  min-height:66px;
+  padding:9px 18px;
+  margin-bottom:10px;
+}
+.page.admin .brand {font-size:clamp(22px,2.1vw,28px)}
+.page.admin .brand small {margin-top:2px;font-size:11px}
+.page.admin > .panel {
+  padding:12px 15px 12px;
+  margin-bottom:10px !important;
+}
+.page.admin > .panel > .bar-title {margin-bottom:8px}
+.page.admin .bar-title h3 {font-size:16px}
+.page.admin .stats {
+  grid-template-columns:minmax(280px,330px) minmax(225px,285px);
+  gap:10px;
+  margin-bottom:7px;
+}
+.page.admin .stat {
+  min-height:51px;
+  padding:7px 10px;
+  gap:8px;
+  font-size:13px;
+  border-radius:11px;
+}
+.page.admin .stat strong {font-size:clamp(22px,2.15vw,27px)}
+.page.admin #target {height:36px;padding:5px 6px;border-radius:9px}
+.page.admin [data-action="target"] {min-height:36px;padding:7px 11px;border-radius:9px}
+.page.admin > .panel > h3 {margin:5px 0 7px;font-size:14px}
+.page.admin .five {gap:8px}
+.page.admin .five button {
+  min-height:81px;
+  padding:7px 9px;
+  border-radius:11px;
+}
+.page.admin .five button strong {font-size:12px;line-height:1.35}
+.page.admin .five .count {font-size:17px;margin-top:1px}
+.page.admin .five .progress {height:6px;margin-top:3px}
+.page.admin .admin-grid {gap:11px}
+.page.admin .admin-grid > .panel {padding:13px}
+.page.admin .admin-list {gap:6px}
+.page.admin .admin-list h3 {font-size:17px;margin:0 0 4px}
+.page.admin .admin-list button {min-height:51px;padding:9px 10px}
+.page.admin .admin-grid > section.panel > .bar-title {
+  padding-bottom:9px;
+  margin-bottom:9px;
+}
+.page.admin .comment {
+  padding:9px 11px;
+  margin-bottom:6px;
+  border-radius:11px;
+}
+.page.admin .comment .avatar {width:33px;height:33px}
+.page.admin .comment .reply-head {gap:7px}
+.page.admin .comment .reply-head strong {font-size:13px}
+.page.admin .comment p {font-size:14px;line-height:1.45;margin:4px 0 0}
+.page.admin .comment-controls .btn.tiny {min-height:36px;padding:7px 9px}
+/* 교사가 댓글을 빠르게 훑을 수 있는 콤팩트 한 줄 목록 */
+.page.admin .comment {
+  display:grid;
+  grid-template-columns:minmax(117px,23%) minmax(0,1fr) auto;
+  gap:8px;
+  align-items:center;
+  min-height:54px;
+  padding:8px 10px;
+}
+.page.admin .comment .comment-row {display:contents}
+.page.admin .comment .reply-head {
+  grid-column:1;
+  grid-row:1;
+  min-width:0;
+  flex-wrap:nowrap;
+  margin:0;
+}
+.page.admin .comment .reply-head strong {
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.page.admin .comment .avatar {width:31px;height:31px}
+.page.admin .comment p {
+  grid-column:2;
+  grid-row:1;
+  margin:0;
+  min-width:0;
+  font-size:14px;
+  line-height:1.43;
+}
+.page.admin .comment .comment-controls {grid-column:3;grid-row:1;gap:5px}
+.page.admin .comment .comment-controls .btn.tiny {font-size:12px;padding:7px 8px}
+@media (max-width:650px) {
+  .page.admin .comment {grid-template-columns:minmax(0,1fr) auto}
+  .page.admin .comment .reply-head {grid-column:1;grid-row:1}
+  .page.admin .comment p {grid-column:1 / -1;grid-row:2}
+  .page.admin .comment .comment-controls {grid-column:2;grid-row:1}
+}
+@media (max-width:850px) {
+  .page.admin .stats {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .page.admin .five {grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:560px) {
+  .page.admin .stats {grid-template-columns:1fr}
+  .page.admin .five {grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+
+/* 교사용 PC 우선 v3: 상단 상황판 더 짧게, 댓글 목록은 일렬 가독성 우선 */
+@media(min-width:851px){
+  .page.admin .top{min-height:58px;padding:8px 16px;margin-bottom:8px}
+  .page.admin > .panel{padding:10px 14px 10px;margin-bottom:8px!important}
+  .page.admin > .panel > .bar-title{margin-bottom:6px}
+  .page.admin .stats{margin-bottom:5px;gap:8px}
+  .page.admin .stat{min-height:44px;padding:5px 9px}
+  .page.admin .stat strong{font-size:25px}
+  .page.admin #target{height:32px}
+  .page.admin [data-action="target"]{min-height:32px;padding:5px 10px}
+  .page.admin > .panel > h3{margin:3px 0 5px}
+  .page.admin .five{gap:7px}
+  .page.admin .five button{min-height:67px;padding:7px 9px}
+  .page.admin .five button strong{font-size:12px;line-height:1.25;-webkit-line-clamp:1;white-space:nowrap;text-overflow:ellipsis;max-width:100%}
+  .page.admin .five .count{font-size:16px;margin-top:2px}
+  .page.admin .five .progress{height:5px;margin-top:2px}
+  .page.admin .admin-grid{grid-template-columns:minmax(235px,24%) minmax(0,1fr);gap:10px}
+  .page.admin .admin-grid > .panel{padding:11px 13px}
+  .page.admin .admin-list button{min-height:45px;padding:7px 10px}
+  .page.admin .admin-grid > section.panel > .bar-title{margin-bottom:7px;padding-bottom:6px}
+  .page.admin .admin-grid > section.panel > .bar-title h2{font-size:20px}
+  .page.admin .admin-grid > section.panel > .bar-title p{margin-top:2px}
+  .page.admin .comment{
+    grid-template-columns:minmax(128px,175px) minmax(0,1fr) auto;
+    min-height:46px;padding:5px 9px;margin-bottom:4px;gap:10px;
+    border-radius:9px;
+  }
+  .page.admin .comment .avatar{width:29px;height:29px}
+  .page.admin .comment .reply-head strong{font-size:13px}
+  .page.admin .comment p{font-size:13.5px;line-height:1.4;overflow-wrap:anywhere}
+  .page.admin .comment .comment-controls{gap:4px}
+  .page.admin .comment .comment-controls .btn.tiny{min-height:32px;padding:5px 8px;font-size:12px}
+}
+/* 작은 창에서는 관리 버튼을 누를 공간을 확보하면서 필요할 때 줄바꿈 */
+@media(max-width:1000px) and (min-width:851px){
+  .page.admin .admin-grid{grid-template-columns:minmax(205px,25%) minmax(0,1fr)}
+  .page.admin .comment{grid-template-columns:minmax(102px,133px) minmax(0,1fr) auto;gap:5px}
+  .page.admin .comment .comment-controls .btn.tiny{padding:5px 6px}
+}
+
+
+
+/* ===== 학생용 작업본: 승인된 디자인만 추가 / 교사용 관리자 디자인은 유지 ===== */
+body:has(.page.student),body:has(.page.entry){background:#f7f1ed url("./assets/common/classroom-window.png") center center/cover fixed no-repeat;}
+body:has(.page.student)::before,body:has(.page.entry)::before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(110deg,rgba(255,249,245,.73),rgba(253,249,255,.82) 60%,rgba(255,247,242,.65));z-index:-1}
+.page.entry,.page.student{max-width:1480px;padding:clamp(14px,2vw,24px);margin-inline:auto;min-height:100svh;color:#253150;font-family:'Pretendard Variable','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;}
+.page.student .panel,.page.entry .panel{background:rgba(255,255,255,.94);border:1px solid rgba(219,209,226,.82);box-shadow:0 12px 44px rgba(94,75,106,.095);border-radius:24px;}
+.page.student .btn,.page.entry .btn{font-family:inherit;font-size:15px;transition:transform .13s ease,background-color .13s ease,box-shadow .13s ease;}
+.page.student .btn:hover,.page.entry .btn:hover{transform:translateY(-1px)}
+.page.student .btn:focus-visible,.page.entry .btn:focus-visible{outline:3px solid #9d86e7;outline-offset:3px}
+.page.student .btn.primary,.page.entry .btn.primary{border:none;background:linear-gradient(120deg,#8066d9,#a084ed);color:#fff;box-shadow:0 9px 19px rgba(114,88,206,.2)}
+.student-top{min-height:64px;padding:10px 18px;border:1px solid rgba(225,217,234,.95);border-radius:20px;background:rgba(255,255,255,.92);box-shadow:0 5px 19px rgba(102,77,105,.065);display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:15px}
+.student-brand{font-size:clamp(21px,2vw,28px);font-weight:850;letter-spacing:-.06em;display:flex;align-items:center;gap:9px;color:#273052;white-space:nowrap}
+.student-brand:before{content:'';display:block;background:url('./assets/common/pink-mailbox.png') center/contain no-repeat;width:39px;height:39px}
+.student-top .student-sub{color:#88829a;font-size:13px}
+.student-identity{display:flex;gap:10px;align-items:center;background:rgba(246,242,254,.95);border:1px solid #e9e2f2;padding:5px 11px 5px 6px;border-radius:50px;white-space:nowrap;font-weight:700;font-size:14px;color:#4f4774}
+.student-identity .avatar{width:36px;height:36px}
+.entry-grid{display:grid;grid-template-columns:minmax(300px,54%) minmax(290px,1fr);align-items:center;gap:clamp(22px,4vw,55px);min-height:calc(100svh - 48px)}
+.entry-mailbox{display:block;max-height:min(68svh,650px);width:100%;object-fit:contain;filter:drop-shadow(0 18px 24px rgba(130,66,93,.16));pointer-events:none}
+.entry-copy{background:rgba(255,255,255,.84);border:1px solid #e9e0e8;border-radius:27px;padding:clamp(24px,4vw,55px);backdrop-filter:blur(8px);box-shadow:0 14px 50px rgba(95,64,74,.12)}
+.entry-copy .eyebrow,.profile-card .eyebrow{display:inline-block;border-radius:50px;background:#f3eafd;color:#7866a9;font-size:12px;font-weight:800;padding:7px 14px;letter-spacing:.02em}
+.entry-copy h1{font-size:clamp(38px,4.8vw,68px);font-weight:900;letter-spacing:-.08em;margin:15px 0 11px;color:#2d2a4a;line-height:1.13}
+.entry-copy h2{font-size:clamp(28px,3vw,39px);font-weight:900;letter-spacing:-.06em;margin:12px 0}
+.entry-copy p{color:#6e6d83;line-height:1.7;margin:0 0 18px}
+.entry-copy .stack{margin-top:22px}
+.entry-copy .btn{width:100%;min-height:63px;font-size:18px;text-align:center;border-radius:17px}
+.entry-copy .btn + .btn{margin-top:5px}
+.entry-copy .teacher-choice{background:rgba(255,255,255,.95);border-color:#ded9e7;color:#65607d}
+.entry-copy small{display:block;margin-top:15px;color:#7b758d;font-size:12px;line-height:1.65}
+.entry-class-grid{display:grid;gap:10px;margin-top:22px}
+.entry-class-grid .btn{width:100%;min-height:64px;font-size:19px}
+.profile-layout{min-height:calc(100svh - 120px);display:flex;align-items:center;justify-content:center;padding:20px 0}
+.profile-card{width:min(760px,100%);padding:clamp(24px,4vw,40px)!important;display:grid;grid-template-columns:1fr 210px;gap:18px;align-items:center}
+.profile-card h2{font-size:clamp(24px,2.8vw,34px);letter-spacing:-.05em;margin:14px 0 10px}
+.profile-card .input{font-size:17px;padding:14px 17px;width:100%;max-width:480px;min-height:54px;margin:11px 0}
+.profile-card .btn{min-height:56px;margin-top:14px;width:100%;max-width:350px}
+.profile-decor{width:210px;max-width:100%;filter:drop-shadow(0 15px 16px rgba(148,81,107,.13));pointer-events:none}
+.feed-lead{padding:15px 5px 14px;display:flex;gap:10px;align-items:center;justify-content:space-between}
+.feed-lead h2{font-size:clamp(20px,2.2vw,29px);letter-spacing:-.055em;margin:0}
+.feed-lead p{margin:6px 0 0;color:#77768a;font-size:13px}
+.feed-board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.feed-tile{appearance:none;padding:0!important;overflow:hidden;text-align:left!important;display:flex!important;flex-direction:column;min-width:0;cursor:pointer;min-height:310px;}
+.feed-tile .feed-art{height:150px;width:100%;object-fit:cover;object-position:center 50%;background:linear-gradient(130deg,#fff9f1,#f5f1fd)}
+.feed-tile .tile-content{padding:18px 19px 17px;display:flex;flex:1;flex-direction:column;gap:8px}
+.feed-tile .tile-tag{font-size:12px;color:#977cb8;font-weight:800}
+.feed-tile h3{font-size:18px;letter-spacing:-.04em;line-height:1.4;margin:0;color:#263053}
+.feed-tile p{font-size:13px;color:#697188;line-height:1.6;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.feed-tile .tile-foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:14px;font-size:13px;font-weight:800;color:#7f64c3}
+.feed-tile .tile-foot .complete{color:#26876f}
+.student-writing{display:grid;grid-template-columns:minmax(0,46%) minmax(0,54%);gap:15px;align-items:start}
+.story-column,.reply-column{min-width:0}
+.back-strip{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:11px}
+.page.student .back-strong{background:#fff;border:2px solid #d5c2f0;color:#614db0;box-shadow:0 5px 13px rgba(90,68,125,.1);font-size:15px;font-weight:900;padding:13px 17px;min-height:53px}
+.story-post{padding:0!important;overflow:hidden}
+.story-post .story-copy{padding:clamp(21px,2.2vw,29px) clamp(19px,2.3vw,30px) 14px}
+.story-person{display:flex;align-items:center;gap:11px;margin-bottom:10px}
+.story-person .story-person-icon{width:38px;height:38px;display:grid;place-items:center;background:#f0ebfb;border-radius:50%;color:#8a6fb9;font-size:20px}
+.story-person strong{display:block;font-size:14px;letter-spacing:-.02em}.story-person small{font-size:12px;color:#8790a0}
+.story-post .story-label{font-size:12px;color:#8a6ab6;font-weight:800;letter-spacing:.02em}
+.story-post h2{margin:9px 0 12px;font-size:clamp(21px,2.15vw,29px);letter-spacing:-.045em;line-height:1.39}
+.story-post .story-body{max-height:min(40svh,410px);overflow:auto;white-space:pre-line;font-size:clamp(14px,1.15vw,17px);line-height:1.75;color:#333f60;padding-right:6px;scrollbar-color:#dad0e8 transparent}
+.story-scene{height:clamp(145px,23svh,235px);background:#fffaf5;overflow:hidden;position:relative;border-top:1px solid #eee5e2}
+.story-scene img{width:100%;height:100%;object-fit:cover;object-position:center 45%;display:block;}
+.reply-panel{padding:clamp(18px,2.4vw,30px)!important;position:relative;}
+.reply-headline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px}
+.reply-headline h2{font-size:clamp(21px,2.3vw,30px);margin:0;letter-spacing:-.05em}
+.reply-panel .intro{color:#74748b;font-size:14px;margin:7px 0 18px}
+.reply-graphic{width:100px;height:100px;object-fit:contain;position:absolute;top:6px;right:17px;pointer-events:none;opacity:.88}
+.reply-guidance{border:1px solid #e5dfec;border-left:4px solid #9c83d9;background:#faf7ff;border-radius:13px;padding:15px 17px;margin:8px 0 18px;color:#414664;font-size:14px;line-height:1.8}
+.reply-guidance strong{display:block;color:#62509b;margin-bottom:3px}
+.reply-identity{display:flex;align-items:center;gap:11px;padding:9px 12px;background:linear-gradient(100deg,#f7f1fb,#fdfaff);border-radius:15px;margin-bottom:10px}
+.reply-identity .avatar{width:47px;height:47px;object-fit:contain}
+.reply-identity small{display:block;color:#89849e;font-size:12px}
+.reply-identity strong{font-size:15px}
+.page.student textarea#reply{min-height:90px;height:95px;resize:vertical;line-height:1.6;font-size:16px;padding:16px;border-radius:15px;border:1px solid #dedbe8;background:#fff;box-shadow:inset 0 1px 4px rgba(31,30,61,.018)}
+.reply-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px}
+.reply-toolbar .btn{min-width:170px;min-height:54px;font-size:17px}
+.reply-status{font-size:13px;color:#817f93}
+.reply-completed{color:#338875;font-size:13px;font-weight:700;margin-top:12px;}
+.page.student .avatar{object-fit:contain}
+@media(max-width:1090px){.student-writing{grid-template-columns:minmax(0,48%) minmax(0,52%);gap:11px}.feed-board{grid-template-columns:repeat(2,minmax(0,1fr))}.story-post .story-copy{padding:18px}.story-post .story-body{max-height:45svh}.reply-graphic{width:65px;height:65px;opacity:.65}}
+@media(max-width:820px){.entry-grid{grid-template-columns:1fr 1fr;gap:13px}.entry-copy{padding:19px}.entry-copy h1{font-size:38px}.student-top .student-sub{display:none}.reply-guidance{font-size:13px;padding:11px}.reply-panel{padding:14px!important}.reply-graphic{display:none}}
+@media(max-width:700px){.entry-grid,.student-writing{grid-template-columns:1fr}.entry-grid{min-height:90svh}.entry-mailbox{max-height:37svh}.entry-copy{margin-top:-25px}.student-writing .story-body{max-height:340px}.student-top{flex-wrap:wrap}.profile-card{grid-template-columns:1fr}.profile-decor{display:none}.feed-board{grid-template-columns:1fr}.feed-tile{min-height:240px}}
+@media(prefers-reduced-motion:reduce){.page.student .btn,.page.entry .btn{transition:none}}
+
+/* ========== 교사용 PC / 칠판 화면 v2 (학생 화면 CSS는 변경하지 않음) ========== */
+.page.admin [data-action="resume-students"] {
+  background:#ebf8f2; border:1px solid #bce8d3; color:#126c53;
+  box-shadow:0 3px 11px rgba(31,111,89,.10);
+  font-size:14px;font-weight:800;min-height:44px;
+}
+.page.admin [data-action="resume-students"]:hover {background:#ddf2e8}
+/* 발표 화면: 좁고 높은 왼쪽 사연 + 넓은 오른쪽 댓글 */
+.page.board {max-width:1800px; padding:clamp(12px,1.5vw,22px); min-width:0;}
+.page.board .top{margin-bottom:8px;gap:14px}
+.page.board .brand{font-size:clamp(24px,2.2vw,35px)}
+.page.board .board-tabs{margin:8px 0 13px;gap:9px}
+.page.board .board-tabs .btn{min-height:43px}
+.page.board .grid-two.board{
+  display:grid;
+  grid-template-columns:minmax(270px,26%) minmax(0,1fr);
+  align-items:stretch;
+  gap:16px;
+  height:calc(100dvh - 182px);
+  min-height:490px;
+  min-width:0;
+}
+.page.board .grid-two.board > * {min-width:0; min-height:0;}
+.page.board .story-post{
+  display:flex;flex-direction:column;min-height:0;height:100%;
+  overflow:hidden;padding:0;
+}
+.page.board .story-post .story-copy{
+  flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;
+  padding:20px 22px 10px;
+}
+.page.board .story-post h2{font-size:clamp(21px,1.75vw,30px);line-height:1.34;overflow-wrap:anywhere}
+.page.board .story-post .story-body{
+  max-height:none;overflow:visible;line-height:1.7;
+  font-size:clamp(15px,1.12vw,19px);overflow-wrap:anywhere;
+}
+.page.board .story-post .story-scene{
+  flex:0 0 25%;height:25%;min-height:145px;max-height:245px;
+  border-top:1px solid #f0e8e3;
+}
+.page.board .grid-two.board > section.panel {
+  display:flex;flex-direction:column;height:100%;min-height:0;
+  padding:20px 22px;overflow:hidden;
+}
+.page.board .grid-two.board > section.panel > h2 {
+  flex:none;margin:0 0 16px;line-height:1.3;
+  font-size:clamp(24px,2.1vw,35px);
+}
+.page.board .board-replies {
+  flex:1 1 0;min-height:0;max-height:none;
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;align-content:start;
+  overflow-y:auto;overflow-x:hidden;
+  overscroll-behavior:contain;
+  padding:3px 7px 16px 2px;
+}
+.page.board .board-replies > *, .page.board .board-replies .comment,
+.page.board .board-replies .reply-head {min-width:0;max-width:100%;}
+.page.board .board-replies .comment {margin:0;padding:15px 17px;}
+.page.board .board-replies .comment strong {overflow-wrap:anywhere;}
+.page.board .board-replies .comment p {
+  margin:8px 0 0; white-space:pre-wrap;
+  overflow-wrap:anywhere; word-break:break-word;
+  max-width:100%; min-width:0;
+  line-height:1.5; font-size:clamp(17px,1.35vw,23px);
+}
+/* small desktops and tablets viewing the presentation horizontally */
+@media (max-width:1050px){
+  .page.board .grid-two.board{grid-template-columns:minmax(245px,28%) minmax(0,1fr);min-height:430px;gap:10px}
+  .page.board .grid-two.board > section.panel{padding:15px 13px}
+  .page.board .story-post .story-copy{padding:13px}
+  .page.board .board-replies .comment{padding:11px}
+}
+@media (max-width:700px){
+  .page.board .grid-two.board{height:auto;min-height:0;display:block}
+  .page.board .story-post{height:auto;max-height:65vh;margin-bottom:13px}
+  .page.board .story-post .story-copy{overflow-y:auto}
+  .page.board .story-post .story-scene{height:130px;min-height:130px;flex:none}
+  .page.board .grid-two.board > section.panel{height:65vh;min-height:340px}
+  .page.board .board-replies{grid-template-columns:1fr}
+}
+
+/* 교사용: 현황판을 높이지 않고 왼쪽 메뉴 끝에 안전한 초기화 조작을 배치 */
+.page.admin .reset-tools{margin-top:12px;padding-top:12px;border-top:1px solid #e6e1e7;display:flex;align-items:flex-start;flex-direction:column;gap:6px}
+.page.admin .reset-tools .btn{white-space:normal;text-align:left;max-width:100%;min-height:36px}
+.page.admin .reset-tools small{font-size:11px;line-height:1.4;color:#76717d}
+</style></head><body><div id="app"><div class="loading">💌 마음우체통을 준비하고 있어요…</div></div><script>window.addEventListener('error', function(e) { const target=document.getElementById('app'); if(target && /준비하고 있어요/.test(target.textContent)){target.innerHTML='<div class="loading">실행 오류가 발생했어요. 인터넷 연결을 확인하고 알려주세요: '+String(e.message||'스크립트 오류').replace(/</g,'&lt;')+'</div>';}});setTimeout(function(){const target=document.getElementById('app');if(target && /준비하고 있어요|Firebase 연결 중/.test(target.textContent)){target.innerHTML='<div class="loading">Firebase 연결이 지연되고 있어요. 인터넷 연결 또는 브라우저 보안 설정을 확인해 주세요.</div>';}},12000);</script><script type="module">import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js';
+import { getAuth, signInAnonymously, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js';
+import {getFirestore,doc,getDoc,getDocs,setDoc,updateDoc,deleteDoc,onSnapshot,runTransaction,query,where,collection,writeBatch} from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js';
+const STORIES = [
+  {
+    id: 'sns',
+    sender: '말없는 다람쥐',
+    handle: '@silent_sq',
+    avatarBg: '#3b82f6',
+    avatarEmoji: '🐿️',
+    timeAgo: '10분 전',
+    tag: '#우정 #소외감',
+    title: '친한 무리에서 나만 빠지는 것 같아 😔',
+    text: '나 포함해서 넷이 맨날 같이 다니는 무리가 있는데, 요즘 나만 빼고 셋이 먼저 얘기하고 노는 것 같은 느낌이 들어.\n\n분명 다 같이 친한 사인데, 어쩌다 나만 단톡방 얘기를 늦게 보거나 무슨 일을 나중에 전해 들을 때가 있어. 내가 예민한 건가 싶다가도, 그럴 때마다 마음이 쿵 내려앉아.\n\n애들한테 서운하다고 말하기도 애매하고, 그냥 혼자 삭이고 있어...'
+  },
+  {
+    id: 'crush',
+    sender: '구름낀오후',
+    handle: '@cloud_afternoon',
+    avatarBg: '#ec4899',
+    avatarEmoji: '☁️',
+    timeAgo: '35분 전',
+    tag: '#짝사랑 #고백고민',
+    title: '요즘 같은 모둠 여자애가 자꾸 신경 쓰여 😳',
+    text: '요즘 같은 모둠인 여자애가 자꾸 신경 쓰여. 걔가 웃으면 나도 괜히 기분이 좋아지고, 말 걸고 싶은데 막상 앞에 서면 아무 말도 안 나와.\n\n친구들이 눈치챌까 봐 티도 못 내겠고, 이런 마음이 드는 게 이상한 건가 싶어서 아무한테도 말 못 했어.\n\n그냥 이대로 있기엔 답답해서 고백을 해볼까 싶다가도, 괜히 말했다가 사이가 어색해질까 봐 자꾸 망설여져. 어떻게 해야 할지 모르겠어.'
+  },
+  {
+    id: 'lonely_sad',
+    sender: '달빛토끼',
+    handle: '@moon_rabbit',
+    avatarBg: '#8b5cf6',
+    avatarEmoji: '🐰',
+    timeAgo: '1시간 전',
+    tag: '#감정기복 #우울',
+    title: '혼자 있고 싶고, 괜히 눈물도 나 💧',
+    text: '예전에는 쉬는 시간마다 친구들이랑 떠드는 게 좋았는데, 요즘은 그냥 혼자 창밖을 보거나 엎드려 있고 싶을 때가 많아.\n\n특별히 슬픈 일이 있었던 것도 아닌데 밤에 누워 있으면 그냥 눈물이 날 때도 있어. 아침에 일어나면 별일 아니었던 것 같은데, 그 순간엔 마음이 무거워서 견디기 힘들어.\n\n엄마가 "무슨 일 있어?" 하고 물어보면 딱히 할 말도 없어서 "아니야"라고만 해. 나 이상해진 거 아닌지 걱정돼.'
+  },
+  {
+    id: 'appearance',
+    sender: '수줍은 사슴',
+    handle: '@shy_deer',
+    avatarBg: '#10b981',
+    avatarEmoji: '🦌',
+    timeAgo: '2시간 전',
+    tag: '#외모고민 #사춘기',
+    title: '요즘 자꾸 거울을 보게 돼 🪞',
+    text: '예전엔 거울 같은 거 신경도 안 썼는데, 요즘은 하루에도 몇 번씩 거울을 보게 돼.\n\n얼굴에 뾰루지라도 하나 올라오면 온종일 그것만 신경 쓰이고, 아침에 머리 만지는 시간도 점점 길어져.\n\n사진 찍히는 것도 괜히 싫어지고, 애들이 내 모습을 어떻게 볼지 자꾸 의식하게 돼. 몸도 예전이랑 조금씩 달라지는 게 느껴져서 낯설고, 이런 얘기 누구한테 하기도 좀 창피해. 나만 이런 건가 싶어.'
+  },
+  {
+    id: 'angry',
+    sender: '감자칩',
+    handle: '@potato_chip',
+    avatarBg: '#f59e0b',
+    avatarEmoji: '🥔',
+    timeAgo: '3시간 전',
+    tag: '#화조절 #짜증',
+    title: '별것도 아닌 일에 자꾸 짜증이 나 😤',
+    text: '엄마가 방 좀 치우라고 한 마디 했을 뿐인데 나도 모르게 소리를 지르고 말았어.\n\n말하고 나서는 왜 그렇게까지 화를 냈는지 나도 모르겠고, 엄마한테 미안한 마음도 들어.\n\n요즘 부쩍 짜증이 늘어서 나 스스로도 당황스러워.'
+  }
+];
+
+
+
+
+const config = {
+  apiKey: "AIzaSyCZlGx-vt-vEpFOR0zbw9MPgzjj6quDqr8",
+  authDomain: "bogun-15d1e.firebaseapp.com",
+  projectId: "bogun-15d1e",
+  storageBucket: "bogun-15d1e.firebasestorage.app",
+  messagingSenderId: "73392348981",
+  appId: "1:73392348981:web:b3196225c8462dd576f67c",
+  measurementId: "G-364SD0QV59"
+};
+const firebaseApp=initializeApp(config);
+const auth=getAuth(firebaseApp), db=getFirestore(firebaseApp);
+// 기존 댓글 컬렉션 유지. 새로운 수업 상태와 참가자 정보만 별도 컬렉션 사용.
+const comments=()=>collection(db,'comments');
+const commentDoc=id=>doc(db,'comments',id);
+const sessionDoc=classId=>doc(db,'mm2_sessions',classId);
+const participantDoc=(classId,uid)=>doc(db,'mm2_participants',classId+'_'+uid);
+const participantCollection=()=>collection(db,'mm2_participants');
+function readyUser(callback){onAuthStateChanged(auth,u=>{if(u)callback(u);});signInAnonymously(auth).catch(e=>callback(null,e));}
+
+const embeddedAvatars=["data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23f9dbe5%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%90%B1%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23e4dafb%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%90%B0%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23d8ecff%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%90%BB%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23fae8cc%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%A6%8A%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23d9f2e9%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%90%BC%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23e8e5fa%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%90%A7%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23f9dbe5%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%90%A8%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23e4dafb%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%90%AF%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23d8ecff%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%A6%89%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23fae8cc%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%90%B8%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23d9f2e9%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%A6%8B%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23e8e5fa%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%90%AC%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23f9dbe5%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%8C%99%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23e4dafb%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%E2%AD%90%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23d8ecff%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%E2%98%81%EF%B8%8F%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23fae8cc%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%8C%B1%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23d9f2e9%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%8C%B7%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23e8e5fa%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%8D%80%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23f9dbe5%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%8D%92%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23e4dafb%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%8D%8B%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23d8ecff%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%AA%90%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23fae8cc%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%92%8C%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23d9f2e9%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%E2%98%95%3C%2Ftext%3E%3C%2Fsvg%3E", "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2260%22%20fill%3D%22%23e8e5fa%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2261%22%20r%3D%2243%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.42%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2282%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%3E%F0%9F%8E%A8%3C%2Ftext%3E%3C%2Fsvg%3E"];
+
+const app=document.getElementById('app');
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const BAD=['시발','씨발','ㅅㅂ','ㅆㅂ','병신','ㅂㅅ','지랄','ㅈㄹ','존나','개새끼','닥쳐','꺼져'];
+const prohibited=x=>BAD.some(w=>String(x).replace(/\s/g,'').toLowerCase().includes(w));
+const AVATAR_NAMES=["avatar_01_cat.png", "avatar_02_dog.png", "avatar_03_rabbit.png", "avatar_04_bear.png", "avatar_05_penguin.png", "avatar_06_fox.png", "avatar_07_chick.png", "avatar_08_frog.png", "avatar_09_hamster.png", "avatar_10_panda.png", "avatar_11_owl.png", "avatar_12_whale.png", "avatar_13_cloud.png", "avatar_14_star.png", "avatar_15_heart.png", "avatar_16_sprout.png", "avatar_17_leaf.png", "avatar_18_daisy.png", "avatar_19_sun.png", "avatar_20_moon.png", "avatar_21_clover.png", "avatar_22_rainbow.png", "avatar_23_drop.png", "avatar_24_letter.png"];
+const avatar=n=>{const id=Math.max(1,Math.min(24,Number(n)||1));return './assets/avatars/'+AVATAR_NAMES[id-1]};
+const avatarImg=n=>`<img class="avatar" src="${avatar(n)}" alt="자동 배정 프로필">`;
+const sClass=n=>`${n}반`;
+let uid=null,cls=Number(new URLSearchParams(location.search).get('class'))||Number(sessionStorage.getItem('mm2_class'))||0;
+if(![1,2,3].includes(cls))cls=0;
+let mode='home',nick='',avatarId=0,storyIdx=0,commentsCache=[],participants=[],settings={phase:'writing',target:0,snapshot:[],boardStory:0},teacher=false,teacherClass=0;
+let offComments=()=>{},offSettings=()=>{},offParticipants=()=>{};
+let subscribedClass=0;
+const base=(content,opts='')=>`<main class="page ${opts}">${content}</main>`;
+const head=(name='마음우체통',controls='')=>`<header class="top"><div class="brand">💌 ${name}<small>너의 마음을 전하는 우리 반의 작은 공간</small></div><div class="actions">${controls}</div></header>`;
+function render(){ if(!uid){app.innerHTML='<div class="loading">Firebase 연결 중…</div>';return;} if(cls&&settings.phase==='board'&&!teacher&&mode!=='home'&&mode!=='class')mode='locked'; const r={home,class:classes,profile,feed,write,locked,admin,board};app.innerHTML=(r[mode]||home)();bind(); }
+function nav(m){mode=m;render();}
+function attachClass(c){const changed=cls!==c; if(changed||subscribedClass!==c){offComments();offSettings();offParticipants();cls=c;subscribedClass=c;sessionStorage.setItem('mm2_class',String(c));if(changed)settings={phase:'writing',target:0,snapshot:[],boardStory:0};subscribe();}nick=localStorage.getItem('mm2_nick_'+cls+'_'+uid)||'';avatarId=Number(localStorage.getItem('mm2_avatar_'+cls+'_'+uid)||0);}
+function subscribe(){if(!cls)return;offComments=onSnapshot(comments(),sn=>{commentsCache=sn.docs.map(d=>({id:d.id,...d.data()})).filter(x=>x.classId===sClass(cls));if(mode!=='write'&&mode!=='profile')render();},e=>{console.error(e);alert('댓글 불러오기 오류: '+(e.code||e.message));});offSettings=onSnapshot(sessionDoc(sClass(cls)),sn=>{settings={phase:'writing',target:0,snapshot:[],boardStory:0,...(sn.data()||{})};const resetStamp=Number(settings.resetAt||0);const resetSeenKey=`mm2_reset_seen_${cls}_${uid}`;if(resetStamp>Number(localStorage.getItem(resetSeenKey)||0)){localStorage.removeItem('mm2_nick_'+cls+'_'+uid);localStorage.removeItem('mm2_avatar_'+cls+'_'+uid);localStorage.setItem(resetSeenKey,String(resetStamp));nick='';avatarId=0;if(!teacher&&mode!=='home'&&mode!=='class')mode='profile';}if(settings.phase==='board'&&!teacher&&mode!=='home'&&mode!=='class')mode='locked';else if(settings.phase==='writing'&&!teacher&&mode==='locked')mode=nick?'feed':'profile';render();},console.error);if(teacher)watchParticipants();}
+function watchParticipants(){offParticipants();offParticipants=onSnapshot(participantCollection(),sn=>{participants=sn.docs.map(d=>d.data()).filter(x=>x.classId===sClass(cls));if(teacher)render();},console.error);}
+const storyImage=s=>`./assets/stories/${s.id}.png`;
+const studentHead=(controls='')=>`<header class="student-top"><div class="student-brand">마음우체통</div><span class="student-sub">친구의 고민에 따뜻한 마음을 전해요</span><div class="actions">${controls}</div></header>`;
+function home(){return base(`<div class="entry-grid"><div><img class="entry-mailbox" src="./assets/common/pink-mailbox.png" alt="따뜻한 편지가 담긴 분홍 우체통"></div><section class="entry-copy"><span class="eyebrow">우리 반 따뜻한 소통 공간</span><h1>마음우체통</h1><p>친구의 고민에 귀 기울이고, 따뜻한 마음을 전해요.</p><div class="stack"><button class="btn primary" data-action="student">학생용 · 고민 읽고 댓글 쓰기 →</button><button class="btn teacher-choice" data-action="teacher">교사용 · 댓글 관리 / 칠판 발표 →</button></div><small>학생 댓글은 선생님이 칠판에 공개하기 전까지 친구들에게 보이지 않아요.</small></section></div>`, 'entry')}
+function classes(){return base(`<div class="entry-grid"><div><img class="entry-mailbox" src="./assets/common/pink-mailbox.png" alt="분홍 우체통"></div><section class="entry-copy"><span class="eyebrow">마음우체통</span><h2>우리 반을 선택해 주세요</h2><p>학급을 선택하면 그 반의 댓글 작성 화면으로 들어가요.</p><div class="entry-class-grid">${[1,2,3].map(x=>`<button class="btn ${x===cls?'primary':''}" data-class="${x}">6학년 ${x}반 →</button>`).join('')}</div><small>선생님이 나눠 준 학급별 QR코드로 들어오면 반이 자동으로 선택돼요.</small></section></div>`, 'entry')}
+function profile(){return base(studentHead(`<span class="student-identity">6학년 ${cls}반</span>`)+`<div class="profile-layout"><section class="panel profile-card"><div><span class="eyebrow">익명으로 참여해요</span><h2>댓글에서 사용할 닉네임을 정해 주세요</h2><p class="muted">다른 친구들과 함께 읽을 이름이에요. 실제 이름이나 개인정보는 쓰지 않아요.</p><label for="nick" style="font-weight:800;font-size:14px">내 닉네임</label><input class="input" id="nick" maxlength="16" value="${esc(nick)}" placeholder="예: 반짝이는 별"><p class="muted" style="font-size:13px">프로필 그림은 24종 중에서 자동 배정돼요. 이미 배정됐다면 그대로 유지돼요.</p><button class="btn primary" data-action="save-nick">고민 피드 둘러보기 →</button></div><img class="profile-decor" src="./assets/common/pink-mailbox.png" alt="우체통 장식"></section></div>`, 'student')}
+const mine=s=>commentsCache.find(c=>c.storyId===s.id&&(c.userId===uid||c.id===`${cls}_${uid}_${s.id}`));
+function feed(){const n=STORIES.filter(s=>!!mine(s)).length;return base(studentHead(`<span class="student-identity">${avatarImg(avatarId)}<span>6학년 ${cls}반 · ${esc(nick)}</span></span><button class="btn tiny" data-action="edit-nick">닉네임 수정</button>`)+`<section class="feed-lead"><div><h2>친구들의 고민 피드</h2><p>고민을 읽고 친구에게 해 줄 수 있는 따뜻한 말을 적어 보세요.</p></div><span class="pill">댓글 작성 ${n} / 5</span></section><section class="feed-board">${STORIES.map((s,i)=>`<button type="button" class="panel feed-tile" data-story="${i}"><img class="feed-art" src="${storyImage(s)}" alt="${esc(s.title)} 고민 관련 감성 일러스트"><span class="tile-content"><span class="tile-tag">고민 ${String(i+1).padStart(2,'0')} · ${esc(s.tag)}</span><h3>${esc(s.title)}</h3><p>${esc(s.text).slice(0,98)}…</p><span class="tile-foot"><span class="${mine(s)?'complete':''}">${mine(s)?'✓ 작성 완료 · 수정하기':'댓글 작성하기 →'}</span><span>›</span></span></span></button>`).join('')}</section>`, 'student')}
+function storyCard(s){return `<article class="panel story-post"><div class="story-copy"><div class="story-person"><span class="story-person-icon">✉</span><span><strong>${esc(s.sender)}</strong><small>익명 고민 · ${esc(s.timeAgo)}</small></span></div><span class="story-label">${esc(s.tag)}</span><h2>${esc(s.title)}</h2><div class="story-body">${esc(s.text)}</div></div><div class="story-scene"><img src="${storyImage(s)}" alt="고민 장면을 표현한 감성 일러스트"></div></article>`}
+function write(){const s=STORIES[storyIdx],m=mine(s);return base(studentHead(`<span class="student-identity">${avatarImg(avatarId)}<span>6학년 ${cls}반 · ${esc(nick)}</span></span>`)+`<div class="student-writing"><div class="story-column"><div class="back-strip"><button class="btn back-strong" data-action="back-feed">← 고민 목록으로 돌아가기</button><span class="pill">${storyIdx+1} / 5</span></div>${storyCard(s)}</div><div class="reply-column"><section class="panel reply-panel"><div class="reply-headline"><h2>따뜻한 댓글 남기기</h2><span class="pill">${storyIdx+1}번 고민</span></div><p class="intro">내가 친구에게 직접 전해 줄 수 있는 말을 생각해 보세요.</p><div class="reply-guidance"><strong>댓글을 쓰기 전에 꼭 읽어 주세요.</strong>친구에게 실제로 해 줄 수 있는 따뜻한 말을 적어 보세요.<br>여러분이 작성한 댓글은 나중에 친구들과 함께 읽어 볼 거예요. 놀리거나 상처 주는 댓글은 선생님이 삭제할 수 있어요.</div><div class="reply-identity">${avatarImg(avatarId)}<div><small>작성자</small><strong>${esc(nick)}</strong></div></div><label for="reply" style="display:block;margin:4px 0 9px;font-size:13px;color:#565675;font-weight:750">내 댓글</label><textarea id="reply" class="textarea" maxlength="500" rows="3" placeholder="친구를 위로하거나 도와줄 수 있는 말을 적어 보세요.">${esc(m?.text||'')}</textarea><div class="reply-toolbar"><span id="status" class="reply-status">${esc(m?.text?.length||0)} / 500자</span><button class="btn primary" data-action="send">${m?'댓글 수정하기':'댓글 보내기'} →</button></div>${m?'<div class="reply-completed">✓ 이 고민에 댓글을 작성했어요. 내용을 바꾸고 다시 저장할 수 있어요.</div>':''}</section></div></div>`, 'student')}
+function locked(){return base(studentHead()+`<section class="panel" style="max-width:680px;margin:9svh auto;text-align:center;padding:30px 25px 45px"><img src="./assets/common/pink-mailbox.png" alt="마음우체통" style="width:clamp(160px,25vw,250px);height:auto"><h1 style="margin:0 0 12px">마음우체통 활동이 끝났어요!</h1><h2 style="font-size:clamp(18px,2.5vw,27px)">아이패드를 내려놓고 전자칠판을 봐주세요.</h2><p class="muted">이제 친구들의 따뜻한 마음을 함께 나눌 시간이에요.</p></section>`, 'student')}
+const classPicker=()=>`<select id="admin-class" class="input" style="width:150px">${[1,2,3].map(c=>`<option value="${c}" ${c===cls?'selected':''}>6학년 ${c}반</option>`).join('')}</select>`;
+const countStory=s=>new Set(commentsCache.filter(c=>c.storyId===s.id).map(c=>c.userId||c.id)).size;
+const completed=()=>new Set(commentsCache.map(x=>x.userId).filter(Boolean)).size? [...new Set(commentsCache.map(x=>x.userId).filter(Boolean))].filter(id=>STORIES.every(s=>commentsCache.some(c=>c.userId===id&&c.storyId===s.id))).length:0;
+function admin(){const s=STORIES[storyIdx];const cards=commentsCache.filter(c=>c.storyId===s.id).sort((a,b)=>(a.ts||0)-(b.ts||0));return base(head('교사용 댓글 관리',`${classPicker()}<span class="pill" aria-live="polite">${settings.phase==='board'?'● 칠판 공개 중 · 학생 작성 잠김':'● 학생 댓글 작성 중'}</span><button class="btn soft" data-action="resume-students" ${settings.phase==='board'?'':'disabled title="이미 학생들이 댓글을 작성할 수 있습니다"'}>▶ 학생 댓글 활동 이어가기</button><button class="btn primary" data-action="publish">칠판 공개 시작 →</button>`)+`<section class="panel" style="margin-bottom:15px"><div class="bar-title"><h3>6학년 ${cls}반 · 참여 현황</h3><span class="pill">● 실시간 업데이트</span></div><div class="stats"><div class="stat">오늘 참여 대상 <input id="target" class="input" type="number" min="0" max="50" style="width:78px" value="${Number(settings.target)||0}"> 명 <button class="btn tiny" data-action="target">저장</button></div><div class="stat">5개 모두 완료 <strong>${completed()}명</strong></div></div><h3>5개 고민별 댓글 작성 현황</h3><div class="five">${STORIES.map((s,i)=>{let n=countStory(s),target=Number(settings.target)||0;return `<button class="btn" data-story="${i}"><strong>${i+1}번 · ${esc(s.title).slice(0,16)}</strong><div class="count">${n}/${target||'—'}명</div><div class="progress"><div style="width:${target?Math.min(100,100*n/target):0}%"></div></div></button>`}).join('')}</div></section><div class="admin-grid"><aside class="panel admin-list"><h3>고민 게시글 목록</h3>${STORIES.map((s,i)=>`<button data-story="${i}" class="btn ${i===storyIdx?'selected':''}">${i+1}. ${esc(s.title)} <span class="pill">${countStory(s)}명</span></button>`).join('')}<div class="reset-tools"><button class="btn tiny danger" data-action="reset-class" title="현재 선택된 학급만 삭제">↺ 현재 반 활동 초기화</button><small>현재 반의 댓글·참여기록·프로필 배정 삭제</small></div></aside><section class="panel"><div class="bar-title"><div><h2>${storyIdx+1}. ${esc(s.title)}</h2><p class="muted">부적절한 댓글만 '미공개'로 바꾸세요.</p></div><span class="pill">댓글 ${cards.length}개</span></div><div style="max-height:52vh;overflow:auto">${cards.length?cards.map(c=>`<article class="comment"><div class="comment-row"><div class="reply-head">${avatarImg(c.avatarId)}<strong>${esc(c.nickname||'익명')}</strong></div><div class="comment-controls"><button class="btn tiny ${c.hidden?'selected':''}" data-hide="${esc(c.id)}">${c.hidden?'미공개 ✓':'미공개'}</button><button class="btn tiny danger" data-del="${esc(c.id)}">× 삭제</button></div></div><p>${esc(c.text)}</p></article>`).join(''):'<p class="muted">아직 등록된 댓글이 없어요.</p>'}</div></section></div>`, 'admin')}
+function board(){const s=STORIES[Number(settings.boardStory)||0];const list=(settings.snapshot||[]).filter(c=>c.storyId===s.id);return base(head('마음우체통',`<span class="pill">6학년 ${cls}반 · 함께 나누는 이야기</span><button class="btn tiny soft" data-action="resume-students">학생댓글활동 이어가기</button><button class="btn tiny" data-action="admin-again">교사용 관리</button>`)+`<nav class="board-tabs">${STORIES.map((s,i)=>`<button class="btn ${(Number(settings.boardStory)||0)===i?'selected':''}" data-board-story="${i}">${i+1}번 고민</button>`).join('')}</nav><div class="grid-two board">${storyCard(s)}<section class="panel"><h2>친구들의 따뜻한 댓글</h2><div class="board-replies">${list.length?list.map(c=>`<article class="comment"><div class="reply-head">${avatarImg(c.avatarId)}<strong>${esc(c.nickname||'익명')}</strong></div><p>${esc(c.text)}</p></article>`).join(''):'<p class="muted">표시할 댓글이 없어요.</p>'}</div></section></div>`, 'board')}
+async function allocateAvatar(){
+  let existing;
+  try {existing=await getDoc(participantDoc(sClass(cls),uid));}
+  catch(e){throw new Error('프로필 기록 조회 실패 ('+(e.code||e.message)+'). Firebase 규칙에서 mm2_participants 접근을 확인해야 해요.');}
+  if(existing.exists()&&existing.data().avatarId)return existing.data().avatarId;
+  const order=Array.from({length:24},(_,i)=>i+1).sort(()=>Math.random()-.5);
+  for(const a of order){
+    try{
+      return await runTransaction(db,async tx=>{
+        const slot=doc(db,'mm2_avatar_slots',`${sClass(cls)}_${a}`);
+        const state=await tx.get(slot);
+        if(state.exists()&&state.data().uid!==uid)throw new Error('occupied');
+        tx.set(slot,{uid,classId:sClass(cls)});
+        tx.set(participantDoc(sClass(cls),uid),{userId:uid,classId:sClass(cls),avatarId:a},{merge:true});
+        return a;
+      });
+    }catch(e){
+      if(e.message==='occupied')continue;
+      throw new Error('프로필 배정 저장 실패 ('+(e.code||e.message)+'). Firebase 규칙에서 mm2_avatar_slots 및 mm2_participants 쓰기를 확인해야 해요.');
+    }
+  }
+  throw new Error('이 반의 프로필 24개가 모두 배정되었습니다.');
+}
+async function resetCurrentClass(button){
+  if(!teacher||![1,2,3].includes(cls))return;
+  const selected=cls, classId=sClass(selected);
+  const typed=prompt(`6학년 ${selected}반의 댓글, 참여 기록, 프로필 배정을 모두 초기화합니다.\n다른 반의 데이터는 유지됩니다.\n이 작업은 되돌릴 수 없습니다.\n계속하려면 아래 내용을 정확히 입력하세요.\n\n${selected}반 초기화`);
+  if(typed!==`${selected}반 초기화`){if(typed!==null)alert('입력 문구가 일치하지 않아 초기화하지 않았어요.');return;}
+  if(!confirm(`마지막 확인: 6학년 ${selected}반의 모든 댓글과 참가 기록을 삭제하고 학생들을 닉네임 설정부터 다시 시작하게 할까요?`))return;
+  button.disabled=true;
+  try{
+    const [cSnap,pSnap,slots]=await Promise.all([
+      getDocs(comments()),getDocs(participantCollection()),
+      Promise.all(Array.from({length:24},(_,i)=>getDoc(doc(db,'mm2_avatar_slots',`${classId}_${i+1}`))))
+    ]);
+    const docs=[
+      ...cSnap.docs.filter(d=>d.data().classId===classId),
+      ...pSnap.docs.filter(d=>d.data().classId===classId),
+      ...slots.filter(d=>d.exists()&&d.data().classId===classId)
+    ];
+    if(docs.length+1>500)throw new Error('삭제할 기록이 499개를 초과합니다. 안전을 위해 초기화를 중단했어요.');
+    if(cls!==selected)throw new Error('선택한 반이 바뀌어 초기화를 취소했어요.');
+    const batch=writeBatch(db), stamp=Date.now();
+    for(const row of docs)batch.delete(row.ref);
+    batch.set(sessionDoc(classId),{phase:'writing',target:0,snapshot:[],boardStory:0,updatedAt:stamp,resetAt:stamp});
+    await batch.commit();
+    if(cls===selected){
+      commentsCache=[];participants=[];settings={phase:'writing',target:0,snapshot:[],boardStory:0,updatedAt:stamp,resetAt:stamp};
+      localStorage.removeItem('mm2_nick_'+selected+'_'+uid);
+      localStorage.removeItem('mm2_avatar_'+selected+'_'+uid);
+      localStorage.setItem('mm2_reset_seen_'+selected+'_'+uid,String(stamp));
+      nick='';avatarId=0;nav('admin');
+    }
+    alert(`6학년 ${selected}반의 활동 기록을 초기화했어요. 다른 반은 그대로 유지됩니다.`);
+  }catch(e){console.error('현재 반 초기화 실패',e);alert('초기화하지 못했어요. 기존 데이터는 유지됩니다.\n원인: '+(e.code||e.message));}
+  finally{if(button.isConnected)button.disabled=false;}
+}
+function pinGate(next){const layer=document.createElement('div');layer.className='dialog';layer.innerHTML=`<div class="panel"><h2>🔒 교사용 모드</h2><p class="muted">교사용 비밀번호를 입력해 주세요.</p><input id="pin" class="input" type="password" inputmode="numeric" maxlength="4"><div class="actions"><button class="btn primary" id="enter">입장</button><button class="btn" id="cancel">취소</button></div><p id="pin-error" style="color:#b74f66"></p></div>`;document.body.append(layer);layer.querySelector('#cancel').onclick=()=>layer.remove();const check=()=>{if(layer.querySelector('#pin').value==='0504'){layer.remove();teacher=true;next();}else{layer.querySelector('#pin-error').textContent='비밀번호를 확인해 주세요.'}};layer.querySelector('#enter').onclick=check;layer.querySelector('#pin').onkeydown=e=>{if(e.key==='Enter')check()};layer.querySelector('#pin').focus();}
+// 홈 화면은 개별 버튼 연결 외에 이벤트 위임으로 처리하여 리렌더링에도 안정적으로 동작합니다.
+app.addEventListener('click', function(e){
+  const b=e.target.closest('button[data-action="student"],button[data-action="teacher"]');
+  if(!b || !app.contains(b))return;
+  e.preventDefault();
+  e.stopPropagation();
+  if(b.dataset.action==='student'){
+    teacher=false;
+    // 학급 선택은 항상 명시적으로 시작합니다.
+    mode='class';render();
+  } else {
+    pinGate(()=>{teacher=true;mode='class';render();});
+  }
+},true);
+function bind(){const ac=document.getElementById('admin-class');if(ac)ac.onchange=()=>{attachClass(Number(ac.value));watchParticipants();nav('admin')};app.querySelectorAll('[data-class]').forEach(b=>b.onclick=()=>{attachClass(Number(b.dataset.class));teacherClass=cls;if(teacher){watchParticipants();nav('admin')}else nav(nick?'feed':'profile')});app.querySelectorAll('[data-story]').forEach(b=>b.onclick=()=>{storyIdx=Number(b.dataset.story);nav(teacher?'admin':'write')});app.querySelectorAll('[data-board-story]').forEach(b=>b.onclick=async()=>{if(!teacher)return;const next=Number(b.dataset.boardStory);if(!Number.isInteger(next)||next<0||next>=STORIES.length)return;const previous=Number(settings.boardStory)||0;settings.boardStory=next;render();try{await setDoc(sessionDoc(sClass(cls)),{boardStory:next},{merge:true})}catch(e){console.error(e);settings.boardStory=previous;render();alert('고민 이동 저장 실패: '+(e.code||e.message))}});app.querySelectorAll('[data-hide]').forEach(b=>b.onclick=async()=>{const c=commentsCache.find(c=>c.id===b.dataset.hide);if(!c)return;try{await setDoc(commentDoc(c.id),{hidden:!c.hidden},{merge:true})}catch(e){alert('미공개 변경 실패: '+e.message)}});app.querySelectorAll('[data-del]').forEach(b=>b.onclick=async()=>{if(!confirm('이 댓글을 삭제할까요?'))return;try{await deleteDoc(commentDoc(b.dataset.del))}catch(e){alert('삭제 실패: '+e.message)}});app.querySelectorAll('[data-action]').forEach(b=>{if(['student','teacher'].includes(b.dataset.action))return;b.onclick=()=>handle(b.dataset.action,b)});}
+async function handle(a,button){try{if(a==='reset-class'){pinGate(()=>resetCurrentClass(button));return;}if(a==='student'){teacher=false;if(!cls){nav('class')}else{attachClass(cls);nav(nick?'feed':'profile')} }if(a==='teacher'){pinGate(()=>{if(!cls){nav('class')}else{attachClass(cls);watchParticipants();nav('admin')}})}if(a==='edit-nick')nav('profile');if(a==='back-feed')nav('feed');if(a==='save-nick'){if(settings.phase==='board'&&!teacher)return nav('locked');const v=document.getElementById('nick').value.trim();if(!v||prohibited(v))return alert('닉네임을 확인해 주세요.');button.disabled=true;try{avatarId=avatarId||await allocateAvatar();nick=v;localStorage.setItem('mm2_nick_'+cls+'_'+uid,nick);localStorage.setItem('mm2_avatar_'+cls+'_'+uid,String(avatarId));nav('feed')}finally{button.disabled=false}}if(a==='send'){if(settings.phase==='board')return nav('locked');const s=STORIES[storyIdx],text=document.getElementById('reply').value.trim();if(!text||prohibited(text))return alert('따뜻한 표현으로 댓글을 작성해 주세요.');button.disabled=true;try{const m=mine(s);await setDoc(commentDoc(m?.id||`${cls}_${uid}_${s.id}`),{classId:sClass(cls),storyId:s.id,nickname:nick,avatarId,userId:uid,text,ts:Date.now(),hidden:m?.hidden||false},{merge:true});nav('feed')}finally{button.disabled=false}}if(a==='target'){await setDoc(sessionDoc(sClass(cls)),{target:Math.max(0,Number(document.getElementById('target').value)||0)},{merge:true})}if(a==='publish'){if(!confirm('댓글 검토를 마치고 칠판 화면으로 전환할까요? 학생들의 작성도 종료됩니다.'))return;button.disabled=true;const snapshot=commentsCache.filter(c=>!c.hidden).map(c=>({storyId:c.storyId,nickname:c.nickname,avatarId:c.avatarId||1,text:c.text,id:c.id}));await setDoc(sessionDoc(sClass(cls)),{phase:'board',snapshot,boardStory:storyIdx,updatedAt:Date.now()},{merge:true});nav('board')}if(a==='resume-students'){pinGate(async()=>{try{button.disabled=true;await setDoc(sessionDoc(sClass(cls)),{phase:'writing',snapshot:[],updatedAt:Date.now()},{merge:true});settings.phase='writing';settings.snapshot=[];watchParticipants();nav('admin');}catch(err){console.error(err);alert('학생 댓글 활동 재개 실패: '+(err.code||err.message));button.disabled=false;}})}if(a==='admin-again')pinGate(()=>{watchParticipants();nav('admin')});}catch(e){console.error(e);alert('작업을 완료하지 못했어요: '+(e.code||'')+' '+e.message);if(button)button.disabled=false}}
+readyUser((u,error)=>{if(!u){app.innerHTML=`<div class="loading">Firebase 연결 실패: ${esc(error?.message||'인증 설정 확인')}</div>`;return;}uid=u.uid;if(cls){attachClass(cls)}render();});</script><script>
+window.addEventListener('unhandledrejection',function(e){console.error('마음우체통 비동기 오류:',e.reason);});
+</script></body></html>

@@ -1,0 +1,126 @@
+<!doctype html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>디지털 안전 탐험대 2.0 | 미션 1 도입부 확인</title><style>
+:root{font-family:"Pretendard","Noto Sans KR",system-ui,-apple-system,sans-serif;color:#fff;background:#101f31;font-synthesis:none}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}button{font:inherit;cursor:pointer} .app{height:100vh;height:100dvh;min-height:0;display:flex;flex-direction:column;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}.top{z-index:2;flex:none;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px clamp(12px,3vw,32px);background:#142740;color:#ecf5ff;font-size:clamp(12px,1.35vw,16px)}.top small{opacity:.8}.stage{position:relative;flex:1;min-height:0;overflow:hidden;isolation:isolate}.background{position:absolute;inset:0;background:url('assets/classroom.png') center center/cover no-repeat;transform:scale(1.02);filter:blur(2px) brightness(.86)}.character{position:absolute;z-index:1;left:54%;bottom:0.5%;height:min(82%,750px);width:auto;max-width:50%;object-fit:contain;object-position:bottom;transform:translateX(-50%);filter:drop-shadow(0 9px 16px #1c26364d);pointer-events:none}.stage::after{content:"";position:absolute;z-index:1;left:0;right:0;bottom:0;height:38%;background:linear-gradient(transparent,rgba(7,20,40,.25));pointer-events:none}.dialog{position:absolute;z-index:3;bottom:clamp(12px,3.2vh,34px);left:50%;transform:translateX(-50%);width:min(92%,1120px);height:clamp(142px,29%,234px);padding:clamp(18px,2.6vw,30px) clamp(20px,3vw,34px) clamp(15px,2vh,24px);display:flex;flex-direction:column;justify-content:center;border-radius:18px;border:2px solid rgba(213,226,239,.5);background:rgba(23,46,73,.92);box-shadow:0 14px 44px #101b35a6;backdrop-filter:blur(9px)}.name{position:absolute;top:-20px;left:clamp(19px,3vw,36px);padding:9px 27px;border-radius:13px;background:#eed8a8;color:#2f4359;font-size:clamp(17px,2vw,23px);font-weight:800;box-shadow:0 4px 12px #081b30a0}.line{font-size:clamp(19px,2.2vw,29px);line-height:1.55;letter-spacing:-.02em;word-break:keep-all;overflow:auto;scrollbar-width:thin;max-height:100%;padding:10px 110px 8px 0}.next{position:absolute;bottom:13px;right:18px;border:1px solid #f0daa4;background:#f0daa4;color:#23384e;border-radius:13px;font-size:16px;font-weight:800;padding:10px 20px;min-height:43px}.next:focus-visible{outline:3px solid #8ad6ff;outline-offset:3px}/* Choice UI stays inside approved VN dialog, not drawn on background art. */
+.dialog.is-choice{height:clamp(228px,39%,326px);justify-content:flex-start;padding-top:clamp(30px,4vh,41px);padding-bottom:15px}
+.choice-prompt{font-size:clamp(19px,2.05vw,26px);font-weight:700;line-height:1.45;min-height:0;margin-bottom:12px;word-break:keep-all}
+.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;min-height:0}
+.choice{min-width:0;min-height:60px;padding:12px 17px;border:2px solid #a9bfd1;border-radius:14px;background:#f3f7fb;color:#183653;font-weight:750;font-size:clamp(16px,1.5vw,21px);text-align:left;line-height:1.4;white-space:normal;word-break:keep-all;transition:background .15s,transform .15s}
+.choice:hover{background:#fff2cf}.choice:focus-visible{outline:3px solid #f3cf70;outline-offset:3px}
+.dialog.is-choice .line{display:none}.dialog.is-choice .next{display:none}
+.dialog:not(.is-choice) .choice-prompt,.dialog:not(.is-choice) .choices{display:none}
+.demo-hint{position:absolute;right:clamp(16px,3vw,32px);top:8px;z-index:3;font-size:12px;opacity:.85}
+.small-note{white-space:nowrap}
+@media (max-width:700px){.choices{grid-template-columns:1fr;gap:8px}.choice{min-height:49px;padding:8px 12px}.dialog.is-choice{height:clamp(215px,48%,305px)}.choice-prompt{font-size:18px;margin-bottom:8px}.top small{display:none}.character{left:55%;bottom:14%;height:64%;max-width:73%}.dialog{height:clamp(154px,33%,216px);width:96%;bottom:10px}.line{padding-right:15px;padding-bottom:37px;font-size:clamp(18px,3.3vw,23px)}.next{padding:7px 14px;font-size:14px;min-height:36px}}
+@media (max-height:610px) and (min-width:701px){.dialog.is-choice{height:clamp(203px,52%,260px);padding-top:24px}.choice{min-height:50px;padding:7px 13px}.choice-prompt{margin-bottom:7px}.top{min-height:35px}.character{height:75%;bottom:6%}.dialog{height:clamp(130px,36%,175px);bottom:9px;padding-top:20px}.line{font-size:clamp(17px,2vw,23px)}.name{top:-16px;padding:6px 20px;font-size:17px}.next{bottom:8px;padding:6px 14px;min-height:34px}}
+@media (prefers-reduced-motion:no-preference){.line{animation:fade .2s ease-out}@keyframes fade{from{opacity:.25;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}}
+
+/* Position comparison controls, separate from game dialogue UI */
+.controlbar{z-index:4;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;flex:none;background:#243b58;padding:8px max(12px,env(safe-area-inset-left))}
+.personbtn,.modebtn{color:white;background:#365676;border:1px solid #6d91b1;border-radius:8px;padding:8px 14px;font-size:clamp(13px,1.4vw,17px);font-weight:700;min-height:38px}
+.personbtn[aria-pressed="true"],.modebtn[aria-pressed="true"]{background:#f0d9a5;color:#20354d;border-color:#f0d9a5}
+.control-label{font-size:13px;opacity:.9;padding:0 4px}
+.controls-sep{width:1px;height:26px;background:#90a8c5;margin:0 8px}
+@media(max-width:840px){.controlbar{justify-content:flex-start;overflow:auto;flex-wrap:nowrap;white-space:nowrap;padding:6px 10px}.personbtn,.modebtn{flex:none;padding:7px 10px}.controls-sep{flex:none}}
+@media(max-height:610px){.controlbar{padding-top:3px;padding-bottom:3px}.personbtn,.modebtn{min-height:31px;padding:4px 9px}}
+
+/* V4: Keep approved character positions and clipping. Subtle adult-only scaling. */
+.character{bottom:2.2%;clip-path:inset(0px 0px var(--sprite-hide-bottom,0px) 0px)}
+.character[data-character="teacher"]{height:min(86%,780px)}
+.character[data-character="mom"]{height:min(84.5%,770px)}
+@media(max-width:700px){
+  .character{bottom:14.5%}
+  .character[data-character="teacher"]{height:67%}
+  .character[data-character="mom"]{height:66%}
+}
+@media(max-height:610px) and (min-width:701px){
+  .character{bottom:7%}
+  .character[data-character="teacher"]{height:79%}
+  .character[data-character="mom"]{height:77%}
+}
+
+/* Integration screens. Original v4 visual-novel look is maintained. */
+.stage[data-scene="teacher"] .background{background-image:url('assets/office.png')}
+/* Choice and internal-thought scene take place in the classroom, before meeting the teacher. */
+.stage[data-scene="decision"] .background{background-image:url('assets/classroom.png')}
+.stage[data-scene="decision"] .character{display:none}
+.stage[data-scene="teacher"] .character{height:min(86%,780px)}
+.phone-overlay{position:fixed;z-index:20;inset:0;display:none;flex-direction:column;background:#e6f1f3;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.phone-overlay.active{display:flex}
+.phone-title{flex:none;min-height:36px;padding:8px 18px;background:#142740;color:#f5fbff;font-size:clamp(13px,1.4vw,17px);font-weight:750;text-align:center}
+.phone-frame{display:block;width:100%;flex:1;min-height:0;border:0;background:#e8f4f8}
+.end-scene{display:none;position:absolute;inset:0;z-index:5;align-items:center;justify-content:center;background:#132642b5;text-align:center;padding:24px}
+.end-scene.visible{display:flex}.end-card{background:#fff;color:#1b344e;border-radius:18px;padding:26px;max-width:520px;display:grid;gap:14px}
+.end-card button{border:0;border-radius:12px;background:#244e77;color:white;padding:13px;font-weight:700}
+/* Preserve large-screen v4 position; avoid over-shrinking the sprite in short/narrow windows. */
+@media (max-width:900px){
+ .character{height:min(83%,650px);max-width:66%;bottom:2.2%;left:54%}
+ .stage[data-scene="teacher"] .character{height:min(87%,690px)}
+ .dialog{width:min(94%,1120px)}
+}
+@media (max-width:700px){
+ .character{bottom:2.2%;height:min(83%,650px);max-width:75%;left:54%}
+ .stage[data-scene="teacher"] .character{height:min(87%,690px)}
+ .dialog{bottom:max(8px,env(safe-area-inset-bottom));height:clamp(142px,33%,216px)}
+ .line{font-size:clamp(17px,2.5vw,23px)}
+}
+@media (max-height:530px){.top{min-height:30px;padding-block:4px}.character{height:86%;bottom:2%}.stage[data-scene="teacher"] .character{height:88%}.dialog{height:clamp(116px,34%,168px);bottom:6px}.line{font-size:clamp(16px,2vw,22px)}}
+/* v0.8 integration: larger iPad-friendly Next button; visual positions unchanged. */
+.dialog:not(.is-choice) .next{min-width:118px;min-height:54px;font-size:19px;padding:9px 18px;display:inline-flex;align-items:center;justify-content:center;touch-action:manipulation}
+.dialog:not(.is-choice) .line{padding-bottom:60px}
+@media (max-width:700px){.dialog:not(.is-choice) .next{min-width:110px;min-height:52px;font-size:18px;right:12px;bottom:8px}.dialog:not(.is-choice) .line{padding-bottom:57px}}
+</style><link rel="stylesheet" href="scene-responsive.css?v=6"></head><body><div class="app"><header class="top"><strong>디지털 안전 탐험대 2.0 · 미션 1 도입부</strong><small>디지털 성폭력 예방 체험 이야기</small></header><main class="stage" id="sceneStage" data-scene="intro"><div class="background" aria-hidden="true"></div><img class="character" id="character" data-character="harin" src="assets/harin.png" alt="하린 캐릭터"><section class="dialog" aria-label="비주얼 노벨 대화창"><span class="name" id="speaker">하린</span><div class="line" id="line" aria-live="polite"></div><div class="choice-prompt" id="choicePrompt" aria-live="polite"></div><div class="choices" id="choices"><button class="choice" type="button" data-choice="A"></button><button class="choice" type="button" data-choice="B"></button></div><button class="next" id="next" type="button" aria-label="다음 대사 보기">다음 ▾</button></section></main></div><div class="phone-overlay" id="phoneOverlay"><div class="phone-title">MISSION 1 · 게임 친구와의 채팅</div><iframe class="phone-frame" id="phoneFrame" title="미션 1 휴대폰 채팅" allow="clipboard-read; clipboard-write"></iframe></div>
+<script src="expression-sprites.js?v=7"></script>
+<script src="progress.js?v=16"></script><script>
+// This is a scene-integration preview. Existing phone mission, AI and judge files remain unmodified.
+const INTRO=[
+ {speaker:'하린',text:'너 요즘 게임에서 친해진 친구랑 자주 연락한다며?'},
+ {speaker:'주인공',text:'응! 같이 게임도 하고 거의 매일 채팅해.'},
+ {speaker:'하린',text:'오~ 꽤 친해졌나 보네!'},
+ {speaker:'주인공',text:'응! 이제 진짜 친구 같아.'},
+ {speaker:'효과음',text:'띠링!'},
+ {speaker:'주인공',text:'어? 마침 그 친구한테 메시지가 왔네!'}
+];
+const TEACHER=[
+ {speaker:'주인공',text:'휴… 이상한 사람이었어. 이제 어떻게 하지?'},
+ {speaker:'주인공',text:'선생님, 잠깐 말씀드려도 돼요?'},
+ {speaker:'선생님',text:'그럼, 무슨 일이니?'},
+ {speaker:'장면 연출',text:'주인공이 조금 전 게임 친구에게 받은 메시지에 관해 선생님께 말씀드린다.'},
+ {speaker:'선생님',text:'혼자 고민하지 않고 이야기해 줘서 고마워. 이런 일이 생기면 꼭 도움을 요청하렴.'},
+ {speaker:'주인공',text:'네! 선생님께 말씀드리니까 안심이 돼요.'}
+];
+const stage=document.getElementById('sceneStage'),speaker=document.getElementById('speaker'),line=document.getElementById('line'),next=document.getElementById('next');
+const dialog=document.querySelector('.dialog'),sprite=document.getElementById('character');
+const overlay=document.getElementById('phoneOverlay'),frame=document.getElementById('phoneFrame');
+let part='intro',idx=0,ready=false,pending=false,delayTeacherUntil=1,phoneStep=0;
+const storedM1=DSProgress.get();
+if(storedM1?.page==='mission1.html'){
+ const d=storedM1.data||{};
+ if(['intro','chat','teacher'].includes(d.part))part=d.part;
+ idx=Number.isInteger(d.idx)?Math.max(0,d.idx):0;
+ phoneStep=Number.isInteger(d.phoneStep)?Math.max(0,d.phoneStep):0;
+ if(d.routeB){TEACHER.splice(1,0,{speaker:'주인공 속마음',text:'대화도 끝냈으니까 괜찮겠지?'},{speaker:'주인공 속마음',text:'그런데 또 연락이 오면? 혼자 해결하지 말고 말씀드리자.'});delayTeacherUntil=3;}
+ idx=Math.min(idx,(part==='intro'?INTRO:TEACHER).length-1);
+}
+function saveM1(){DSProgress.save('mission1.html',{part,idx,phoneStep,routeB:delayTeacherUntil===3})}
+
+function syncTeacherScene(){
+ if(part!=='teacher')return;
+ const decision=idx<delayTeacherUntil;
+ stage.dataset.scene=decision?'decision':'teacher';
+ if(!decision){sprite.src='assets/teacher.png';sprite.dataset.character='teacher';sprite.alt='선생님 캐릭터';}
+}
+function render(){syncTeacherScene();const item=(part==='intro'?INTRO:TEACHER)[idx];speaker.textContent=item.speaker;line.textContent=item.text;if(part==='intro'){DSExpressions.set(sprite,'harin',idx>=4?'worry':'smile')}else if(stage.dataset.scene==='teacher'){DSExpressions.set(sprite,'teacher',idx>=4?'smile':'listening')}const isChoice=part==='teacher'&&idx===0;dialog.classList.toggle('is-choice',isChoice);if(isChoice){document.getElementById('choicePrompt').textContent=item.text;document.getElementById('choices').querySelector('[data-choice="A"]').textContent='선생님께 말씀드리러 간다';document.getElementById('choices').querySelector('[data-choice="B"]').textContent='그냥 집에 간다';}next.textContent=idx===(part==='intro'?INTRO:TEACHER).length-1?(part==='intro'?'휴대폰 열기 ▾':'다음 ▾'):'다음 ▾';scheduleClip();saveM1();}
+function chooseTeacher(route){if(part!=='teacher'||idx!==0)return;dialog.classList.remove('is-choice');if(route==='B'){TEACHER.splice(1,0,{speaker:'주인공 속마음',text:'대화도 끝냈으니까 괜찮겠지?'},{speaker:'주인공 속마음',text:'그런데 또 연락이 오면? 혼자 해결하지 말고 말씀드리자.'});delayTeacherUntil=3;}else{delayTeacherUntil=1;}idx=1;render();}
+document.querySelectorAll('[data-choice]').forEach(b=>b.addEventListener('click',()=>chooseTeacher(b.dataset.choice)));
+function advance(){if(part==='teacher'&&idx===0)return;if(part==='intro'){if(idx<INTRO.length-1){idx++;render()}else{startChat()}}else if(part==='teacher'){if(idx<TEACHER.length-1){idx++;render()}else{part='done';location.href='mission2.html'}}}
+function startChat(){part='chat';saveM1();overlay.classList.add('active');pending=true;if(ready){frame.contentWindow.postMessage({type:'DS_AI_START',mission:1,resumeStep:phoneStep},'*');pending=false}else{frame.src='offline_chat.html?v=08&layout=ipad5'}}
+function resumeTeacher(){overlay.classList.remove('active');part='teacher';idx=0;delayTeacherUntil=1;render()}
+window.addEventListener('message',event=>{if(event.source!==frame.contentWindow||!event.data)return;
+ if(event.data.type==='DS_CHAT_PROGRESS'&&event.data.mission===1){phoneStep=event.data.step;saveM1();}
+ if(event.data.type==='DS_CHAT_READY'){ready=true;if(pending){frame.contentWindow.postMessage({type:'DS_AI_START',mission:1,resumeStep:phoneStep},'*');pending=false}}
+ if(event.data.type==='DS_AI_FINISH'&&event.data.mission===1&&part==='chat')resumeTeacher();});
+next.addEventListener('click',()=>{if(part==='intro'||part==='teacher')advance()});
+document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key==='ArrowRight')&&!['BUTTON','INPUT','TEXTAREA'].includes(e.target.tagName)&&overlay.classList.contains('active')===false){advance()}});
+let clipFrame=0;
+function scheduleClip(){cancelAnimationFrame(clipFrame);clipFrame=requestAnimationFrame(()=>{sprite.style.setProperty('--sprite-hide-bottom','0px');const r=sprite.getBoundingClientRect(),d=dialog.getBoundingClientRect();sprite.style.setProperty('--sprite-hide-bottom',Math.max(0,Math.min(sprite.offsetHeight,(r.bottom-(d.top+8))*(sprite.offsetHeight/Math.max(1,r.height)))).toFixed(1)+'px')})}
+sprite.addEventListener('load',scheduleClip);window.addEventListener('resize',scheduleClip);window.visualViewport?.addEventListener('resize',scheduleClip);if(part==='chat')startChat();else render();
+</script><script src="scene-responsive.js?v=6"></script></body></html>

@@ -1,0 +1,18 @@
+*{box-sizing:border-box}html,body{height:100%;margin:0}body{font-family:Pretendard,'Noto Sans KR',system-ui,sans-serif;background:#17314c;color:#fff;overflow:hidden}button{font:inherit;cursor:pointer}
+.opening{height:100vh;height:100dvh;display:grid;place-items:center;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+/* Each intro scene uses a single 16:9 design surface; all placements scale together. */
+.opening-stage{container-type:size;position:relative;width:min(100vw,calc(100dvh * 16 / 9));height:min(100dvh,calc(100vw * 9 / 16));overflow:hidden;isolation:isolate}
+.classroom-bg{position:absolute;inset:-1%;background:linear-gradient(90deg,#12304d20,#edf3ee0a),url('assets/classroom.png') center/cover no-repeat;filter:brightness(1.05)}
+.page{position:absolute;inset:0}.page[hidden]{display:none!important}
+/* Approved individual PNGs; first pose 20% smaller than the original 100%-height placement. */
+.title-person{position:absolute;z-index:1;bottom:0;left:5%;height:80%;width:auto;max-width:43%;object-fit:contain;object-position:bottom;filter:drop-shadow(0 10px 14px #1f283e55);pointer-events:none}
+.title-logo{position:absolute;z-index:2;left:40%;top:11%;width:57%;height:auto;max-height:69%;object-fit:contain;filter:drop-shadow(0 8px 12px #263c5355);pointer-events:none}
+.big-btn{border:2px solid #fff7c5;border-radius:1.2cqw;padding:1cqh 3cqw;min-height:6.4cqh;background:linear-gradient(#ffe689,#ffbc4f);box-shadow:0 .5cqh 0 #af792b,0 1cqh 2cqh #273c5b55;color:#223650;font-weight:900;font-size:2.25cqw;touch-action:manipulation;white-space:nowrap}
+.big-btn:focus-visible{outline:3px solid #2798fc;outline-offset:4px}
+.title-start{position:absolute;z-index:3;top:76%;left:68%;transform:translateX(-50%);min-width:20%;font-size:2.35cqw}
+.guide-person{position:absolute;z-index:1;left:5%;bottom:0;height:81%;width:auto;max-width:38%;object-fit:contain;object-position:bottom;filter:drop-shadow(0 8px 11px #24354b77);pointer-events:none}
+/* Guide dialogue is deliberately in the lower portion (approved VN style). */
+.guide-chat{position:absolute;z-index:2;left:37%;right:5%;bottom:11%;min-height:31%;padding:3.6cqh 3cqw 2.8cqh;display:flex;flex-direction:column;justify-content:center;gap:1cqh;border:2px solid #afc4daaa;border-radius:1.4cqw;background:#142c48ed;box-shadow:0 12px 30px #1a27376e;font-size:2.05cqw;line-height:1.5;word-break:keep-all}
+.guide-speaker{position:absolute;top:-2.5cqh;left:2.4cqw;padding:.7cqh 2cqw;border-radius:.8cqw;background:#eed8a8;color:#253d54;font-size:1.8cqw;font-weight:900}
+.guide-lines p{margin:.7cqh 0 1.4cqh}.guide-start{align-self:flex-end;min-width:28%;margin-top:.3cqh}
+@media (max-aspect-ratio: 11/10){.opening-stage{width:100vw;height:56.25vw;max-height:100dvh}}

@@ -1,1 +1,18 @@
-임시파일
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>우리들의 디지털 안전 이야기</title><link rel="stylesheet" href="opening.css?v=2"></head><body>
+<main class="opening" aria-label="우리들의 디지털 안전 이야기"><div class="opening-stage" id="openingStage"><div class="classroom-bg" aria-hidden="true"></div>
+<section class="page title-page active" id="titlePage" aria-label="게임 제목">
+<img class="title-person" src="assets/intro_protagonist.png" alt="웃으며 손을 내미는 주인공">
+<img class="title-logo" src="assets/opening_title_logo.png" alt="디지털 성폭력 예방 체험형 스토리 게임, 우리들의 디지털 안전 이야기">
+<button class="big-btn title-start" id="startButton" type="button">시작하기 <span aria-hidden="true">→</span></button>
+</section>
+<section class="page guide-page" id="guidePage" aria-label="게임 진행 안내" hidden>
+<img class="guide-person" src="assets/intro_guide_protagonist.png" alt="가방 없이 팔을 내린 주인공 전신">
+<section class="guide-chat" aria-label="주인공의 게임 설명"><span class="guide-speaker">주인공</span>
+<div class="guide-lines"><p>안녕! 앞으로 온라인에서 일어날 수 있는 여러 상황을 경험하게 될 거야.</p><p>직접 대답하고 선택하면서 나와 친구들을 지키는 방법을 함께 찾아보자!</p></div>
+<button class="big-btn guide-start" id="playButton" type="button">이야기 시작하기 <span aria-hidden="true">→</span></button>
+</section></section></div></main>
+<script>
+const titlePage=document.getElementById('titlePage');const guidePage=document.getElementById('guidePage');
+document.getElementById('startButton').addEventListener('click',()=>{titlePage.hidden=true;titlePage.classList.remove('active');guidePage.hidden=false;guidePage.classList.add('active');});
+document.getElementById('playButton').addEventListener('click',()=>{window.location.href='mission1.html';});
+</script></body></html>

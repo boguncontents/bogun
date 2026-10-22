@@ -1,0 +1,355 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>디지털 안전 탐험대 2.0 | 미션 3</title><style>
+:root{font-family:"Pretendard","Noto Sans KR",system-ui,-apple-system,sans-serif;color:#fff;background:#101f31;font-synthesis:none}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}button{font:inherit;cursor:pointer} .app{height:100vh;height:100dvh;min-height:0;display:flex;flex-direction:column;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}.top{z-index:2;flex:none;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px clamp(12px,3vw,32px);background:#142740;color:#ecf5ff;font-size:clamp(12px,1.35vw,16px)}.top small{opacity:.8}.stage{position:relative;flex:1;min-height:0;overflow:hidden;isolation:isolate}.background{position:absolute;inset:0;background:url('assets/classroom.png') center center/cover no-repeat;transform:scale(1.02);filter:blur(2px) brightness(.86)}.character{position:absolute;z-index:1;left:54%;bottom:0.5%;height:min(82%,750px);width:auto;max-width:50%;object-fit:contain;object-position:bottom;transform:translateX(-50%);filter:drop-shadow(0 9px 16px #1c26364d);pointer-events:none}.stage::after{content:"";position:absolute;z-index:1;left:0;right:0;bottom:0;height:38%;background:linear-gradient(transparent,rgba(7,20,40,.25));pointer-events:none}.dialog{position:absolute;z-index:3;bottom:clamp(12px,3.2vh,34px);left:50%;transform:translateX(-50%);width:min(92%,1120px);height:clamp(142px,29%,234px);padding:clamp(18px,2.6vw,30px) clamp(20px,3vw,34px) clamp(15px,2vh,24px);display:flex;flex-direction:column;justify-content:center;border-radius:18px;border:2px solid rgba(213,226,239,.5);background:rgba(23,46,73,.92);box-shadow:0 14px 44px #101b35a6;backdrop-filter:blur(9px)}.name{position:absolute;top:-20px;left:clamp(19px,3vw,36px);padding:9px 27px;border-radius:13px;background:#eed8a8;color:#2f4359;font-size:clamp(17px,2vw,23px);font-weight:800;box-shadow:0 4px 12px #081b30a0}.line{font-size:clamp(19px,2.2vw,29px);line-height:1.55;letter-spacing:-.02em;word-break:keep-all;overflow:auto;scrollbar-width:thin;max-height:100%;padding:10px 110px 8px 0}.next{position:absolute;bottom:13px;right:18px;border:1px solid #f0daa4;background:#f0daa4;color:#23384e;border-radius:13px;font-size:16px;font-weight:800;padding:10px 20px;min-height:43px}.next:focus-visible{outline:3px solid #8ad6ff;outline-offset:3px}/* Choice UI stays inside approved VN dialog, not drawn on background art. */
+.dialog.is-choice{height:clamp(228px,39%,326px);justify-content:flex-start;padding-top:clamp(30px,4vh,41px);padding-bottom:15px}
+.choice-prompt{font-size:clamp(19px,2.05vw,26px);font-weight:700;line-height:1.45;min-height:0;margin-bottom:12px;word-break:keep-all}
+.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;min-height:0}
+.choice{min-width:0;min-height:60px;padding:12px 17px;border:2px solid #a9bfd1;border-radius:14px;background:#f3f7fb;color:#183653;font-weight:750;font-size:clamp(16px,1.5vw,21px);text-align:left;line-height:1.4;white-space:normal;word-break:keep-all;transition:background .15s,transform .15s}
+.choice:hover{background:#fff2cf}.choice:focus-visible{outline:3px solid #f3cf70;outline-offset:3px}
+.dialog.is-choice .line{display:none}.dialog.is-choice .next{display:none}
+.dialog:not(.is-choice) .choice-prompt,.dialog:not(.is-choice) .choices{display:none}
+.demo-hint{position:absolute;right:clamp(16px,3vw,32px);top:8px;z-index:3;font-size:12px;opacity:.85}
+.small-note{white-space:nowrap}
+@media (max-width:700px){.choices{grid-template-columns:1fr;gap:8px}.choice{min-height:49px;padding:8px 12px}.dialog.is-choice{height:clamp(215px,48%,305px)}.choice-prompt{font-size:18px;margin-bottom:8px}.top small{display:none}.character{left:55%;bottom:14%;height:64%;max-width:73%}.dialog{height:clamp(154px,33%,216px);width:96%;bottom:10px}.line{padding-right:15px;padding-bottom:37px;font-size:clamp(18px,3.3vw,23px)}.next{padding:7px 14px;font-size:14px;min-height:36px}}
+@media (max-height:610px) and (min-width:701px){.dialog.is-choice{height:clamp(203px,52%,260px);padding-top:24px}.choice{min-height:50px;padding:7px 13px}.choice-prompt{margin-bottom:7px}.top{min-height:35px}.character{height:75%;bottom:6%}.dialog{height:clamp(130px,36%,175px);bottom:9px;padding-top:20px}.line{font-size:clamp(17px,2vw,23px)}.name{top:-16px;padding:6px 20px;font-size:17px}.next{bottom:8px;padding:6px 14px;min-height:34px}}
+@media (prefers-reduced-motion:no-preference){.line{animation:fade .2s ease-out}@keyframes fade{from{opacity:.25;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}}
+
+/* Position comparison controls, separate from game dialogue UI */
+.controlbar{z-index:4;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;flex:none;background:#243b58;padding:8px max(12px,env(safe-area-inset-left))}
+.personbtn,.modebtn{color:white;background:#365676;border:1px solid #6d91b1;border-radius:8px;padding:8px 14px;font-size:clamp(13px,1.4vw,17px);font-weight:700;min-height:38px}
+.personbtn[aria-pressed="true"],.modebtn[aria-pressed="true"]{background:#f0d9a5;color:#20354d;border-color:#f0d9a5}
+.control-label{font-size:13px;opacity:.9;padding:0 4px}
+.controls-sep{width:1px;height:26px;background:#90a8c5;margin:0 8px}
+@media(max-width:840px){.controlbar{justify-content:flex-start;overflow:auto;flex-wrap:nowrap;white-space:nowrap;padding:6px 10px}.personbtn,.modebtn{flex:none;padding:7px 10px}.controls-sep{flex:none}}
+@media(max-height:610px){.controlbar{padding-top:3px;padding-bottom:3px}.personbtn,.modebtn{min-height:31px;padding:4px 9px}}
+
+/* V4: Keep approved character positions and clipping. Subtle adult-only scaling. */
+.character{bottom:2.2%;clip-path:inset(0px 0px var(--sprite-hide-bottom,0px) 0px)}
+.character[data-character="teacher"]{height:min(86%,780px)}
+.character[data-character="mom"]{height:min(84.5%,770px)}
+@media(max-width:700px){
+  .character{bottom:14.5%}
+  .character[data-character="teacher"]{height:67%}
+  .character[data-character="mom"]{height:66%}
+}
+@media(max-height:610px) and (min-width:701px){
+  .character{bottom:7%}
+  .character[data-character="teacher"]{height:79%}
+  .character[data-character="mom"]{height:77%}
+}
+
+/* Integration screens. Original v4 visual-novel look is maintained. */
+.stage[data-scene="teacher"] .background{background-image:url('assets/office.png')}
+/* Choice and internal-thought scene take place in the classroom, before meeting the teacher. */
+.stage[data-scene="decision"] .background{background-image:url('assets/classroom.png')}
+.stage[data-scene="decision"] .character{display:none}
+.stage[data-scene="teacher"] .character{height:min(86%,780px)}
+.phone-overlay{position:fixed;z-index:20;inset:0;display:none;flex-direction:column;background:#e6f1f3;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.phone-overlay.active{display:flex}
+.phone-title{flex:none;min-height:36px;padding:8px 18px;background:#142740;color:#f5fbff;font-size:clamp(13px,1.4vw,17px);font-weight:750;text-align:center}
+.phone-frame{display:block;width:100%;flex:1;min-height:0;border:0;background:#e8f4f8}
+.end-scene{display:none;position:absolute;inset:0;z-index:5;align-items:center;justify-content:center;background:#132642b5;text-align:center;padding:24px}
+.end-scene.visible{display:flex}.end-card{background:#fff;color:#1b344e;border-radius:18px;padding:26px;max-width:520px;display:grid;gap:14px}
+.end-card button{border:0;border-radius:12px;background:#244e77;color:white;padding:13px;font-weight:700}
+/* Preserve large-screen v4 position; avoid over-shrinking the sprite in short/narrow windows. */
+@media (max-width:900px){
+ .character{height:min(83%,650px);max-width:66%;bottom:2.2%;left:54%}
+ .stage[data-scene="teacher"] .character{height:min(87%,690px)}
+ .dialog{width:min(94%,1120px)}
+}
+@media (max-width:700px){
+ .character{bottom:2.2%;height:min(83%,650px);max-width:75%;left:54%}
+ .stage[data-scene="teacher"] .character{height:min(87%,690px)}
+ .dialog{bottom:max(8px,env(safe-area-inset-bottom));height:clamp(142px,33%,216px)}
+ .line{font-size:clamp(17px,2.5vw,23px)}
+}
+@media (max-height:530px){.top{min-height:30px;padding-block:4px}.character{height:86%;bottom:2%}.stage[data-scene="teacher"] .character{height:88%}.dialog{height:clamp(116px,34%,168px);bottom:6px}.line{font-size:clamp(16px,2vw,22px)}}
+/* v0.8 integration: larger iPad-friendly Next button; visual positions unchanged. */
+.dialog:not(.is-choice) .next{min-width:118px;min-height:54px;font-size:19px;padding:9px 18px;display:inline-flex;align-items:center;justify-content:center;touch-action:manipulation}
+.dialog:not(.is-choice) .line{padding-bottom:60px}
+@media (max-width:700px){.dialog:not(.is-choice) .next{min-width:110px;min-height:52px;font-size:18px;right:12px;bottom:8px}.dialog:not(.is-choice) .line{padding-bottom:57px}}
+
+.stage[data-scene="road"] .background{background-image:url('assets/road.png')}
+.stage[data-scene="road"] .character{display:none}
+.stage[data-scene="home"] .background{background-image:url('assets/living.png')}
+.stage[data-scene="home"] .character{display:block}
+.stage[data-scene="home"] .character[data-character="mom"]{height:min(84.5%,770px)}
+
+.stage[data-scene="night"] .background{background-image:url('assets/night_room.png');filter:blur(2px) brightness(.62)}
+.stage[data-scene="night"] .character{display:none}
+.stage[data-scene="road"] .character{display:none}
+.stage[data-scene="home"] .character.is-hidden{display:none}
+
+
+.stage[data-scene="hall"] .background{background-image:url('assets/hall.png')}
+.stage[data-scene="classroom"] .background{background-image:url('assets/classroom.png')}
+.character.hidden{display:none!important}
+.character.duo{height:min(72%,650px);bottom:2.2%;max-width:42%}
+.character.duo.left{left:33%}
+.character.duo.right{left:67%}
+.stage .character{transition:none}
+.dialog.has-options{height:clamp(230px,39%,330px);justify-content:flex-start;padding-top:36px}
+.dialog.has-options .line{padding:0 0 10px;overflow:visible;font-weight:750}
+.dialog.has-options .next{display:none}
+.optgrid{display:none;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;margin-top:10px}
+.dialog.has-options .optgrid{display:grid}
+.optbtn{background:#f3f7fb;color:#183653;text-align:left;border:2px solid #a9bfd1;border-radius:14px;padding:13px 18px;min-height:60px;font-weight:750;font-size:clamp(16px,1.5vw,21px);line-height:1.4;white-space:normal;word-break:keep-all}
+.optbtn:hover,.optbtn:focus-visible{background:#fff2cf;outline:2px solid #efce87}
+.dialog.has-options .name{background:#eed8a8}
+.feedback{display:none;border:1px solid #efdba8;border-radius:12px;background:#fff2d8;color:#243950;font-size:clamp(16px,1.7vw,20px);padding:10px 15px;margin-top:7px;line-height:1.48;max-height:120px;overflow:auto}
+.dialog.is-feedback{height:clamp(250px,43%,370px);justify-content:flex-start;padding-top:28px}
+.dialog.is-feedback .feedback{display:block}
+.dialog.is-feedback .line{padding:8px 116px 0 0;font-size:clamp(17px,1.8vw,24px);max-height:140px}
+.dialog.is-feedback .next{bottom:10px}
+@media(max-width:900px){.character.duo{height:69%;max-width:47%}.character.duo.left{left:30%}.character.duo.right{left:70%}}
+@media(max-width:700px){.dialog.has-options{height:clamp(245px,53%,340px);padding-top:28px}.optgrid{grid-template-columns:1fr;gap:8px}.optbtn{min-height:49px;padding:9px 12px}.character.duo{height:62%;max-width:49%}.character.duo.left{left:33%}.character.duo.right{left:67%}}
+@media(max-height:620px){.dialog.has-options{height:clamp(193px,52%,285px);padding-top:24px}.dialog.is-feedback{height:clamp(205px,54%,310px)}.optbtn{min-height:46px;padding:8px 11px}.optgrid{margin-top:6px}.feedback{max-height:95px}}
+
+/* V4 responsive: all scenes adapt to the same safe-area-sized stage. */
+.character.duo{height:min(83%,760px);max-width:47%;bottom:2.2%}
+.character.duo.left{left:35%}
+.character.duo.right{left:65%}
+@media (max-width:900px){.character.duo{height:82%;max-width:48%}.character.duo.left{left:34%}.character.duo.right{left:66%}}
+@media (max-width:700px){.character.duo{height:78%;max-width:49%}.character.duo.left{left:33%}.character.duo.right{left:67%}}
+@media (max-height:620px){.character.duo{height:80%;bottom:2%}}
+/* Finale uses one fixed-ratio design surface, scaled uniformly from JS. */
+.end-scene{padding:0;background:#e5cfad;overflow:hidden;align-items:stretch;justify-content:stretch}
+.end-scene.visible{display:block}
+.end-scene .finale{position:relative;width:100%;height:100%;overflow:hidden;isolation:isolate;background:#ecdcc2}
+.end-scene .finale::before{content:"";position:absolute;inset:0;z-index:0;background:url('assets/classroom.png') center/cover no-repeat;filter:blur(2px) brightness(.97);transform:scale(1.025)}
+.finale-board{position:absolute;left:50%;top:50%;width:1600px;height:900px;transform:translate(-50%,-50%) scale(var(--final-scale,1));transform-origin:center;pointer-events:none}
+.final-person{position:absolute;z-index:1;height:640px;width:390px;bottom:6px;object-fit:contain;object-position:bottom center;filter:drop-shadow(0 7px 10px #263d5555);pointer-events:none}
+/* v5: only the four-character finale; same responsive 1600x900 board. */
+.final-yuna{left:115px}
+.final-main{left:425px;width:410px;height:690px}
+.final-harin{left:770px}
+.final-doyun{left:1085px;width:410px;height:690px}
+.final-banner{position:absolute;z-index:2;top:0;left:50%;transform:translateX(-50%);width:850px;height:auto;filter:drop-shadow(0 8px 14px #2a354655);pointer-events:none}
+.replay-final{position:absolute;z-index:3;bottom:max(12px,env(safe-area-inset-bottom));right:max(12px,env(safe-area-inset-right));border:0;border-radius:12px;padding:12px 17px;min-height:48px;font-weight:800;color:#173650;background:#ffedd1;box-shadow:0 4px 12px #162a3c45;cursor:pointer;pointer-events:auto;touch-action:manipulation}
+</style><link rel="stylesheet" href="scene-responsive.css?v=6"></head><body><div class="app"><header class="top"><strong>디지털 안전 탐험대 2.0 · 미션 3 · 피해를 겪은 친구 돕기</strong><small>확정 시나리오 · 선택 후 재도전 확인용</small></header><main class="stage" id="sceneStage" data-scene="classroom"><div class="background" aria-hidden="true"></div><img class="character" id="character" src="assets/doyun.png" data-character="doyun" alt="도윤"><img class="character duo right hidden" id="secondCharacter" src="assets/yuna.png" alt="유나"><section class="dialog" id="dialog" aria-label="비주얼 노벨 대화창"><span class="name" id="speaker"></span><div class="line" id="line" aria-live="polite"></div><div class="feedback" id="feedback" aria-live="polite"></div><div class="optgrid" id="optgrid"><button class="optbtn" id="optionA" type="button"></button><button class="optbtn" id="optionB" type="button"></button></div><button class="next" id="next" type="button">다음 ▾</button></section><div class="end-scene" id="endScene" role="region" aria-label="미션 3 마지막 장면">
+<div class="finale" aria-label="주인공과 하린 유나 도윤이 함께하는 엔딩"><div class="finale-board" id="finaleBoard">
+<img class="final-person final-yuna" src="assets/end_yuna.png" alt="웃으며 손을 흔드는 유나">
+<img class="final-person final-main" src="assets/end_protagonist.png" alt="함께하자고 손을 내미는 주인공">
+<img class="final-person final-harin" src="assets/end_harin.png" alt="웃으며 두 손을 내미는 하린">
+<img class="final-person final-doyun" src="assets/end_doyun.png" alt="손을 흔드는 도윤">
+<img class="final-banner" src="assets/end_banner.png" alt="우리의 디지털 안전 이야기는 계속됩니다!!">
+</div>
+</div></div></div></main></div>
+<script src="expression-sprites.js?v=7"></script>
+<script src="progress.js?v=16"></script><script>
+
+/* Expression images must never block dialogue progression. */
+function setGameExpression(element, character, mood='base') {
+  if (!element) return;
+  const fallback = `assets/${character}.png`;
+  const available = { harin:['smile','worry','surprise'], mom:['worry','smile'], teacher:['listening','smile'], yuna:['worry','sad','relief'], doyun:['worry','surprise','sad','relief'] };
+  let target = mood !== 'base' && (available[character] || []).includes(mood)
+    ? `assets/expressions/${character}_${mood}.png` : fallback;
+  try {
+    // Use the existing expression helper when it has loaded correctly.
+    if (window.DSExpressions && typeof window.DSExpressions.set === 'function') {
+      window.DSExpressions.set(element, character, mood);
+      target = element.getAttribute('src') || target;
+    } else if (element.getAttribute('src') !== target) {
+      element.setAttribute('src', target);
+    }
+  } catch (_error) {
+    target = fallback;
+    if (element.getAttribute('src') !== fallback) element.setAttribute('src', fallback);
+  }
+  element.onerror = () => {
+    element.onerror = null;
+    if (element.getAttribute('src') !== fallback) element.setAttribute('src', fallback);
+  };
+}
+// The dialogue and choices below follow the approved scenario verbatim.
+const OPEN=[
+ ['도윤','야! 너 어제 단톡방에서 친구들 잘못된 행동을 말렸다며?'],
+ ['주인공','응. 그냥 넘어가면 안 될 것 같아서.'],
+ ['유나','게임에서 이상한 메시지 받았을 때도 잘 대처했다며?'],
+ ['주인공','나도 선생님 도움을 받았어.'],
+ ['도윤','사실 나도 요즘 고민이 있는데… 내 이야기 좀 들어줄래?'],
+ ['유나','나도 너한테 할 이야기가 있어.'],
+ ['주인공 속마음','누구 이야기를 먼저 들어볼까?']
+];
+const CASES={
+ doyun:{label:'도윤',file:'assets/doyun.png',intro:[
+ ['도윤','우리 반 애가 AI로 내 얼굴을 다른 사진에 합성했어.'],
+ ['주인공','뭐? 네가 허락한 거야?'],
+ ['도윤','아니! 나를 놀리는 성적인 합성 사진인데, 자꾸 장난이라고 하는 거야.'],
+ ['도윤','다른 애들까지 봤대. 어떡하지?']
+ ],q1:'친구에게 어떻게 이야기할까?',options1:['AI로 만든 사진이니까 신경 쓰지 말라고 한다','허락 없이 합성해 속상했겠다며 공감한다'],
+ wrong1:[['도윤','하지만 다른 애들이 진짜 나라고 믿으면 어떡해…?'],['주인공','미안해. 네 마음을 먼저 생각했어야 했는데.']],
+ feedback1:'친구의 피해를 가볍게 여기면 친구는 자신의 고민을 이해받지 못했다고 느낄 수 있어요. 친구의 마음을 먼저 생각해 다시 이야기해 볼까요.',
+ good1:[['주인공','허락 없이 합성해서 속상했겠다.'],['도윤','고마워. 네가 내 마음을 이해해 주니까 조금 낫다.'],['효과음','띠링! 도윤의 휴대폰에 메시지가 왔다.'],['메시지','그 AI 사진 너 맞지? 다른 반 친구들도 물어보던데?'],['도윤','어떡해… 다른 반까지 알고 있나 봐. 나 아니라고 말하고 싶은데.']],
+ q2:'친구를 도우려면 어떻게 해야 할까?',options2:['그 사진을 보여주면서 아니라는 걸 해명한다','더 공유하지 않고 선생님께 함께 도움을 요청한다'],
+ wrong2:[['도윤','그런데 보여주면 그 사진을 보는 사람이 더 늘지 않을까?'],['주인공','맞아. 해명하려다가 오히려 더 퍼뜨릴 수도 있겠네.']],
+ feedback2:'잘못된 사진을 해명하기 위해 다시 보여 주면 피해가 더 확산될 수 있어요. 사진을 재공유하지 않고 안전하게 도움을 요청하는 방법을 다시 선택해 볼까요.',
+ good2:[['주인공','더 공유하지 말고 선생님께 함께 도움을 요청하자.'],['도윤','선생님께 말씀드리면 도와주실까?'],['주인공','응. 관련 메시지도 남겨 두고 함께 말씀드리자.'],['도윤','같이 선생님께 가줄래?'],['주인공','응, 같이 가자.']]},
+ yuna:{label:'유나',file:'assets/yuna.png',intro:[
+ ['유나','나 사실 요즘 우리 반 친구 때문에 고민이 있어.'],
+ ['주인공','왜? 무슨 일인데?'],
+ ['유나','자꾸 채팅으로 내 몸에 대해 성적인 농담을 해.'],
+ ['주인공','뭐? 그런 말을 한다고?'],
+ ['유나','응. 하지 말라고 했는데도 계속 그래.'],
+ ['유나','그냥 장난인데 예민하게 굴지 말래. 내가 너무 예민한 걸까?']],
+ q1:'친구에게 어떻게 말할까?',options1:['친구 장난이니 신경 쓰지 말라고 한다','싫다고 했는데도 계속하는 건 잘못이라고 말한다'],
+ wrong1:[['유나','너도 그렇게 생각하는구나… 난 정말 기분이 나빴는데.'],['주인공','미안해. 네가 싫다고 했는데도 계속했다니 속상했겠다.']],
+ feedback1:'친구가 불편하다고 느끼는 감정을 장난으로 넘기면 친구는 더 위축될 수 있어요. 친구의 감정을 존중하는 말로 다시 반응해 볼까요.',
+ good1:[['주인공','싫다고 했는데도 계속하는 건 잘못이야.'],['유나','그렇지? 나도 이제 그만했으면 좋겠어.'],['효과음','띠링!'],['같은 반 친구의 메시지','아까 한 말 때문에 화났어? ㅋㅋ 그냥 장난인데 왜 그래?'],['유나','봐. 또 이렇게 왔어. 싫다고 했는데도 장난이라고만 하네.']],
+ q2:'친구를 도우려면 어떻게 할까?',options2:['대신 똑같이 불쾌한 말로 맞대응한다','대화 기록을 남기고 믿을 수 있는 어른의 도움을 요청한다'],
+ wrong2:[['유나','그러면 서로 더 심하게 싸우게 되지 않을까?'],['주인공','맞아. 똑같이 행동하는 건 해결책이 아니겠네.']],
+ feedback2:'상대에게 똑같이 불쾌한 말로 대응하면 갈등이 더 커질 수 있어요. 대화 기록을 남기고 믿을 수 있는 어른에게 도움을 요청하는 방법을 다시 선택해 볼까요.',
+ good2:[['주인공','대화 기록을 남기고 믿을 수 있는 어른의 도움을 요청하자.'],['유나','선생님께 이야기하면 도와주실까?'],['주인공','응. 네가 겪은 일을 함께 말씀드리자.'],['유나','내가 너무 예민한 건가 싶어서 아무한테도 말 못 했어.'],['주인공','네가 불편하다고 느낀 건 존중받아야 해. 같이 가줄게.']]}
+};
+// The original text uses '서연' in the epilogue; the approved game design uses Harin.
+const END=[['주인공 속마음','친구 이야기를 들어주고 함께 방법을 찾아봤어.'],['하린','친구랑 이야기는 잘했어?'],['주인공','응! 나도 모든 걸 아는 건 아니지만, 함께 방법을 찾아보면 좋겠어.'],['하린','맞아. 어려울 땐 도움도 요청하고!'],['주인공 속마음','앞으로도 친구가 어려움을 겪는다면 외면하지 않고 함께 방법을 찾아볼 거야.']];
+const $=id=>document.getElementById(id),stage=$('sceneStage'),dialog=$('dialog'),sprite=$('character'),second=$('secondCharacter');
+let phase='day',i=0,who=null,done={doyun:false,yuna:false},q=1,wrong=false,seq=[],seqEnd=null;
+const storedM3=DSProgress.get();
+if(storedM3?.page==='mission3.html'){
+ const d=storedM3.data||{};
+ if(['day','opening','select','talk','question','sequence','feedback','return','end','finished'].includes(d.phase))phase=d.phase;
+ i=Number.isInteger(d.i)?Math.max(0,d.i):0;
+ if(['doyun','yuna'].includes(d.who))who=d.who;
+ done={doyun:!!d.done?.doyun,yuna:!!d.done?.yuna};q=d.q===2?2:1;wrong=!!d.wrong;
+ if(phase==='sequence'&&who){seq=CASES[who][(wrong?'wrong':'good')+q];seqEnd=wrong?'feedback':q===1?'question2':'complete';i=Math.min(i,seq.length-1)}
+ else if(phase==='talk'&&who)i=Math.min(i,CASES[who].intro.length-1);
+ else if(phase==='opening')i=Math.min(i,OPEN.length-1);
+ else if(phase==='end')i=Math.min(i,END.length-1);
+ else i=0;
+ if(['talk','question','sequence','feedback'].includes(phase)&&!who)phase='select';
+}
+function saveM3(){DSProgress.save('mission3.html',{phase,i,who,done,q,wrong})}
+
+function clip(){
+  for(const s of [sprite,second]){
+    s.style.setProperty('--sprite-hide-bottom','0px');
+    if(s.classList.contains('hidden'))continue;
+    const r=s.getBoundingClientRect(),d=dialog.getBoundingClientRect();
+    s.style.setProperty('--sprite-hide-bottom',Math.max(0,Math.min(s.offsetHeight,(r.bottom-(d.top+8))*(s.offsetHeight/Math.max(1,r.height)))).toFixed(1)+'px');
+  }
+}
+function pictures(){
+ const inClass=['day','opening','select','return','end'].includes(phase);
+ stage.dataset.scene=inClass?'classroom':'hall';
+ sprite.classList.remove('hidden','duo','left','right');second.classList.add('hidden');
+ if(phase==='day'){
+   sprite.classList.add('hidden');
+ } else if(inClass && (phase!=='end'||i===0)){
+   sprite.src='assets/doyun.png';sprite.dataset.character='doyun';sprite.alt='도윤';
+   sprite.classList.add('duo','left');
+   second.src='assets/yuna.png';second.classList.remove('hidden');
+ } else if(phase==='end'){
+   sprite.src='assets/harin.png';sprite.dataset.character='harin';sprite.alt='하린';
+ } else {
+   sprite.src=CASES[who].file;sprite.dataset.character=who;sprite.alt=CASES[who].label;
+ }
+ // Keep expressions stable across a conversation; change only at meaningful emotional turns.
+ if(phase==='opening' || phase==='select' || phase==='return' || (phase==='end'&&i===0)){
+   // Opening together: each friend looks worried only from the moment they reveal their concern.
+   setGameExpression(sprite,'doyun',phase==='opening' && i>=4?'worry':'base');
+   setGameExpression(second,'yuna',phase==='opening' && i>=5?'worry':'base');
+ }else if(phase==='end'){
+   setGameExpression(sprite,'harin',i===3?'smile':'base');
+ }else if(phase!=='day' && who){
+   let mood='worry';
+   if(phase==='talk'){
+     // One consistent worried expression throughout the disclosure.
+     mood='worry';
+   }else if(phase==='question'){
+     mood='worry';
+   }else if(phase==='feedback'){
+     mood='sad';
+   }else if(phase==='sequence'){
+     if(wrong){
+       mood='sad';
+     }else if(q===1){
+       // Relief after being understood, then concern as another message arrives.
+       mood=i===1?'relief':i>=2?'worry':'worry';
+     }else{
+       // End in relief once the friend agrees to seek help together.
+       // Switch on the friend's own fourth line, not the protagonist's third line.
+       mood=i>=3?'relief':'worry';
+     }
+   }
+   setGameExpression(sprite,who,mood);
+ }
+ requestAnimationFrame(clip);
+}
+function show(speaker,text){$('speaker').textContent=speaker;$('line').textContent=text;}
+function standard(){dialog.classList.remove('has-options','is-feedback');$('feedback').textContent='';$('next').hidden=false;}
+function render(){
+ standard();pictures();
+ if(phase==='day'){show('장면 전환','다음 날');$('next').textContent='다음 ▾';}
+ else if(phase==='opening'){show(...OPEN[i]);$('next').textContent=i===OPEN.length-1?'친구 선택하기 ▾':'다음 ▾';}
+ else if(phase==='select'){
+  dialog.classList.add('has-options');show('주인공 속마음','누구 이야기를 먼저 들어볼까?');
+  $('optionA').textContent='도윤 · AI 사진 합성'+(done.doyun?' ✓ 완료':'');
+  $('optionB').textContent='유나 · 온라인 성희롱'+(done.yuna?' ✓ 완료':'');
+  $('optionA').disabled=done.doyun;$('optionB').disabled=done.yuna;
+ }
+ else if(phase==='talk'){
+  const c=CASES[who];show(...c.intro[i]);$('next').textContent=i===c.intro.length-1?'선택하기 ▾':'다음 ▾';
+ }
+ else if(phase==='question'){
+  const c=CASES[who];dialog.classList.add('has-options');show('주인공 속마음',c['q'+q]);
+  $('optionA').textContent=c['options'+q][0];$('optionB').textContent=c['options'+q][1];
+  $('optionA').disabled=false;$('optionB').disabled=false;
+ }
+ else if(phase==='sequence'){
+  show(...seq[i]);$('next').textContent=i===seq.length-1?(wrong?'설명 보기 ▾':'다음 ▾'):'다음 ▾';
+ }
+ else if(phase==='feedback'){
+  dialog.classList.add('is-feedback');show('생각해 볼까요?','선택한 말을 다시 생각해 봐요.');
+  $('feedback').textContent=CASES[who]['feedback'+q];$('next').textContent='다시 선택하기 ▾';
+ }
+ else if(phase==='return'){
+  show('주인공 속마음','친구 이야기를 들어주고 함께 방법을 찾아봤어.');$('next').textContent='다음 ▾';
+ }
+ else if(phase==='end'){
+  show(...END[i]);$('next').textContent=i===END.length-1?'엔딩 보기 ▾':'다음 ▾';
+ }
+ requestAnimationFrame(clip);saveM3();
+}
+function startCase(which){if(done[which])return;who=which;phase='talk';i=0;render();}
+function choose(answer){
+ if(phase==='select'){startCase(answer==='A'?'doyun':'yuna');return;}
+ if(phase==='question'){
+   wrong=answer==='A';seq=CASES[who][(wrong?'wrong':'good')+q];
+   seqEnd=wrong?'feedback':q===1?'question2':'complete';
+   phase='sequence';i=0;render();
+ }
+}
+$('optionA').addEventListener('click',()=>choose('A'));$('optionB').addEventListener('click',()=>choose('B'));
+function next(){
+ if(phase==='day'){phase='opening';i=0;render();}
+ else if(phase==='opening'){if(++i>=OPEN.length){phase='select';i=0;}render();}
+ else if(phase==='talk'){if(++i>=CASES[who].intro.length){phase='question';q=1;i=0;}render();}
+ else if(phase==='sequence'){
+  if(++i<seq.length){render();return;}
+  i=0;
+  if(seqEnd==='feedback')phase='feedback';
+  else if(seqEnd==='question2'){phase='question';q=2;}
+  else {done[who]=true;phase=(done.doyun&&done.yuna)?'end':'return';}
+  render();
+ }
+ else if(phase==='feedback'){phase='question';render();}
+ else if(phase==='return'){
+  i=0;
+  if(done.doyun&&done.yuna){phase='end';}else{phase='select';}
+  render();
+ }
+ else if(phase==='end'){
+  if(++i>=END.length){phase='finished';history.replaceState(null,'',location.pathname+location.search+'#ending');$('endScene').classList.add('visible');saveM3();}else render();
+ }
+}
+$('next').addEventListener('click',next);
+function updateFinaleScale(){
+ // The shared stage is already uniformly scaled by scene-responsive.js.
+ // Use its untransformed CSS dimensions to prevent a second scale reduction.
+ const scale=Math.min(stage.clientWidth/1600,stage.clientHeight/900);
+ const board=$('finaleBoard');
+ if(board)board.style.setProperty('--final-scale',String(scale));
+}
+window.addEventListener('resize',()=>{requestAnimationFrame(clip);updateFinaleScale()});window.visualViewport?.addEventListener('resize',()=>{requestAnimationFrame(clip);updateFinaleScale()});sprite.addEventListener('load',()=>requestAnimationFrame(clip));second.addEventListener('load',()=>requestAnimationFrame(clip));if(location.hash==='#ending'||phase==='finished'){$('endScene').classList.add('visible');phase='finished';saveM3();}else{render();}updateFinaleScale();
+</script><script src="scene-responsive.js?v=6"></script></body></html>

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>간식 사진 피드 | 우리 반 감염병 역학조사</title>
+<style>
+:root{font-family:Pretendard,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#101722;color:white}
+body{min-height:100dvh}.scene{min-height:100dvh;display:flex;flex-direction:column;align-items:center;background:radial-gradient(ellipse at top,#263e46,#101722 70%)}
+.feed-wrap{width:min(94vw,720px);padding:14px 0 0;flex:1}.feed{display:block;width:100%;height:auto;border-radius:13px;background:white;box-shadow:0 14px 38px #0006}
+.action-bar{width:100%;position:sticky;bottom:0;z-index:5;padding:12px max(16px,env(safe-area-inset-right)) calc(12px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));display:flex;justify-content:center;background:linear-gradient(transparent,#101722 20%);}
+.next{font:800 18px/1.2 inherit;font-family:inherit;font-weight:800;font-size:18px;min-height:50px;min-width:180px;padding:12px 24px;color:#fff;background:#28745b;border:2px solid #e4f8ec;border-radius:14px;box-shadow:0 5px 16px #0006;cursor:pointer}
+.next:hover{background:#1a5a45}button:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.end{position:fixed;inset:0;z-index:20;display:none;place-items:center;padding:30px;background:#0e151bf0;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);text-align:center}.end.open{display:grid}
+.endbox{max-width:780px;width:100%}.endbox h2{font-size:clamp(24px,4vw,42px);margin:0 0 12px}.endbox p{font-size:clamp(16px,2vw,22px);line-height:1.6;color:#e8edf3;margin:0 0 24px}.endbox button{font:inherit;font-size:clamp(16px,2vw,20px);padding:.7em 2em;color:#25231f;background:#f7e3b9;border:0;border-radius:12px;cursor:pointer}
+@media(max-width:520px){.feed-wrap{width:100%;padding:8px 8px 0}}
+@media(min-width:900px) and (orientation:landscape){.feed-wrap{width:min(75vw,720px)}}
+</style></head>
+<body><main class="scene" id="scene" aria-label="지우가 올린 유나의 간식 사진 SNS 피드">
+<div class="feed-wrap"><img class="feed" src="assets/feed.webp" alt="지우가 올린 SNS 사진. 유나가 교실에서 간식을 먹다가 사진을 피하려 손을 내민 모습과 친구들의 댓글이 보인다."></div>
+<div class="action-bar"><button class="next" id="next" type="button">조사 완료 ❯</button></div>
+<section class="end" id="end" aria-live="polite" aria-label="조사 완료 화면"><div class="endbox"><h2>조사 완료</h2><p>관찰한 사실과 시각을 수사수첩에 기록해 주세요.<br>이 장면에서는 정답을 알려주지 않습니다.</p><button type="button" id="back">뒤로 돌아가기</button></div></section>
+</main><script>(()=>{const end=document.getElementById('end'),next=document.getElementById('next'),back=document.getElementById('back');next.addEventListener('click',()=>{end.classList.add('open');back.focus()});back.addEventListener('click',()=>{end.classList.remove('open');next.focus()})})();</script></body></html>

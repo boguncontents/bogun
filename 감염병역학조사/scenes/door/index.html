@@ -1,0 +1,60 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>QR 구역 3 · 교실문 손잡이가 아닌 문짝 가장자리</title><style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;min-height:100%;background:#0e1118;color:white;font-family:system-ui,'Malgun Gothic',sans-serif}body{display:grid;min-height:100dvh;place-items:center}.shell{width:min(100vw,calc((100dvh - 96px)*16/9));max-width:100vw}.topbar{min-height:46px;padding:9px 15px;display:flex;justify-content:space-between;align-items:center;color:#f1efe9;font-weight:700;font-size:clamp(13px,1.7vw,19px)}.stage{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(#dfe6e0,#aec6c8);isolation:isolate;touch-action:pan-y}.scene{position:absolute;inset:0}.hallway{position:absolute;inset:0;background:linear-gradient(#e8eee8 0 55%,#e6e1d4 55%);}.wall{position:absolute;left:0;top:0;width:100%;height:100%;background:linear-gradient(125deg,#e9efe8 30%,#c8d4c4 70%)}.doorframe{position:absolute;height:120%;aspect-ratio:1122/1402;left:50%;top:50%;transform:translate(-50%,-50%);user-select:none;touch-action:none;transition:height .28s ease,left .28s ease,top .28s ease}.doorframe.closeup{height:175%;left:57%;top:58%}.doorframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none}.doorframe .left{z-index:2}.doorframe .right{z-index:3}.doorframe .fixed{z-index:4}.doorframe.jun .right{z-index:3}.doorframe.jun .left{z-index:2}.doorframe.woo .left{z-index:3}.doorframe.woo .right{z-index:2}.palm{position:absolute;pointer-events:none;z-index:6;object-fit:contain;display:none;width:74%;left:-12%;top:auto;bottom:-14%;height:auto;animation:shake .25s ease-in-out 2}.gripWrap{position:absolute;inset:0;pointer-events:none;z-index:6;display:none;will-change:transform}.grip{position:absolute;pointer-events:none;object-fit:contain;display:block;width:auto;left:0;top:0;height:auto;opacity:.98}.palm.on,.gripWrap.on{display:block}.dialogue{position:absolute;top:3%;left:8%;right:8%;z-index:9;background:#101821da;border-radius:11px;padding:10px 16px;text-align:center;font-size:clamp(15px,2.15vw,24px);font-weight:750;line-height:1.4;min-height:43px}.bottom{min-height:50px;padding:7px;display:flex;align-items:center;justify-content:center}.btn{cursor:pointer;border:1.5px solid #fff9;border-radius:40px;background:#203346;color:white;font:750 clamp(14px,1.7vw,19px) system-ui;padding:9px 28px;min-height:40px}.tip{position:absolute;z-index:8;left:50%;bottom:3%;transform:translateX(-50%);background:#162635dd;border-radius:9px;padding:6px 14px;font-size:clamp(12px,1.45vw,17px);font-weight:650;white-space:nowrap;pointer-events:none}.jiwoo{position:absolute;z-index:6;bottom:-18%;left:21%;height:79%;max-width:65%;object-fit:contain;pointer-events:none;display:none}.jiwoo.on{display:block}/* Single leftward head turn: no oscillation, no passing wall twice. */
+.stage.turning .hallway,.stage.turning .doorframe{
+ animation:oneWayLookLeft .82s cubic-bezier(.12,.7,.23,1) both;
+}
+.stage.turning .jiwoo.on{
+ animation:oneWayLookLeft .82s cubic-bezier(.12,.7,.23,1) both;
+}
+.cameraSweep{display:none!important}
+@keyframes oneWayLookLeft{
+ 0%{translate:58% 0;filter:blur(5px)}
+ 45%{translate:21% 0;filter:blur(3px)}
+ 100%{translate:0 0;filter:blur(0)}
+}
+@keyframes oneWayJiwoo{
+ 0%{translate:58% 0;opacity:0;filter:blur(5px)}
+ 45%{translate:21% 0;opacity:.55;filter:blur(3px)}
+ 100%{translate:0 0;opacity:1;filter:blur(0)}
+}
+.end{position:absolute;inset:0;z-index:15;background:#0e151bc9;backdrop-filter:blur(8px);display:none;place-items:center;text-align:center;padding:25px}.end.open{display:grid}.end h2{font-size:clamp(22px,3vw,42px);margin:0 0 12px}.end p{font-size:clamp(14px,1.6vw,22px);color:#e8edf3;line-height:1.6}.end button{font:inherit;font-size:clamp(14px,1.6vw,20px);background:#f7e3b9;color:#25231f;border:0;border-radius:12px;padding:.7em 2em;cursor:pointer}@keyframes shake{0%,100%{transform:translate(0,0)}40%{transform:translate(-7px,5px)}75%{transform:translate(5px,-4px)}}@media(max-width:600px){.shell{width:100vw}.doorframe{height:134%}.doorframe.closeup{height:186%;left:58%;top:60%}.palm{width:87%;left:-23%;top:auto;bottom:-13%}.jiwoo{left:14%;bottom:-18%;height:76%}.tip{font-size:11px;white-space:normal;text-align:center;width:72%}}@media(prefers-reduced-motion:reduce){.palm{animation:none}}
+</style></head><body><div class="shell"><div class="topbar"><span>사건 현장 · 교실문</span></div><main class="stage" id="stage"><div class="hallway"><div class="wall"></div></div><div id="door" class="doorframe jun"><img class="left" src="assets/left_panel.webp"><img class="right" id="right" src="assets/right_panel.webp"><img class="fixed" src="assets/fixed_frame_and_transom.webp"></div><div class="cameraSweep" aria-hidden="true"></div><div id="gripWrap" class="gripWrap"><img id="grip" class="grip" src="assets/minjun_door_hand.webp"></div><img id="palm" class="palm" src="assets/minjun_cough_palm.webp"><img id="jiwoo" class="jiwoo" src="assets/jiwoo_approved_clean.webp"><div id="line" class="dialogue">“민준아, 이제 너 졸업사진 찍을 차례래!”</div><div id="tip" class="tip" hidden>오른쪽 문짝의 가장자리를 왼쪽으로 밀어 보세요 ←</div><section id="end" class="end" aria-live="polite"><div><h2>조사 완료</h2><p>관찰한 사실과 시각을 수사수첩에 기록해 주세요.<br>이 장면에서는 정답을 알려주지 않습니다.</p><button id="replay">다시 보기</button></div></section></main><div class="bottom"><button class="btn" id="next">다음 장면 ▶</button></div></div><script>
+const $=id=>document.getElementById(id),door=$('door'),right=$('right'),leftPanel=document.querySelector('.doorframe .left'),gripWrap=$('gripWrap'),btn=$('next');let mode=0,opening=0,down=false,start=0,startOpening=0;let timers=[];const later=(cb,delay)=>{let n=setTimeout(cb,delay);timers.push(n)};function clear(){timers.forEach(clearTimeout);timers=[]}function say(s){$('line').textContent=s;$('line').hidden=!s}
+function renderDoor(){
+  if(mode===5){
+    right.style.transform='translateX(0)';
+    leftPanel.style.transform='translateX(36.1%)';
+  }else{
+    const fraction=opening/1122;
+    right.style.transform=`translateX(${-fraction*100}%)`;
+    leftPanel.style.transform='translateX(0)';
+  }
+  renderGrip();
+}
+function renderGrip(){
+  if(mode!==3) return;
+  const stage=$('stage').getBoundingClientRect();
+  const rect=door.getBoundingClientRect();
+  const grip=$('grip');
+  const gripW=stage.width*0.33;
+  const panelShift=(opening/1122)*rect.width;
+  // Attach the fingertips to the outer right edge of the moving right panel.
+  const x=(rect.left-stage.left)+rect.width*0.91-gripW*0.96-panelShift;
+  const y=(rect.top-stage.top)+rect.height*0.49;
+  grip.style.width=gripW+'px';
+  grip.style.left=x+'px';
+  grip.style.top=y+'px';
+}
+function syncGripDuringZoom(){
+  const started=performance.now();
+  function update(now){
+    if(mode!==3) return;
+    renderGrip();
+    if(now-started<420) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+function stage(n){clear();$('stage').classList.remove('turning');mode=n;$('palm').classList.toggle('on',n===2);$('gripWrap').classList.toggle('on',n===3);$('jiwoo').classList.toggle('on',n===5);$('tip').hidden=n!==3;btn.hidden=n===3||n===5;door.className='doorframe '+(n===5?'woo':'jun')+((n===3||n===4)?' closeup':'');renderDoor();if(n===3) syncGripDuringZoom();if(n===0){opening=0;renderDoor();say('“민준아, 이제 너 졸업사진 찍을 차례래!”');btn.textContent='다음 장면 ▶'}if(n===1){say('민준: “어!”');btn.textContent='다음 장면 ▶'}if(n===2){say('콜록! 콜록!');btn.textContent='문 앞으로 ▶'}if(n===3){say('문짝의 가장자리를 잡고 왼쪽으로 밀어 문을 여세요.');opening=0;renderDoor()}if(n===4){say('문이 열렸습니다. 민준은 복도로 나갔어요.');btn.textContent='뒤돌아보기 ▶'}if(n===5){$('stage').classList.add('turning');renderDoor();say('(휙 돌아보며)');$('jiwoo').classList.add('on');btn.hidden=true;later(()=>{if(mode===5)say('(휙 돌아보며) 어? 지우는 벌써 촬영 끝났나 보네.')},850);later(()=>{btn.textContent='조사 완료';btn.hidden=false},1850)}}
+btn.addEventListener('click',()=>{if(mode===5){$('end').classList.add('open');return}stage(mode+1)});function reset(){clear();$('end').classList.remove('open');$('jiwoo').classList.remove('on');stage(0)}$('replay').onclick=reset;
+const canDrag=(e)=>mode===3&&e.pointerType!=='mouse'||mode===3;door.addEventListener('pointerdown',e=>{if(!canDrag(e))return;down=true;start=e.clientX;startOpening=opening;door.setPointerCapture(e.pointerId);e.preventDefault()});door.addEventListener('pointermove',e=>{if(!down||mode!==3)return;let dx=(e.clientX-start)*1122/door.clientWidth;opening=Math.max(0,Math.min(405,Math.round(startOpening-dx)));renderDoor();});function finish(){if(!down)return;down=false;if(mode===3&&opening>=260){opening=405;renderDoor();later(()=>stage(4),450)}}door.addEventListener('pointerup',finish);door.addEventListener('pointercancel',finish);window.addEventListener('resize',renderDoor);stage(0);
+</script></body></html>

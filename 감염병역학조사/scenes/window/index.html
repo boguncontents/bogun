@@ -1,0 +1,135 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>QR 4구역 · 손소독제와 창문</title><style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#10171e;color:#fff;font-family:system-ui,'Apple SD Gothic Neo','Malgun Gothic',sans-serif}body{display:grid;place-items:center;min-height:100dvh}.stage{position:relative;width:min(100vw,177.7778dvh);aspect-ratio:16/9;overflow:hidden;isolation:isolate;background:#e7e5dc}.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;pointer-events:none}.stage:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0000 0%,#0000 54%,#0c111744 100%);z-index:1;pointer-events:none}.time{position:absolute;top:3.2%;left:3%;z-index:15;background:#1a2635d9;color:#fff;padding:.65em .95em;border-radius:9px;font-size:clamp(12px,1.8vw,25px);font-weight:800;letter-spacing:.02em;box-shadow:0 4px 18px #0003}.time small{font-size:.55em;color:#d7e4f4;font-weight:500;margin-left:.45em}.windowmark{position:absolute;z-index:2;left:55%;top:25%;width:38%;height:31%;border:2px solid #f7dc7d00;pointer-events:none;transition:border-color .4s,box-shadow .4s}.stage.endview .windowmark{border-color:#f7dc7d88;box-shadow:inset 0 0 30px #fff2,0 0 20px #fff5;border-radius:5px}.person{position:absolute;z-index:4;height:80%;width:auto;max-width:none;bottom:-23%;object-fit:contain;filter:drop-shadow(0 7px 7px #0004);pointer-events:none;user-select:none}.yuna{height:84%;left:25%;bottom:-26%;z-index:6}.doyun{height:86%;left:1%;bottom:-25%;z-index:6}.doyun.look{opacity:0}.harin{height:83%;left:53%;bottom:-23%;z-index:3;opacity:0;transform:translateX(14%);transition:opacity .45s,transform .9s ease}.harin.exit{height:83%;left:53%;bottom:-23%;transform:translateX(0);transition:opacity .22s,transform 1.5s ease}.sanitizer{position:absolute;z-index:8;width:6.5%;height:auto;left:24%;bottom:13%;filter:drop-shadow(0 5px 5px #0005);pointer-events:none}.desk{display:none;position:absolute;z-index:7;left:61%;bottom:4%;width:35%;height:12%;border-radius:7px 7px 0 0;background:linear-gradient(180deg,#e3ba8e,#b8875b 20%,#8e6245 28%,#a97b57 35%,#a77b57 100%);box-shadow:0 3px 9px #0005}.desk:after{content:"";position:absolute;top:20%;left:9%;width:5%;height:100%;background:#8a6046;box-shadow:200px 0 #8a6046}.caption{position:absolute;z-index:20;bottom:3%;left:50%;transform:translateX(-50%);width:min(87%,1120px);padding:1.35% 2.5% 1.6%;background:#0b131fe8;backdrop-filter:blur(6px);border-radius:13px;box-shadow:0 10px 32px #0006;cursor:pointer;user-select:none;touch-action:manipulation}.who{display:block;color:#f3d69b;font-size:clamp(11px,1.55vw,20px);font-weight:800;margin-bottom:.25em}.line{font-size:clamp(15px,2.1vw,28px);font-weight:650;line-height:1.42;word-break:keep-all}.next{position:absolute;z-index:20;right:3%;bottom:22%;font-size:clamp(11px,1.2vw,17px);color:white;background:#142030b9;border:1px solid #ffffff70;border-radius:8px;padding:.5em .9em;cursor:pointer}.skip{position:absolute;z-index:20;right:2.5%;top:3.2%;font-size:clamp(11px,1.3vw,17px);background:#1b2939c9;border:1px solid #ffffff70;color:white;border-radius:8px;padding:.55em .9em;cursor:pointer}.endpanel{position:absolute;z-index:30;inset:0;background:#0e151bc9;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;place-items:center;text-align:center;padding:30px}.endpanel.on{display:grid}.endbox{max-width:780px}.endbox h2{font-size:clamp(22px,3vw,42px);margin:0 0 12px}.endbox p{font-size:clamp(14px,1.6vw,22px);color:#e8edf3;line-height:1.6}.endbox button{font:inherit;font-size:clamp(14px,1.6vw,20px);background:#f7e3b9;color:#25231f;border:0;border-radius:12px;padding:.7em 2em;cursor:pointer}.stage.s1 .harin.window,.stage.s2 .harin.window,.stage.s3 .harin.window{opacity:1;transform:translateX(0)}.stage.s2 .doyun.rub,.stage.s3 .doyun.rub,.stage.s4 .doyun.rub,.stage.s5 .doyun.rub{opacity:0}.stage.s2 .doyun.look,.stage.s3 .doyun.look,.stage.s4 .doyun.look,.stage.s5 .doyun.look{opacity:1}.stage.s4 .harin.window,.stage.s5 .harin.window{opacity:0}.stage.s4 .harin.exit{opacity:1;transform:translateX(26%)}.stage.s5 .harin.exit{opacity:0;transform:translateX(120%)}.stage.s5 .yuna,.stage.s5 .doyun{opacity:.36}.person.doyun{transition:opacity .38s ease}.stage.s4 .harin.exit{transition:opacity .28s,transform 1.5s ease}.stage.s5 .harin.exit{transition:opacity .7s,transform 1.5s ease}@media(max-width:650px){.caption{width:94%;bottom:3%;padding:2% 3%}.next{bottom:28%}.yuna{left:25%;}.doyun{left:-3%}.time{left:2%;top:2%}}
+
+/* v3 approved staging: two similar-sized students, separate Harin sprites, visible windows */
+.person{bottom:auto;height:auto;max-width:none;object-fit:contain}
+.doyun{height:78%;left:3.5%;bottom:-8%;z-index:6}
+.yuna{height:60%;left:29%;bottom:10%;z-index:6}
+.harin{height:66%;left:69%;bottom:1%;z-index:4;opacity:0;transform:none;transition:opacity .32s ease}
+.harin.back{height:66%;left:69%;bottom:1%;}
+.harin.window{height:66%;left:68%;bottom:1%;}
+.harin.exit{height:66%;left:69%;bottom:1%;transition:opacity .35s ease,transform 1.2s ease}
+.sanitizer{left:25%;bottom:34%;width:5.2%;z-index:8}
+.stage.s0 .harin.back,.stage.s1 .harin.back{opacity:1;transform:none}
+.stage.s1 .harin.window{opacity:0;transform:none}
+.stage.s2 .harin.back,.stage.s3 .harin.back,.stage.s4 .harin.back{opacity:0}
+.stage.s2 .harin.window,.stage.s3 .harin.window{opacity:1;transform:none}
+.stage.s2 .doyun.rub{opacity:1}.stage.s2 .doyun.look{opacity:0}
+.stage.s3 .doyun.rub{opacity:0}.stage.s3 .doyun.look{opacity:1}
+.stage.s4 .doyun.rub{opacity:1}.stage.s4 .doyun.look{opacity:0}
+.stage.s4 .harin.window{opacity:0}.stage.s4 .harin.exit{opacity:1;transform:translateX(4%)}
+.stage.s5 .harin.exit{opacity:0;transform:translateX(85%)}
+.stage.s5 .doyun.rub{opacity:1}.stage.s5 .doyun.look{opacity:0}
+.stage.s5 .yuna,.stage.s5 .doyun{opacity:1}
+.stage.endview .windowmark{border-color:#f7dc7d88}
+@media(max-width:650px){.doyun{left:2%}.yuna{left:28%}.harin,.harin.back,.harin.window,.harin.exit{left:69%}}
+
+/* v4: align figures to screen bottom, place sanitizer in foreground, match hand to window */
+.doyun{height:72%;left:5%;bottom:-10%;}
+.yuna{height:54%;left:29%;bottom:11%;}
+.harin,.harin.back,.harin.window,.harin.exit{height:73%;bottom:-10%;}
+.harin.back{left:74%;}
+.harin.window{left:73%;}
+.harin.exit{left:73%;}
+.sanitizer{left:25.5%;bottom:16%;width:5.4%;z-index:12;}
+@media(max-width:650px){.doyun{left:5%;}.yuna{left:29%;}.harin.back{left:74%;}.harin.window,.harin.exit{left:73%;}}
+
+/* v5: approved composition (same empty classroom, no student desks).
+   Characters are independent transparent assets so all four story steps work. */
+.bg{object-fit:fill;object-position:center}
+.stage:before{background:linear-gradient(180deg,#0000 0%,#0000 70%,#0c11171b 100%)}
+/* Boy and girl share floor level and similar head-to-foot scale. */
+.person.doyun{height:65%;left:8.1%;bottom:2.5%;z-index:7}
+.person.yuna{height:65%;left:24.9%;bottom:2.5%;z-index:7}
+/* The small sanitizer stand is the ONLY table in this scene. */
+.san-stand{position:absolute;left:20.2%;bottom:6.4%;width:8.3%;height:25.7%;z-index:5;pointer-events:none;filter:drop-shadow(2px 5px 3px #0003)}
+.san-stand .top{position:absolute;left:-4%;top:0;width:108%;height:6%;border-radius:3px;background:linear-gradient(#f0cda0,#c38b5d);box-shadow:0 3px 2px #4d352855}
+.san-stand .front{position:absolute;left:5%;top:6%;width:90%;height:13%;background:linear-gradient(90deg,#a7a6a1,#d0c8be 22%,#beb8b2 82%,#9b9b98);border-radius:0 0 3px 3px}
+.san-stand .leg{position:absolute;top:17%;height:83%;width:6%;background:linear-gradient(90deg,#888d91,#d1d2d0,#7b8285);border-radius:3px}
+.san-stand .leg.a{left:10%}.san-stand .leg.b{right:10%}
+.san-stand .foot{position:absolute;bottom:0;left:10%;right:10%;height:3%;border-radius:3px;background:#a8adb0}
+.sanitizer{width:3.45%;left:22.55%;bottom:31.4%;z-index:9;filter:drop-shadow(0 2px 3px #0004)}
+/* Harin stands directly in front of the right window, with feet on the floor. */
+.person.harin,.person.harin.back,.person.harin.window,.person.harin.exit{height:57%;bottom:9.5%;z-index:6;transition:opacity .28s ease,transform .7s ease}
+.person.harin.back{left:78.3%}
+.person.harin.window{left:76.4%}
+.person.harin.exit{left:77.8%}
+/* Force the right poses for each scene; do not swap Doyun until his objection. */
+.stage.s0 .harin.back{opacity:1;transform:none}
+.stage.s0 .harin.window,.stage.s0 .harin.exit{opacity:0}
+.stage.s2 .harin.back,.stage.s3 .harin.back{opacity:0}
+.stage.s2 .harin.window,.stage.s3 .harin.window{opacity:1;transform:none}
+.stage.s2 .doyun.rub{opacity:1}.stage.s2 .doyun.look{opacity:0}
+.stage.s3 .doyun.rub{opacity:0}.stage.s3 .doyun.look{opacity:1}
+.stage.s4 .harin.back,.stage.s4 .harin.window{opacity:0}
+.stage.s4 .harin.exit{opacity:1;transform:translateX(10%)}
+.stage.s4 .doyun.rub{opacity:1}.stage.s4 .doyun.look{opacity:0}
+@media(max-width:650px){.person.doyun{left:8.1%}.person.yuna{left:24.9%}.person.harin.back{left:78.3%}.person.harin.window{left:76.4%}.person.harin.exit{left:77.8%}}
+
+/* v6: use head size (not raw image height) to scale Yuna and Doyun;
+   create a real clear gap for the sanitizer stand, in front of the figures. */
+.person.doyun{height:67%;left:5%;bottom:0%;z-index:6}
+.person.yuna{height:46%;left:32.5%;bottom:18%;z-index:6}
+.san-stand{left:23.3%;bottom:5%;width:8.8%;height:29%;z-index:8}
+.san-stand .top{height:5%;border:1px solid #e5b887}
+.san-stand .front{top:5%;height:10%}
+.san-stand .leg{top:15%;height:85%}
+.sanitizer{left:25.2%;bottom:33.8%;width:4.4%;z-index:10}
+@media(max-width:650px){.person.doyun{left:5%}.person.yuna{left:32.5%}}
+
+/* v7 — approved reference composition, overriding old experiments.
+   Reference: doyun/yuna same apparent head size, sanitizer between them,
+   Harin in front of right window with feet grounded. */
+.person.doyun{height:83%;left:3.8%;bottom:-16%;z-index:6}
+.person.yuna{height:46%;left:32.5%;bottom:18%;z-index:6}
+.san-stand{left:19.2%;bottom:4.8%;width:8.3%;height:29%;z-index:8}
+.sanitizer{left:21.4%;bottom:33.6%;width:3.7%;z-index:10}
+.person.harin,.person.harin.back,.person.harin.window,.person.harin.exit{height:57%;bottom:9.5%;z-index:6}
+.person.harin.back{left:78.3%}
+.person.harin.window{left:77.6%}
+.person.harin.exit{left:77.8%}
+/* No horizontal entrance/exit: Harin approaches the camera, then leaves
+   the window completely visible after moving toward the foreground. */
+.stage.s4 .harin.exit{opacity:0;transform:translateY(42%) scale(1.16);transform-origin:bottom center;animation:harinWalkForward 1.95s ease-in-out both}
+@keyframes harinWalkForward{
+  0%{opacity:0;transform:translateY(-14%) scale(.84)}
+  18%{opacity:1;transform:translateY(-5%) scale(.90)}
+  67%{opacity:1;transform:translateY(16%) scale(1.07)}
+  100%{opacity:0;transform:translateY(44%) scale(1.19)}
+}
+.stage.s4 .harin.back,.stage.s4 .harin.window{opacity:0}
+.stage.s4 .doyun.rub{opacity:1}.stage.s4 .doyun.look{opacity:0}
+@media(max-width:650px){
+ .person.doyun{left:3.8%;height:83%;bottom:-16%}
+ .person.yuna{left:32.5%;height:46%;bottom:18%}
+ .person.harin.back{left:78.3%}
+ .person.harin.window{left:77.6%}
+ .person.harin.exit{left:77.8%}
+}
+
+/* v8: requested fixes only — sanitizer centered and enlarged, dialogue masks Yuna's
+   cropped lower half, and Harin walks toward foreground in one smooth downward move. */
+.san-stand{left:27.4%;bottom:4.8%;width:8.3%;height:29%;z-index:8}
+.sanitizer{left:29.15%;bottom:33.6%;width:4.9%;z-index:10}
+.caption{bottom:0%;min-height:21%;padding:2.1% 2.5% 2.5%;border-radius:13px 13px 0 0;display:flex;flex-direction:column;justify-content:center}
+/* Do not move the two approved people or the classroom background. */
+/* Single forward exit, with no horizontal movement or bounce. */
+.stage.s4 .harin.exit{opacity:1;transform:none;animation:harinExitDownV8 1.45s cubic-bezier(.3,.05,.72,1) both;transform-origin:bottom center}
+@keyframes harinExitDownV8{
+  0%{opacity:1;transform:translate3d(0,0,0) scale(1)}
+  78%{opacity:1;transform:translate3d(0,46%,0) scale(1.08)}
+  100%{opacity:0;transform:translate3d(0,86%,0) scale(1.10)}
+}
+@media(max-width:650px){.caption{bottom:0%;min-height:21%;padding:2% 3% 2.5%}}
+/* v9: Doyun looks up while speaking, and stays looking up during Yuna’s joke. */
+.stage.s2 .doyun.rub{opacity:0}.stage.s2 .doyun.look{opacity:1}
+/* 4구역: 1구역 벽시계와 같은 외형, 교실 옆 창가 상단에만 추가 */
+.wall-clock{position:absolute;top:1.3%;right:3.2%;width:15.5%;height:auto;z-index:16;pointer-events:none;object-fit:contain;filter:drop-shadow(0 2px 3px #0005)}
+</style></head><body><main class="stage" id="stage" aria-label="4구역 손소독제와 환기 조사"><img class="bg" src="assets/classroom.webp" alt="창문이 두 개 크게 보이는 교실, 창문은 닫혀 있다"><div class="windowmark" aria-hidden="true"></div><img class="wall-clock" src="assets/digital_clock_0910.webp" alt="교실 디지털 벽시계 09:10"><img class="person harin back" src="assets/harin_back.webp" alt="창문 앞에 서 있는 하린의 뒷모습"><img class="person harin window" src="assets/harin_reach.webp" alt="창문을 열려고 손을 뻗는 하린"><img class="person harin exit" src="assets/harin_exit_clean.webp" alt="불만스러운 표정으로 돌아서 나가는 하린"><img class="person doyun rub" src="assets/doyun_rub.webp" alt="손소독제를 바르는 도윤"><img class="person doyun look" src="assets/doyun_look.webp" alt="고개를 들어 창문을 바라보는 도윤"><img class="person yuna" src="assets/yuna_source.webp" alt="손소독제를 손에 비비는 유나"><div class="san-stand" aria-hidden="true"><i class="top"></i><i class="front"></i><i class="leg a"></i><i class="leg b"></i><i class="foot"></i></div><img class="sanitizer" src="assets/sanitizer.webp" alt="손소독제 용기"><div class="caption" id="caption" role="button" tabindex="0" aria-label="다음 장면"><span class="who" id="who"></span><div class="line" id="line"></div></div><button class="next" id="next">다음 ▶</button><div class="endpanel" id="end" aria-live="polite"><div class="endbox"><h2>조사 완료</h2><p>관찰한 사실과 시각을 수사수첩에 기록해 주세요.<br>이 장면에서는 정답을 알려주지 않습니다.</p><button id="again" type="button">다시 보기</button></div></div></main><script>
+const scenes=[
+ {cls:'s0',who:'유나',line:'손소독제 냄새 좋다.'},
+ {cls:'s2',who:'도윤',line:'아 추운데 창문 열지 마! 손소독제 하면 감기 안 걸려.'},
+ {cls:'s3',who:'유나',line:'야, 손소독 빨리 하고 촬영 가야 해!'},
+ {cls:'s4',who:'하린',line:'아. 뭐야..'}
+ ];let idx=0;const stage=document.getElementById('stage');function show(n){idx=n;document.getElementById('end').classList.remove('on');let s=scenes[n];stage.className='stage '+s.cls;document.getElementById('who').textContent=s.who;document.getElementById('line').textContent=s.line;document.getElementById('next').textContent=n===scenes.length-1?'조사 완료 ▶':'다음 ▶'}function advance(){if(idx===scenes.length-1){document.getElementById('end').classList.add('on');return}show(idx+1)}document.getElementById('next').addEventListener('click',advance);document.getElementById('caption').addEventListener('click',advance);document.getElementById('caption').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();advance()}});document.getElementById('again').addEventListener('click',()=>show(0));show(0);
+</script></body></html>

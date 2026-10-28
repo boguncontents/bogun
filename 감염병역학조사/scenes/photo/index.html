@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>팔씨름 사진 | 우리 반 감염병 역학조사</title>
+<style>
+:root{color-scheme:dark;font-family:Pretendard,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+*{box-sizing:border-box}
+html,body{width:100%;height:100%;margin:0;background:#101722}
+body{display:grid;place-items:center;overflow:hidden;min-height:100vh;min-height:100dvh}
+.stage{position:relative;width:min(100vw,150vh);max-height:100vh;width:min(100vw,150dvh);max-height:100dvh;aspect-ratio:3/2;overflow:hidden;background:#205844;user-select:none;-webkit-user-select:none}
+.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;pointer-events:none}
+.complete-btn{position:absolute;z-index:5;right:1.5%;bottom:2.0%;border:2px solid #e7f4eb;background:#1f6a51;color:#fff;border-radius:14px;padding:11px 15px;min-height:44px;font-size:clamp(12px,1.3vw,19px);font-weight:800;letter-spacing:-.03em;box-shadow:0 5px 15px #062d276b;cursor:pointer}
+.complete-btn:hover{background:#145640}
+.complete-btn:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.end{position:absolute;z-index:30;inset:0;background:#0e151bc9;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;place-items:center;text-align:center;padding:30px;color:#fff}
+.end.open{display:grid}
+.endbox{max-width:780px;width:100%}
+.endbox h2{font-size:clamp(22px,3vw,42px);margin:0 0 12px}
+.endbox p{font-size:clamp(14px,1.6vw,22px);color:#e8edf3;line-height:1.6;margin:0 0 23px}
+.endbox button{font:inherit;font-size:clamp(14px,1.6vw,20px);background:#f7e3b9;color:#25231f;border:0;border-radius:12px;padding:.7em 2em;cursor:pointer}
+.endbox button:focus-visible{outline:3px solid #fff;outline-offset:4px}
+@media(max-width:650px){.complete-btn{right:1%;bottom:1.5%;font-size:12px;padding:9px 11px;border-radius:9px}}
+</style>
+</head>
+<body>
+<main class="stage" aria-label="팔씨름과 가까이서 속삭이는 장면이 담긴 폴라로이드 사진">
+<img class="photo" src="assets/polaroid.webp" alt="초록 게시판에 붙은 졸업사진 찍는 날 폴라로이드. 민준과 유나가 팔씨름을 하고, 하린이 현우의 귀에 속삭인다.">
+<button class="complete-btn" id="complete" type="button" aria-label="사진 조사를 마치고 완료 화면으로 이동">조사 완료 ❯</button>
+<section class="end" id="end" aria-live="polite" aria-label="조사 완료 화면">
+<div class="endbox">
+<h2>조사 완료</h2>
+<p>관찰한 사실과 시각을 수사수첩에 기록해 주세요.<br>이 장면에서는 정답을 알려주지 않습니다.</p>
+<button type="button" id="replay">다시 보기</button>
+</div>
+</section>
+</main>
+<script>
+(()=>{const end=document.getElementById('end');document.getElementById('complete').addEventListener('click',()=>{end.classList.add('open');document.getElementById('replay').focus()});document.getElementById('replay').addEventListener('click',()=>{end.classList.remove('open');document.getElementById('complete').focus()})})();
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "note": "교사용 구역 식별자 - 학생 화면에는 사건 시간표를 표시하지 않습니다.",
+  "locations": {
+    "mask": "k8p2v",
+    "video": "m4q9t",
+    "door": "r7c3w",
+    "window": "n5h8x",
+    "comic": "b2t6j",
+    "photo": "f9s4e",
+    "feed": "y3d7a"
+  }
+}
